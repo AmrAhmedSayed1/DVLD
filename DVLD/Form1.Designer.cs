@@ -97,6 +97,7 @@
             this.poepleToolStripMenuItem.Name = "poepleToolStripMenuItem";
             this.poepleToolStripMenuItem.Size = new System.Drawing.Size(219, 68);
             this.poepleToolStripMenuItem.Text = "Poeple";
+            this.poepleToolStripMenuItem.Click += new System.EventHandler(this.poepleToolStripMenuItem_Click);
             // 
             // driversToolStripMenuItem
             // 

@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace DVLD
 {
-    public partial class MainForm : Form
+    public partial class frmManagePoeple : Form
     {
-        public MainForm()
+        public frmManagePoeple()
         {
             InitializeComponent();
-        }
-
-        private void poepleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmManagePoeple frm = new frmManagePoeple();
-
-            frm.ShowDialog();
-
         }
     }
 }

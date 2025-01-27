@@ -1,0 +1,9 @@
+C:\Users\Amr\source\repos\DVLD\DataBusinessLayer\bin\Debug\DataBusinessLayer.dll
+C:\Users\Amr\source\repos\DVLD\DataBusinessLayer\bin\Debug\DataBusinessLayer.pdb
+C:\Users\Amr\source\repos\DVLD\DataBusinessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Amr\source\repos\DVLD\DataBusinessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Amr\source\repos\DVLD\DataBusinessLayer\obj\Debug\DVLD-DataBusinessLayer.csproj.AssemblyReference.cache
+C:\Users\Amr\source\repos\DVLD\DataBusinessLayer\obj\Debug\DVLD-DataBusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Amr\source\repos\DVLD\DataBusinessLayer\obj\Debug\DVLD-Dat.5EF1FCFB.Up2Date
+C:\Users\Amr\source\repos\DVLD\DataBusinessLayer\obj\Debug\DataBusinessLayer.dll
+C:\Users\Amr\source\repos\DVLD\DataBusinessLayer\obj\Debug\DataBusinessLayer.pdb
