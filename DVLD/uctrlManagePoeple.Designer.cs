@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctrlManagePoeple));
             this.dgvPoeple = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.AddNewPerson = new System.Windows.Forms.Button();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFilter = new System.Windows.Forms.TextBox();
@@ -78,22 +78,23 @@
             this.dgvPoeple.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPoeple.RowHeadersWidth = 51;
             this.dgvPoeple.RowTemplate.Height = 24;
-            this.dgvPoeple.Size = new System.Drawing.Size(1509, 295);
+            this.dgvPoeple.Size = new System.Drawing.Size(1703, 295);
             this.dgvPoeple.TabIndex = 0;
             this.dgvPoeple.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPoeple_CellContentClick);
             // 
-            // button1
+            // AddNewPerson
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(1416, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 90);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
+            this.AddNewPerson.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddNewPerson.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.AddNewPerson.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.AddNewPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("AddNewPerson.Image")));
+            this.AddNewPerson.Location = new System.Drawing.Point(1607, 3);
+            this.AddNewPerson.Name = "AddNewPerson";
+            this.AddNewPerson.Size = new System.Drawing.Size(96, 90);
+            this.AddNewPerson.TabIndex = 1;
+            this.AddNewPerson.UseVisualStyleBackColor = true;
+            this.AddNewPerson.Click += new System.EventHandler(this.AddNewPerson_Click);
             // 
             // cbFilterBy
             // 
@@ -169,10 +170,10 @@
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbFilterBy);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AddNewPerson);
             this.Controls.Add(this.dgvPoeple);
             this.Name = "uctrlManagePoeple";
-            this.Size = new System.Drawing.Size(1515, 454);
+            this.Size = new System.Drawing.Size(1709, 454);
             this.Load += new System.EventHandler(this.uctrlManagePoeple_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPoeple)).EndInit();
             this.ResumeLayout(false);
@@ -183,7 +184,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvPoeple;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AddNewPerson;
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFilter;

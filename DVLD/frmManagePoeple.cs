@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataBusinessLayer;
 
 namespace DVLD
 {
@@ -15,6 +16,11 @@ namespace DVLD
         public frmManagePoeple()
         {
             InitializeComponent();
+        }
+
+        private void frmManagePoeple_Load(object sender, EventArgs e)
+        {
+            this.Size = new System.Drawing.Size(1741, 778);
         }
     }
 }

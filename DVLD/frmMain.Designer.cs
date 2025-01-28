@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.label1 = new System.Windows.Forms.Label();
             this.applicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.poepleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.driversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,19 +68,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1821, 72);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(0, 686);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1821, 135);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "DVLD : Developed By AMR AHMED";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // applicationsToolStripMenuItem
             // 
@@ -123,6 +110,19 @@
             this.accountSettingsToolStripMenuItem.Size = new System.Drawing.Size(394, 68);
             this.accountSettingsToolStripMenuItem.Text = "Account Settings";
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(0, 686);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1821, 135);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "DVLD : Developed By AMR AHMED";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -131,7 +131,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
-            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "MainForm";

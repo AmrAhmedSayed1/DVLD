@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AddNewPerson.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAGQJJREFUeF7tW3d8T+ceDmKPa7SqNKVaodGrlEtbq61xXaUoMXujIjWCRIQkghAk
+        vwAADr8BOAVTJAAAGQJJREFUeF7tW3d8T+ceDmKPa7SqNKVaodGrlEtbq61xXaUoMXujIjWCRIQkghAk
         EXvvlJix9x5BJEYS2XvZxAqCJCKe+33en0NCREKk/eN+P5/nc8bvnPec9znffc5PD8D/kQOy3fl/vEC2
         O/+PF8h2p4eHh56xsXFBoJzg+27GxgO6djN27dLN2E3gTvzazXie7LeR3zsIajw7/r3Bx8cnWy6y3Wlj
         Y6P3HqWwoJ1gteCSQO7iBQq9tP0MDwVegqGCioJ8l3Xr1mXLRbY7x40b9+y0fJfeAl8BihbSQ9OSehhb

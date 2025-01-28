@@ -15,3 +15,4 @@ C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD-Presentation.csproj.CoreCompi
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD-Pre.B267ABE5.Up2Date
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.exe
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.pdb
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAdd_Edit_Person.resources

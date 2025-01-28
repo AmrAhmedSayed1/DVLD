@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAclsPoeple.cs" />
+    <Compile Include="DAclsCountry.cs" />
+    <Compile Include="DAclsPerson.cs" />
     <Compile Include="DAclsSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -16,15 +16,15 @@ namespace DVLD
         private string FilterBy = "";
         private string Filtertxt = "";
 
-        private void LoadAAPoepleWithFilter()
+        private void LoadAllPoepleWithFilter()
         {
-            dgvPoeple.DataSource = DBclsPoeple.GitAllPoepleWithFilter(FilterBy, Filtertxt);
+            dgvPoeple.DataSource = DBclsPerson.GitAllPoepleWithFilter(FilterBy, Filtertxt);
             lblNumOfRecords.Text = dgvPoeple.Rows.Count.ToString();
         }
 
-        private void LoadAAPoeple()
+        private void LoadAllPoeple()
         {
-            dgvPoeple.DataSource = DBclsPoeple.GitAllPoeple();
+            dgvPoeple.DataSource = DBclsPerson.GitAllPoeple();
             lblNumOfRecords.Text = dgvPoeple.Rows.Count.ToString();
         }
 
@@ -32,17 +32,12 @@ namespace DVLD
         {
             InitializeComponent();
 
-            dgvPoeple.DataSource = DBclsPoeple.GitAllPoeple();
+            dgvPoeple.DataSource = DBclsPerson.GitAllPoeple();
         }
 
         private void dgvPoeple_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void uctrlManagePoeple_Load(object sender, EventArgs e)
@@ -52,7 +47,7 @@ namespace DVLD
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadAAPoeple();
+            LoadAllPoeple();
 
             FilterBy = cbFilterBy.Text.Replace(" ", "");
 
@@ -69,9 +64,31 @@ namespace DVLD
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
+            if (FilterBy == "Phone" || FilterBy == "PersonID")
+            {
+                if (!int.TryParse(txtFilter.Text, out int val))
+                {
+                    if (txtFilter.Text != "")
+                    {
+                        var sb = new StringBuilder(txtFilter.Text);
+                        sb.Remove(txtFilter.Text.Length - 1, 1);
+                        txtFilter.Text = sb.ToString();
+                        Filtertxt = txtFilter.Text;
+                        return;
+                    }
+                }
+            }
+
             Filtertxt = txtFilter.Text;
 
-            LoadAAPoepleWithFilter();
+            LoadAllPoepleWithFilter();
+        }
+
+        private void AddNewPerson_Click(object sender, EventArgs e)
+        {
+            frmAdd_Edit_Person frm = new frmAdd_Edit_Person(0);
+            frm.ShowDialog();
+            LoadAllPoeple();
         }
     }
 }
