@@ -15,6 +15,10 @@ namespace DVLD
     public partial class frmAdd_Edit_Person : Form
     {
 
+        private enum _enMode { AddNew, Update }
+
+        private _enMode _EnMode;
+
         private DBclsPerson Person;
 
         public frmAdd_Edit_Person(int PersonID)
@@ -23,8 +27,16 @@ namespace DVLD
 
             dtDateOfBirth.MaxDate = DateTime.Now.AddYears(-19);
 
-            if (PersonID == 0)
+            if(PersonID > 0)
+            {
+                Person = new DBclsPerson(PersonID);
+                _EnMode = _enMode.Update;
+            }
+            else
+            {
                 Person = new DBclsPerson();
+                _EnMode = _enMode.AddNew;
+            }
         }
 
         private bool _CheckAllFieldFull()
@@ -43,7 +55,6 @@ namespace DVLD
         private void _LoadAllCountriesTocbCountry()
         {
             cbCountry.DataSource = DBclsCountry.GitAllCountries();
-            cbCountry.DisplayMember = "CountryName";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -52,40 +63,46 @@ namespace DVLD
             DBclsPerson.GitAllPoeple();
         }
 
+        private void _LoadDateToForm()
+        {
+            lblPersonID.Text = Person.PersonID.ToString();
+            txtFIrstName.Text = Person.FirstName;
+            txtSecondName.Text = Person.SecondName;
+            txtThirdName.Text = Person.ThirdName;
+            txtLastName.Text = Person.LastName;
+            txtNationalNo.Text = Person.NationalNo;
+            dtDateOfBirth.Value = Person.DateOfBirth;
+            if (Person.Gender == "Male")
+                rbMale.Checked = true;
+            else
+                rbFemale.Checked = true;
+            txtPhone.Text = Person.Phone;
+            txtEmail.Text = Person.Email;
+            cbCountry.SelectedItem = Person.Country.CountryName;
+            if (Person.ImagePath != "")
+            {
+                pbPersonImage.ImageLocation = Person.ImagePath;
+                LnkLRemoveImage.Visible = true;
+            }
+            else
+                pbPersonImage.ImageLocation = "C:\\Users\\Amr\\source\\repos\\DVLD\\DVLD\\Images\\user (2).png";
+            txtAddress.Text = Person.Address;
+        }
+
         private void frmAdd_Edit_Person_Load(object sender, EventArgs e)
         {
             _LoadAllCountriesTocbCountry();
+
+            if(Person.PersonID > 0)
+            {
+                lblAdd_EditNewPerson.Text = "Edit Person";
+
+                _LoadDateToForm();
+            }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void _PutDataInObject()
         {
-            if (!_CheckAllFieldFull())
-                return;
-
-            if (DBclsPerson.IsValueExist("NationalNo", txtNationalNo.Text))
-            {
-                MessageBox.Show("This NationalNo already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (DBclsPerson.IsValueExist("Phone", txtPhone.Text))
-            {
-                MessageBox.Show("This Phone already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-
-            if (DBclsPerson.IsValueExist("Email", txtEmail.Text))
-            {
-                MessageBox.Show("This Email already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (DBclsPerson.IsValueExist("ImagePath", pbPersonImage.ImageLocation))
-            { 
-                MessageBox.Show("This Image already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             Person.NationalNo = txtNationalNo.Text;
             Person.Phone = txtPhone.Text;
             Person.Email = txtEmail.Text;
@@ -105,14 +122,61 @@ namespace DVLD
             else
                 Person.Gender = "Female";
             Person.Phone = txtPhone.Text;
+        }
 
-            if(Person.Save())
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!_CheckAllFieldFull())
+                return;
+            if(_EnMode == _enMode.AddNew)
             {
-                lblPersonID.Text = Person.PersonID.ToString();
-                MessageBox.Show("Person was added successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (DBclsPerson.IsValueExist("NationalNo", txtNationalNo.Text))
+                {
+                    MessageBox.Show("This NationalNo already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (DBclsPerson.IsValueExist("Phone", txtPhone.Text))
+                {
+                    MessageBox.Show("This Phone already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
+                if (DBclsPerson.IsValueExist("Email", txtEmail.Text))
+                {
+                    MessageBox.Show("This Email already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (DBclsPerson.IsValueExist("ImagePath", pbPersonImage.ImageLocation))
+                {
+                    MessageBox.Show("This Image already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                _PutDataInObject();
+
+                if (Person.Save())
+                {
+                    lblPersonID.Text = Person.PersonID.ToString();
+                    MessageBox.Show("Person was added successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    MessageBox.Show("Person was not added successfully", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show("Person was not added successfully", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                _PutDataInObject();
+
+                if (Person.Save())
+                {
+                    lblPersonID.Text = Person.PersonID.ToString();
+                    MessageBox.Show("Person was Updated successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    MessageBox.Show("Person was not Updated successfully", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
 
         }
 
@@ -194,6 +258,7 @@ namespace DVLD
 
         private void LnkLSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            ofdGitPersonImage.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
             ofdGitPersonImage.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             ofdGitPersonImage.Title = "Choose Image";
             ofdGitPersonImage.ShowDialog();

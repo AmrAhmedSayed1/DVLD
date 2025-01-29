@@ -44,7 +44,7 @@ namespace DataBusinessLayer
 
         private enum _enMode { AddNew, Update}
 
-        _enMode _EnMode;
+        private _enMode _EnMode;
 
         public DBclsPerson()
         {
@@ -64,22 +64,40 @@ namespace DataBusinessLayer
             _EnMode = _enMode.AddNew;
         }
 
-        public DBclsPerson(int personID, string nationalNo, string firstName, string secondName, string thirdName, string lastName, string email, string phone, string address, int CountryID, string imagePath, DateTime dateOfBirth, string gender)
+        public DBclsPerson(int personID)
         {
-            int PersonID = personID;
-            NationalNo = nationalNo;
-            FirstName = firstName;
-            SecondName = secondName;
-            ThirdName = thirdName;
-            LastName = lastName;
-            Email = email;
-            Phone = phone;
-            Address = address;
-            Country = new DBclsCountry(CountryID);
-            ImagePath = imagePath;
-            DateOfBirth = dateOfBirth;
-            Gender = gender;
-            _EnMode = _enMode.Update;
+            string nationalNo = "";
+            string firstName = "";
+            string secondName = "";
+            string thirdName = "";
+            string lastName = "";
+            string email = "";
+            string phone = "";
+            string address = "";
+            int CountryID = 0;
+            string imagePath = "";
+            DateTime dateOfBirth = DateTime.Now;
+            string gender = "";
+
+            if (DAclsPerson.GitPersonByID(personID, ref nationalNo, ref firstName,
+                ref secondName, ref thirdName, ref lastName, ref email, ref phone,
+                ref address, ref CountryID, ref imagePath, ref dateOfBirth, ref gender))
+            {
+                PersonID = personID;
+                NationalNo = nationalNo;
+                FirstName = firstName;
+                SecondName = secondName;
+                ThirdName = thirdName;
+                LastName = lastName;
+                Email = email;
+                Phone = phone;
+                Address = address;
+                Country = new DBclsCountry(CountryID);
+                ImagePath = imagePath;
+                DateOfBirth = dateOfBirth;
+                Gender = gender;
+                _EnMode = _enMode.Update;
+            }
         }
 
         public static DataTable GitAllPoeple()
@@ -90,6 +108,11 @@ namespace DataBusinessLayer
         public static DataTable GitAllPoepleWithFilter(string ColumnName, string Value)
         {
             return DAclsPerson.GitAllPoepleWithFilter(ColumnName, Value);
+        }
+
+        private bool _UpdatedPerson()
+        {
+            return DAclsPerson.UpdatePerson(PersonID, NationalNo, FirstName, SecondName, ThirdName, LastName, Email, Phone, Address, Country.CountryID, ImagePath, DateOfBirth, Gender);
         }
 
         public static bool IsValueExist(string ColumnName, string Value)
@@ -116,9 +139,21 @@ namespace DataBusinessLayer
 
         public bool Save()
         {
-            return _AddNewPerson();
+            switch (_EnMode)
+            {
+                case _enMode.AddNew:
+                    {
+                        return _AddNewPerson();
+                    }
+                default:
+                    return _UpdatedPerson();
+            }
         }
 
+        public static bool DeletePerson(int PersonID)
+        {
+            return DAclsPerson.DeletePerson(PersonID);
+        }
 
     }
 }

@@ -35,11 +35,6 @@ namespace DVLD
             dgvPoeple.DataSource = DBclsPerson.GitAllPoeple();
         }
 
-        private void dgvPoeple_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
         private void uctrlManagePoeple_Load(object sender, EventArgs e)
         {
             cbFilterBy.SelectedIndex = 0;
@@ -89,6 +84,96 @@ namespace DVLD
             frmAdd_Edit_Person frm = new frmAdd_Edit_Person(0);
             frm.ShowDialog();
             LoadAllPoeple();
+        }
+
+        private void tsmiAddNewPerson_Click(object sender, EventArgs e)
+        {
+            frmAdd_Edit_Person frm = new frmAdd_Edit_Person(0);
+            frm.ShowDialog();
+            LoadAllPoeple();
+        }
+
+        private void tsmiEdit_Click(object sender, EventArgs e)
+        {
+            if(!(dgvPoeple.SelectedRows.Count > 0))
+            {
+                MessageBox.Show("Please select a row", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int PersonID = 0;
+
+            PersonID = Convert.ToInt32(dgvPoeple.SelectedRows[0].Cells[0].Value);
+
+            if (DBclsPerson.IsValueExist("PersonID", PersonID.ToString()))
+            {
+                frmAdd_Edit_Person frm = new frmAdd_Edit_Person(PersonID);
+                frm.ShowDialog();
+                LoadAllPoeple();
+            }
+            else
+            {
+                MessageBox.Show("This person was deleted before you clicked on them.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoadAllPoeple();
+                return;
+            }
+
+        }
+
+        private void tsmiDelete_Click(object sender, EventArgs e)
+        {
+            if (!(dgvPoeple.SelectedRows.Count > 0))
+            {
+                MessageBox.Show("Please select a row", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int PersonID = 0;
+
+            PersonID = Convert.ToInt32(dgvPoeple.SelectedRows[0].Cells[0].Value);
+
+            if (DBclsPerson.IsValueExist("PersonID", PersonID.ToString()))
+            {
+                if(DBclsPerson.DeletePerson(PersonID))
+                {
+                    MessageBox.Show("This person was deleted Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadAllPoeple();
+                }
+                else
+                    MessageBox.Show("This person was not deleted Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+                MessageBox.Show("This person was deleted before you clicked on them.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoadAllPoeple();
+                return;
+            }
+        }
+
+        private void tsmiShowDetails_Click(object sender, EventArgs e)
+        {
+            if (!(dgvPoeple.SelectedRows.Count > 0))
+            {
+                MessageBox.Show("Please select a row", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int PersonID = 0;
+
+            PersonID = Convert.ToInt32(dgvPoeple.SelectedRows[0].Cells[0].Value);
+
+            if (DBclsPerson.IsValueExist("PersonID", PersonID.ToString()))
+            {
+                //frmPersonDetails frm = new frmPersonDetails(PersonID);
+                //frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("This person was deleted before you clicked on them.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoadAllPoeple();
+                return;
+            }
         }
     }
 }

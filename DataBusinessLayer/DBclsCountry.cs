@@ -14,7 +14,7 @@ namespace DataBusinessLayer
 
         public string CountryName { get; set; }
 
-        public static DataTable GitAllCountries()
+        public static string[] GitAllCountries()
         {
             return DAclsCountry.GitAllCountries();
         }

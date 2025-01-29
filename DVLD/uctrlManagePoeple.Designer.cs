@@ -28,11 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctrlManagePoeple));
             this.dgvPoeple = new System.Windows.Forms.DataGridView();
+            this.cmsManagePerson = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiShowDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiSendEmail = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPhoneCall = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNewPerson = new System.Windows.Forms.Button();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblNumOfRecords = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPoeple)).BeginInit();
+            this.cmsManagePerson.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvPoeple
@@ -57,6 +68,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPoeple.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPoeple.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPoeple.ContextMenuStrip = this.cmsManagePerson;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,7 +92,89 @@
             this.dgvPoeple.RowTemplate.Height = 24;
             this.dgvPoeple.Size = new System.Drawing.Size(1703, 295);
             this.dgvPoeple.TabIndex = 0;
-            this.dgvPoeple.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPoeple_CellContentClick);
+            // 
+            // cmsManagePerson
+            // 
+            this.cmsManagePerson.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsManagePerson.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiShowDetails,
+            this.toolStripSeparator1,
+            this.tsmiAddNewPerson,
+            this.tsmiEdit,
+            this.tsmiDelete,
+            this.toolStripSeparator2,
+            this.tsmiSendEmail,
+            this.tsmiPhoneCall});
+            this.cmsManagePerson.Name = "contextMenuStrip1";
+            this.cmsManagePerson.Size = new System.Drawing.Size(243, 368);
+            // 
+            // tsmiShowDetails
+            // 
+            this.tsmiShowDetails.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiShowDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmiShowDetails.Image")));
+            this.tsmiShowDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiShowDetails.Name = "tsmiShowDetails";
+            this.tsmiShowDetails.Size = new System.Drawing.Size(242, 54);
+            this.tsmiShowDetails.Text = "Show Details";
+            this.tsmiShowDetails.Click += new System.EventHandler(this.tsmiShowDetails_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(239, 6);
+            // 
+            // tsmiAddNewPerson
+            // 
+            this.tsmiAddNewPerson.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiAddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmiAddNewPerson.Image")));
+            this.tsmiAddNewPerson.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiAddNewPerson.Name = "tsmiAddNewPerson";
+            this.tsmiAddNewPerson.Size = new System.Drawing.Size(242, 54);
+            this.tsmiAddNewPerson.Text = "Add New Person";
+            this.tsmiAddNewPerson.Click += new System.EventHandler(this.tsmiAddNewPerson_Click);
+            // 
+            // tsmiEdit
+            // 
+            this.tsmiEdit.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsmiEdit.Image")));
+            this.tsmiEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiEdit.Name = "tsmiEdit";
+            this.tsmiEdit.Size = new System.Drawing.Size(242, 54);
+            this.tsmiEdit.Text = "Edit";
+            this.tsmiEdit.Click += new System.EventHandler(this.tsmiEdit_Click);
+            // 
+            // tsmiDelete
+            // 
+            this.tsmiDelete.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsmiDelete.Image")));
+            this.tsmiDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiDelete.Name = "tsmiDelete";
+            this.tsmiDelete.Size = new System.Drawing.Size(242, 54);
+            this.tsmiDelete.Text = "Delete";
+            this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(239, 6);
+            // 
+            // tsmiSendEmail
+            // 
+            this.tsmiSendEmail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiSendEmail.Image = ((System.Drawing.Image)(resources.GetObject("tsmiSendEmail.Image")));
+            this.tsmiSendEmail.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiSendEmail.Name = "tsmiSendEmail";
+            this.tsmiSendEmail.Size = new System.Drawing.Size(242, 54);
+            this.tsmiSendEmail.Text = "Send Email";
+            // 
+            // tsmiPhoneCall
+            // 
+            this.tsmiPhoneCall.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiPhoneCall.Image = ((System.Drawing.Image)(resources.GetObject("tsmiPhoneCall.Image")));
+            this.tsmiPhoneCall.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiPhoneCall.Name = "tsmiPhoneCall";
+            this.tsmiPhoneCall.Size = new System.Drawing.Size(242, 54);
+            this.tsmiPhoneCall.Text = "Phone Call";
             // 
             // AddNewPerson
             // 
@@ -176,6 +270,7 @@
             this.Size = new System.Drawing.Size(1709, 454);
             this.Load += new System.EventHandler(this.uctrlManagePoeple_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPoeple)).EndInit();
+            this.cmsManagePerson.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +285,14 @@
         private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblNumOfRecords;
+        private System.Windows.Forms.ContextMenuStrip cmsManagePerson;
+        private System.Windows.Forms.ToolStripMenuItem tsmiShowDetails;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAddNewPerson;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEdit;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSendEmail;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPhoneCall;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

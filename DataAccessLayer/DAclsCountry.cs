@@ -11,9 +11,9 @@ namespace DataAccessLayer
 {
     public static class DAclsCountry
     {
-        public static DataTable GitAllCountries()
+        public static string[] GitAllCountries()
         {
-            DataTable dt = new DataTable();
+            List<string> Countries = new List<string>();
 
             SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
 
@@ -29,23 +29,23 @@ namespace DataAccessLayer
 
                 SqlDataReader Reader = Command.ExecuteReader();
 
-                if (Reader != null)
+                while (Reader.Read())
                 {
-                    dt.Load(Reader);
+                    Countries.Add((string)Reader["CountryName"]);
                 }
 
                 Reader.Close();
             }
             catch (Exception ex)
             {
-                dt = new DataTable();
+                Countries = new List<string>();
             }
             finally
             {
                 connection.Close();
             }
 
-            return dt;
+            return Countries.ToArray();
         }
 
         public static string GitCountryNameByCountryID(int CountryID)
