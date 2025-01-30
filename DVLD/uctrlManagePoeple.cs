@@ -13,16 +13,17 @@ namespace DVLD
 {
     public partial class uctrlManagePoeple : UserControl
     {
-        private string FilterBy = "";
-        private string Filtertxt = "";
+        private string _FilterBy = "";
+        private string _Filtertxt = "";
 
-        private void LoadAllPoepleWithFilter()
+        private void _LoadAllPoepleWithFilter()
         {
-            dgvPoeple.DataSource = DBclsPerson.GitAllPoepleWithFilter(FilterBy, Filtertxt);
+            dgvPoeple.DataSource = DBclsPerson.GitAllPoepleWithFilter(_FilterBy, _Filtertxt);
+
             lblNumOfRecords.Text = dgvPoeple.Rows.Count.ToString();
         }
 
-        private void LoadAllPoeple()
+        public void LoadAllPoeple()
         {
             dgvPoeple.DataSource = DBclsPerson.GitAllPoeple();
             lblNumOfRecords.Text = dgvPoeple.Rows.Count.ToString();
@@ -44,22 +45,28 @@ namespace DVLD
         {
             LoadAllPoeple();
 
-            FilterBy = cbFilterBy.Text.Replace(" ", "");
+            _FilterBy = cbFilterBy.Text.Replace(" ", "");
 
-            if (FilterBy != "None")
+            if (_FilterBy != "None")
                 txtFilter.Visible = true;
             else
                 txtFilter.Visible = false;
 
-            if (FilterBy == "Nationality")
-                FilterBy = "CountryName";
+            if (_FilterBy == "Nationality")
+                _FilterBy = "CountryName";
 
             txtFilter.Text = "";
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
-        {
-            if (FilterBy == "Phone" || FilterBy == "PersonID")
+       {
+            if (string.IsNullOrWhiteSpace(txtFilter.Text))
+            {
+                LoadAllPoeple();
+                return;
+            }
+
+            if (_FilterBy == "Phone" || _FilterBy == "PersonID")
             {
                 if (!int.TryParse(txtFilter.Text, out int val))
                 {
@@ -68,15 +75,15 @@ namespace DVLD
                         var sb = new StringBuilder(txtFilter.Text);
                         sb.Remove(txtFilter.Text.Length - 1, 1);
                         txtFilter.Text = sb.ToString();
-                        Filtertxt = txtFilter.Text;
+                        _Filtertxt = txtFilter.Text;
                         return;
                     }
                 }
             }
 
-            Filtertxt = txtFilter.Text;
+            _Filtertxt = txtFilter.Text;
 
-            LoadAllPoepleWithFilter();
+            _LoadAllPoepleWithFilter();
         }
 
         private void AddNewPerson_Click(object sender, EventArgs e)
@@ -134,13 +141,20 @@ namespace DVLD
 
             if (DBclsPerson.IsValueExist("PersonID", PersonID.ToString()))
             {
-                if(DBclsPerson.DeletePerson(PersonID))
+                if (MessageBox.Show("Are you sure you want to delete this person?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    MessageBox.Show("This person was deleted Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadAllPoeple();
+                    if (DBclsPerson.DeletePerson(PersonID))
+                    {
+                        MessageBox.Show("This person was deleted Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadAllPoeple();
+                    }
+                    else
+                        MessageBox.Show("This person was not deleted Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
                 else
-                    MessageBox.Show("This person was not deleted Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+
 
             }
             else
@@ -156,6 +170,7 @@ namespace DVLD
             if (!(dgvPoeple.SelectedRows.Count > 0))
             {
                 MessageBox.Show("Please select a row", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadAllPoeple();
                 return;
             }
 
@@ -165,8 +180,8 @@ namespace DVLD
 
             if (DBclsPerson.IsValueExist("PersonID", PersonID.ToString()))
             {
-                //frmPersonDetails frm = new frmPersonDetails(PersonID);
-                //frm.ShowDialog();
+                frmPersonalDetails frm = new frmPersonalDetails(PersonID);
+                frm.ShowDialog();
             }
             else
             {
@@ -174,6 +189,17 @@ namespace DVLD
                 LoadAllPoeple();
                 return;
             }
+        }
+
+        private void tsmiSendEmail_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature is not implemented yet!", "Not ready!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+        }
+
+        private void tsmiPhoneCall_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature is not implemented yet!", "Not ready!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

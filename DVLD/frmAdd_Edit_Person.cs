@@ -92,8 +92,9 @@ namespace DVLD
         private void frmAdd_Edit_Person_Load(object sender, EventArgs e)
         {
             _LoadAllCountriesTocbCountry();
+            cbCountry.SelectedItem = "Egypt";
 
-            if(Person.PersonID > 0)
+            if (Person.PersonID > 0)
             {
                 lblAdd_EditNewPerson.Text = "Edit Person";
 
@@ -160,6 +161,7 @@ namespace DVLD
                 {
                     lblPersonID.Text = Person.PersonID.ToString();
                     MessageBox.Show("Person was added successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
                 else
                     MessageBox.Show("Person was not added successfully", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

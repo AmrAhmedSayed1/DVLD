@@ -20,7 +20,18 @@ namespace DataAccessLayer
 
             SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
 
-            string QueryString = @"SELECT Poeple.PersonID, Poeple.NationalNo, Poeple.FirstName, Poeple.SecondName, Poeple.ThirdName, Poeple.LastName, Poeple.ImagePath, Poeple.Address, Poeple.DateOfBirth, Poeple.Phone, Poeple.Email, Countries.CountryName
+            string QueryString = @"SELECT Poeple.PersonID, Poeple.NationalNo,
+                                   Poeple.FirstName, Poeple.SecondName, Poeple.ThirdName,
+                                   Poeple.LastName,
+                                   case 
+                                   when Gender = 1 then 'Male'
+                                   else 'Female'
+                                   end as Gender ,case 
+                                   when ImagePath is NULL then ''
+                                   else ImagePath
+                                   end as ImagePath,
+                                   Poeple.Address, Poeple.DateOfBirth, Poeple.Phone,
+                                   Poeple.Email, Countries.CountryName
                                    FROM     Poeple INNER JOIN
                                    Countries ON Poeple.CountryID = Countries.CountryID";
 
@@ -60,14 +71,35 @@ namespace DataAccessLayer
 
             SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
 
-            string QueryString = $@"SELECT Poeple.PersonID, Poeple.NationalNo, Poeple.FirstName, Poeple.SecondName, Poeple.ThirdName, Poeple.LastName, Poeple.ImagePath, Poeple.Address, Poeple.DateOfBirth, Poeple.Phone, Poeple.Email, Countries.CountryName
+            string QueryString = $@"SELECT Poeple.PersonID, Poeple.NationalNo,
+                                   Poeple.FirstName, Poeple.SecondName, Poeple.ThirdName,
+                                   Poeple.LastName, case 
+                                   when Gender = 1 then 'Male'
+                                   else 'Female'
+                                   end as Gender,case 
+                                   when ImagePath is NULL then ''
+                                   else ImagePath
+                                   end as ImagePath, Poeple.Address,
+                                   Poeple.DateOfBirth, Poeple.Phone, Poeple.Email,
+                                   Countries.CountryName
                                    FROM     Poeple INNER JOIN
                                    Countries ON Poeple.CountryID = Countries.CountryID
                                    where {ColumnName} like @Value ";
 
             SqlCommand Command = new SqlCommand(QueryString, connection);
 
-            Command.Parameters.AddWithValue("Value", '%' + Value + '%');
+            if (ColumnName == "Gender")
+            {
+                if (Value.ToLower() == "male")
+                    Command.Parameters.AddWithValue("Value", "%" +  1 + "%");
+                else if (Value.ToLower() == "female")
+                    Command.Parameters.AddWithValue("Value", "%" + 0 + "%");
+                else
+                    return new DataTable();
+            }
+            else
+                Command.Parameters.AddWithValue("Value", "%" +  Value + "%");
+
 
             try
             {
@@ -75,7 +107,7 @@ namespace DataAccessLayer
 
                 SqlDataReader Reader = Command.ExecuteReader();
 
-                if (Reader != null)
+                if (Reader.HasRows)
                 {
                     dt.Load(Reader);
                 }
@@ -106,8 +138,8 @@ namespace DataAccessLayer
 
             SqlCommand Command = new SqlCommand(QueryString, connection);
 
-            Command.Parameters.AddWithValue("Value",Value);
-
+            Command.Parameters.AddWithValue("Value", Value);
+            
             try
             {
                 connection.Open();
@@ -224,7 +256,21 @@ namespace DataAccessLayer
 
             SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString);
 
-            string QueryString = @"select * from Poeple where PersonID = @PersonID";
+            string QueryString = @"SELECT Poeple.PersonID, Poeple.NationalNo,
+                                   Poeple.FirstName, Poeple.SecondName, Poeple.ThirdName,
+                                   Poeple.LastName,
+                                   case 
+                                   when Gender = 1 then 'Male'
+                                   else 'Female'
+                                   end as Gender , case 
+                                   when ImagePath is NULL then ''
+                                   else ImagePath
+                                   end as ImagePath,
+                                   Poeple.Address, Poeple.DateOfBirth, Poeple.Phone,
+                                   Poeple.Email, Countries.CountryID
+                                   FROM     Poeple INNER JOIN
+                                   Countries ON Poeple.CountryID = Countries.CountryID
+                                   where PersonID = @PersonID";
 
             SqlCommand Command = new SqlCommand(QueryString, Connection);
 
@@ -247,16 +293,9 @@ namespace DataAccessLayer
                     Phone = (string)Reader["Phone"];
                     Email = (string)Reader["Email"];
                     Address = (string)Reader["Address"];
-                    if (Reader["ImagePath"] == DBNull.Value)
-                        ImagePath = "";
-                    else
-                        ImagePath = (string)Reader["ImagePath"];
+                    ImagePath = (string)Reader["ImagePath"];
                     CountryID = (int)Reader["CountryID"];
-
-                    if (Convert.ToBoolean(Reader["Gender"]) == true)
-                        Gender = "Male";
-                    else
-                        Gender = "Female";
+                    Gender = (string)Reader["Gender"];
                     DateOfBirth = (DateTime)Reader["DateOfBirth"];
                     IsFound = true;
                 }
