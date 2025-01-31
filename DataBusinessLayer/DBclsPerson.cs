@@ -38,8 +38,6 @@ namespace DataBusinessLayer
 
         public DateTime DateOfBirth { get; set; }
 
-        public byte Age { get; set; }
-
         public string Gender { get; set; }
 
         private enum _enMode { AddNew, Update}

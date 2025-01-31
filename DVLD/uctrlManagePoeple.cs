@@ -18,12 +18,16 @@ namespace DVLD
 
         private void _LoadAllPoepleWithFilter()
         {
+            if(_FilterBy == "Gender")
+            {
+                _Filtertxt = cbGender.SelectedItem.ToString();
+            }
             dgvPoeple.DataSource = DBclsPerson.GitAllPoepleWithFilter(_FilterBy, _Filtertxt);
 
             lblNumOfRecords.Text = dgvPoeple.Rows.Count.ToString();
         }
 
-        public void LoadAllPoeple()
+        private void _LoadAllPoeple()
         {
             dgvPoeple.DataSource = DBclsPerson.GitAllPoeple();
             lblNumOfRecords.Text = dgvPoeple.Rows.Count.ToString();
@@ -36,21 +40,36 @@ namespace DVLD
             dgvPoeple.DataSource = DBclsPerson.GitAllPoeple();
         }
 
-        private void uctrlManagePoeple_Load(object sender, EventArgs e)
+        public void uctrlManagePoeple_Load(object sender, EventArgs e)
         {
             cbFilterBy.SelectedIndex = 0;
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadAllPoeple();
+            _LoadAllPoeple();
 
             _FilterBy = cbFilterBy.Text.Replace(" ", "");
 
             if (_FilterBy != "None")
-                txtFilter.Visible = true;
+            {
+                if(_FilterBy == "Gender")
+                {
+                    cbGender.Visible = true;
+                    txtFilter.Visible = false;
+                    cbGender.SelectedItem = "All";
+                }
+                else
+                {
+                    cbGender.Visible = false;
+                    txtFilter.Visible = true;
+                }
+            }
             else
+            {
+                cbGender.Visible = false;
                 txtFilter.Visible = false;
+            }
 
             if (_FilterBy == "Nationality")
                 _FilterBy = "CountryName";
@@ -62,7 +81,7 @@ namespace DVLD
        {
             if (string.IsNullOrWhiteSpace(txtFilter.Text))
             {
-                LoadAllPoeple();
+                _LoadAllPoeple();
                 return;
             }
 
@@ -86,42 +105,65 @@ namespace DVLD
             _LoadAllPoepleWithFilter();
         }
 
+
+        private int _GetPersonIDFromDGV()
+        {
+            if (!(dgvPoeple.SelectedRows.Count > 0))
+            {
+                MessageBox.Show("Please select a row", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+
+            return Convert.ToInt32(dgvPoeple.SelectedRows[0].Cells[0].Value);
+        }
+
+        private void _RefreshDGVAfterAction()
+        {
+            if (txtFilter.Visible == true)
+                txtFilter.Text = "";
+            else if (cbGender.Visible == true)
+                cbGender.SelectedItem = "Alle";
+            else
+                _LoadAllPoeple();
+        }
+
+        private void _ShowMessageError()
+        {
+            MessageBox.Show("This person was deleted before you clicked on them.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            _LoadAllPoeple();
+        }
+
         private void AddNewPerson_Click(object sender, EventArgs e)
         {
             frmAdd_Edit_Person frm = new frmAdd_Edit_Person(0);
             frm.ShowDialog();
-            LoadAllPoeple();
+            _LoadAllPoeple();
         }
+
 
         private void tsmiAddNewPerson_Click(object sender, EventArgs e)
         {
             frmAdd_Edit_Person frm = new frmAdd_Edit_Person(0);
             frm.ShowDialog();
-            LoadAllPoeple();
+            _RefreshDGVAfterAction();
         }
 
         private void tsmiEdit_Click(object sender, EventArgs e)
         {
-            if(!(dgvPoeple.SelectedRows.Count > 0))
-            {
-                MessageBox.Show("Please select a row", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            int PersonID;
+            if ((PersonID = _GetPersonIDFromDGV()) == 0)
                 return;
-            }
-
-            int PersonID = 0;
-
-            PersonID = Convert.ToInt32(dgvPoeple.SelectedRows[0].Cells[0].Value);
 
             if (DBclsPerson.IsValueExist("PersonID", PersonID.ToString()))
             {
                 frmAdd_Edit_Person frm = new frmAdd_Edit_Person(PersonID);
                 frm.ShowDialog();
-                LoadAllPoeple();
+                _RefreshDGVAfterAction();
             }
             else
             {
-                MessageBox.Show("This person was deleted before you clicked on them.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoadAllPoeple();
+                _ShowMessageError();
                 return;
             }
 
@@ -129,15 +171,10 @@ namespace DVLD
 
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            if (!(dgvPoeple.SelectedRows.Count > 0))
-            {
-                MessageBox.Show("Please select a row", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            int PersonID;
+            if ((PersonID = _GetPersonIDFromDGV()) == 0)
                 return;
-            }
 
-            int PersonID = 0;
-
-            PersonID = Convert.ToInt32(dgvPoeple.SelectedRows[0].Cells[0].Value);
 
             if (DBclsPerson.IsValueExist("PersonID", PersonID.ToString()))
             {
@@ -146,7 +183,7 @@ namespace DVLD
                     if (DBclsPerson.DeletePerson(PersonID))
                     {
                         MessageBox.Show("This person was deleted Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadAllPoeple();
+                        _RefreshDGVAfterAction();
                     }
                     else
                         MessageBox.Show("This person was not deleted Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -159,22 +196,16 @@ namespace DVLD
             }
             else
             {
-                MessageBox.Show("This person was deleted before you clicked on them.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoadAllPoeple();
+                _ShowMessageError();
                 return;
             }
         }
 
         private void tsmiShowDetails_Click(object sender, EventArgs e)
         {
-            if (!(dgvPoeple.SelectedRows.Count > 0))
-            {
-                MessageBox.Show("Please select a row", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadAllPoeple();
+            int PersonID;
+            if ((PersonID = _GetPersonIDFromDGV()) == 0)
                 return;
-            }
-
-            int PersonID = 0;
 
             PersonID = Convert.ToInt32(dgvPoeple.SelectedRows[0].Cells[0].Value);
 
@@ -185,8 +216,7 @@ namespace DVLD
             }
             else
             {
-                MessageBox.Show("This person was deleted before you clicked on them.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoadAllPoeple();
+                _ShowMessageError();
                 return;
             }
         }
@@ -200,6 +230,16 @@ namespace DVLD
         private void tsmiPhoneCall_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This feature is not implemented yet!", "Not ready!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbGender.SelectedItem.ToString() == "All")
+            {
+                _LoadAllPoeple();
+            }
+            else
+                _LoadAllPoepleWithFilter();
         }
     }
 }

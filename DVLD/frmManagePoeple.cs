@@ -23,9 +23,9 @@ namespace DVLD
             this.Size = new System.Drawing.Size(1741, 778);
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void pbRefresh_Click(object sender, EventArgs e)
         {
-            uctrlManagePoeple1.LoadAllPoeple();
+            uctrlManagePoeple1.uctrlManagePoeple_Load(sender, e);
         }
     }
 }

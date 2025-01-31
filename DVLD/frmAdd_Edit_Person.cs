@@ -125,37 +125,41 @@ namespace DVLD
             Person.Phone = txtPhone.Text;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private bool _CheckDateDoesnotExist()
         {
-            if (!_CheckAllFieldFull())
-                return;
-            if(_EnMode == _enMode.AddNew)
+            if (DBclsPerson.IsValueExist("NationalNo", txtNationalNo.Text))
             {
-                if (DBclsPerson.IsValueExist("NationalNo", txtNationalNo.Text))
-                {
-                    MessageBox.Show("This NationalNo already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (DBclsPerson.IsValueExist("Phone", txtPhone.Text))
-                {
-                    MessageBox.Show("This Phone already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                MessageBox.Show("This NationalNo already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (DBclsPerson.IsValueExist("Phone", txtPhone.Text))
+            {
+                MessageBox.Show("This Phone already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
 
-                if (DBclsPerson.IsValueExist("Email", txtEmail.Text))
-                {
-                    MessageBox.Show("This Email already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+            if (DBclsPerson.IsValueExist("Email", txtEmail.Text))
+            {
+                MessageBox.Show("This Email already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
-                if (DBclsPerson.IsValueExist("ImagePath", pbPersonImage.ImageLocation))
-                {
-                    MessageBox.Show("This Image already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+            if (DBclsPerson.IsValueExist("ImagePath", pbPersonImage.ImageLocation))
+            {
+                MessageBox.Show("This Image already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
 
-                _PutDataInObject();
+        private void _Save()
+        {
+            _PutDataInObject();
+
+            if (_EnMode == _enMode.AddNew)
+            {
+
 
                 if (Person.Save())
                 {
@@ -182,44 +186,46 @@ namespace DVLD
 
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!_CheckAllFieldFull())
+                return;
+
+            _Save();
+            
+        }
+
+        private void _CheckIsControlEmpty(TextBox txtbox, ErrorProvider ep)
+        {
+            if (txtbox.Text == "")
+                ep.SetError(txtbox, "This field cannot be empty");
+            else
+                ep.Clear();
+        }
+
         private void txtFIrstName_TextChanged(object sender, EventArgs e)
         {
-            if (txtFIrstName.Text == "")
-                eptxtFirstName.SetError(txtFIrstName, "This field cannot be empty");
-            else
-                eptxtFirstName.Clear();
+            _CheckIsControlEmpty(txtFIrstName, eptxtFirstName);
         }
 
         private void txtSecondName_TextChanged(object sender, EventArgs e)
         {
-            if (txtSecondName.Text == "")
-                eptxtSecondName.SetError(txtSecondName, "This field cannot be empty");
-            else
-                eptxtSecondName.Clear();
+            _CheckIsControlEmpty(txtSecondName, eptxtSecondName);
         }
 
         private void txtThirdName_TextChanged(object sender, EventArgs e)
         {
-            if (txtThirdName.Text == "")
-                eptxtThirdName.SetError(txtThirdName, "This field cannot be empty");
-            else
-                eptxtThirdName.Clear();
+            _CheckIsControlEmpty(txtThirdName, eptxtThirdName);
         }
 
         private void txtLastName_TextChanged(object sender, EventArgs e)
         {
-            if (txtLastName.Text == "")
-                eptxtLastName.SetError(txtLastName, "This field cannot be empty");
-            else
-                eptxtLastName.Clear();
+            _CheckIsControlEmpty(txtLastName, eptxtLastName);
         }
 
         private void txtNationalNo_TextChanged(object sender, EventArgs e)
         {
-            if (txtNationalNo.Text == "")
-                eptxtNationalNo.SetError(txtNationalNo, "This field cannot be empty");
-            else
-                eptxtNationalNo.Clear();
+            _CheckIsControlEmpty(txtNationalNo, eptxtNationalNo);
         }
 
         private void txtPhone_TextChanged(object sender, EventArgs e)
@@ -236,26 +242,17 @@ namespace DVLD
                 }
             }
 
-            if (txtPhone.Text == "")
-                eptxtPhone.SetError(txtPhone, "This field cannot be empty");
-            else
-                eptxtPhone.Clear();
+            _CheckIsControlEmpty(txtPhone, eptxtPhone);
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-            if (txtEmail.Text == "")
-                eptxtEmail.SetError(txtEmail, "This field cannot be empty");
-            else
-                eptxtEmail.Clear();
+            _CheckIsControlEmpty(txtEmail, eptxtEmail);
         }
 
         private void txtAddress_TextChanged(object sender, EventArgs e)
         {
-            if (txtAddress.Text == "")
-                eptxtAddress.SetError(txtAddress, "This field cannot be empty");
-            else
-                eptxtAddress.Clear();
+            _CheckIsControlEmpty(txtAddress, eptxtAddress);
         }
 
         private void LnkLSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

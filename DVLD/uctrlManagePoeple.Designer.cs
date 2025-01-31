@@ -49,6 +49,7 @@
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNumOfRecords = new System.Windows.Forms.Label();
+            this.cbGender = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPoeple)).BeginInit();
             this.cmsManagePerson.SuspendLayout();
             this.SuspendLayout();
@@ -257,11 +258,28 @@
             this.lblNumOfRecords.TabIndex = 6;
             this.lblNumOfRecords.Text = "??";
             // 
+            // cbGender
+            // 
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Items.AddRange(new object[] {
+            "All",
+            "Male",
+            "Female"});
+            this.cbGender.Location = new System.Drawing.Point(414, 37);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(146, 33);
+            this.cbGender.TabIndex = 7;
+            this.cbGender.Visible = false;
+            this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
+            // 
             // uctrlManagePoeple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.cbGender);
             this.Controls.Add(this.lblNumOfRecords);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFilter);
@@ -297,5 +315,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiPhoneCall;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ComboBox cbGender;
     }
 }
