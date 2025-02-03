@@ -24,5 +24,11 @@ namespace DVLD
             frm.ShowDialog();
 
         }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageUsers frm = new frmManageUsers();
+            frm.ShowDialog();
+        }
     }
 }

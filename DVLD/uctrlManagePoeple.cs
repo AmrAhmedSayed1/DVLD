@@ -85,20 +85,7 @@ namespace DVLD
                 return;
             }
 
-            if (_FilterBy == "Phone" || _FilterBy == "PersonID")
-            {
-                if (!int.TryParse(txtFilter.Text, out int val))
-                {
-                    if (txtFilter.Text != "")
-                    {
-                        var sb = new StringBuilder(txtFilter.Text);
-                        sb.Remove(txtFilter.Text.Length - 1, 1);
-                        txtFilter.Text = sb.ToString();
-                        _Filtertxt = txtFilter.Text;
-                        return;
-                    }
-                }
-            }
+            
 
             _Filtertxt = txtFilter.Text;
 
@@ -207,8 +194,6 @@ namespace DVLD
             if ((PersonID = _GetPersonIDFromDGV()) == 0)
                 return;
 
-            PersonID = Convert.ToInt32(dgvPoeple.SelectedRows[0].Cells[0].Value);
-
             if (DBclsPerson.IsValueExist("PersonID", PersonID.ToString()))
             {
                 frmPersonalDetails frm = new frmPersonalDetails(PersonID);
@@ -240,6 +225,17 @@ namespace DVLD
             }
             else
                 _LoadAllPoepleWithFilter();
+        }
+
+        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (_FilterBy == "Phone" || _FilterBy == "PersonID")
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

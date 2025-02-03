@@ -18,3 +18,9 @@ C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.pdb
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAdd_Edit_Person.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmPersonalDetails.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlPersonalDetails.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageUsers.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageUsers.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAdd_Edit_User.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlUserDetails.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmUserDetails.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmChangePassword.resources

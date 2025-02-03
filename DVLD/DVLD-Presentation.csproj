@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAdd_Edit_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdd_Edit_User.Designer.cs">
+      <DependentUpon>frmAdd_Edit_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,11 +76,23 @@
     <Compile Include="frmManagePoeple.Designer.cs">
       <DependentUpon>frmManagePoeple.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageUsers.Designer.cs">
+      <DependentUpon>frmManageUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPersonalDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPersonalDetails.Designer.cs">
       <DependentUpon>frmPersonalDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserDetails.Designer.cs">
+      <DependentUpon>frmUserDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,12 +102,30 @@
     <Compile Include="uctrlManagePoeple.Designer.cs">
       <DependentUpon>uctrlManagePoeple.cs</DependentUpon>
     </Compile>
+    <Compile Include="uctrlManageUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlManageUsers.Designer.cs">
+      <DependentUpon>uctrlManageUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="uctrlPersonalDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="uctrlPersonalDetails.Designer.cs">
       <DependentUpon>uctrlPersonalDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="uctrlUserDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlUserDetails.Designer.cs">
+      <DependentUpon>uctrlUserDetails.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmAdd_Edit_User.resx">
+      <DependentUpon>frmAdd_Edit_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,8 +135,14 @@
     <EmbeddedResource Include="frmManagePoeple.resx">
       <DependentUpon>frmManagePoeple.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmManageUsers.resx">
+      <DependentUpon>frmManageUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPersonalDetails.resx">
       <DependentUpon>frmPersonalDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserDetails.resx">
+      <DependentUpon>frmUserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -108,8 +156,14 @@
     <EmbeddedResource Include="uctrlManagePoeple.resx">
       <DependentUpon>uctrlManagePoeple.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="uctrlManageUsers.resx">
+      <DependentUpon>uctrlManageUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="uctrlPersonalDetails.resx">
       <DependentUpon>uctrlPersonalDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uctrlUserDetails.resx">
+      <DependentUpon>uctrlUserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

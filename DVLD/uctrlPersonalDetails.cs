@@ -53,5 +53,10 @@ namespace DVLD
             frm.ShowDialog();
             _LoadDataToForm();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

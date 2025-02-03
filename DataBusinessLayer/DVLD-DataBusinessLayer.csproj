@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DBclsCountry.cs" />
     <Compile Include="DBclsPerson.cs" />
+    <Compile Include="DBclsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

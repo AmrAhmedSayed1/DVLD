@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using DataBusinessLayer;
 
@@ -14,6 +15,10 @@ namespace DVLD
 {
     public partial class frmAdd_Edit_Person : Form
     {
+
+        public delegate void BackPersonIDEven(object sender, EventArgs e, int PersonID);
+
+        public BackPersonIDEven BackPersonID;
 
         private enum _enMode { AddNew, Update }
 
@@ -60,7 +65,8 @@ namespace DVLD
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            DBclsPerson.GitAllPoeple();
+            if(lblAdd_EditNewPerson.Text == "Update Person")
+                BackPersonID?.Invoke(sender, e,  Convert.ToInt32(lblPersonID.Text.ToString()));
         }
 
         private void _LoadDateToForm()
@@ -165,7 +171,8 @@ namespace DVLD
                 {
                     lblPersonID.Text = Person.PersonID.ToString();
                     MessageBox.Show("Person was added successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    _EnMode = _enMode.Update;
+                    lblAdd_EditNewPerson.Text = "Update Person";
                 }
                 else
                     MessageBox.Show("Person was not added successfully", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -273,6 +280,14 @@ namespace DVLD
         {
             pbPersonImage.ImageLocation = "C:\\Users\\Amr\\source\\repos\\DVLD\\DVLD\\Images\\Screenshot 2025-01-28 125155.png";
             LnkLRemoveImage.Visible = false;
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

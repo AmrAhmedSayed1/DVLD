@@ -379,6 +379,7 @@
             this.txtPhone.Size = new System.Drawing.Size(241, 32);
             this.txtPhone.TabIndex = 7;
             this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // pictureBox6
             // 
