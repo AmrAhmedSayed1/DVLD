@@ -223,7 +223,7 @@ namespace DataAccessLayer
             SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString);
 
             string QueryString = @"update Users
-                                   set UserName = @UserName, @Password = @Password,
+                                   set UserName = @UserName, Password = @Password,
                                    IsActive = @IsActive
                                    where UserID = @UserID;";
 
@@ -287,7 +287,6 @@ namespace DataAccessLayer
 
         }
 
-
         public static bool IsValueExist(string ColumnName, string Value)
         {
             bool isvalueexist = false;
@@ -327,5 +326,44 @@ namespace DataAccessLayer
             return isvalueexist;
         }
 
+        public static bool GetUserByUserNameAndPassword(ref int UserID, ref int PersonID, string UserName, string Password, ref int IsActive)
+        {
+            bool IsFound = false;
+
+            SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString);
+
+            string QueryString = @"select UserID, PersonID, IsActive from Users where UserName = @UserName and Password = @Password";
+
+            SqlCommand Command = new SqlCommand(QueryString, Connection);
+
+            Command.Parameters.AddWithValue("UserName", UserName);
+            Command.Parameters.AddWithValue("Password", Password);
+
+            try
+            {
+                Connection.Open();
+
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    UserID = (int)Reader["UserID"];
+                    PersonID = (int)Reader["PersonID"];
+                    IsActive = ((bool)Reader["IsActive"] == true) ? 1 : 0;
+                    IsFound = true;
+                }
+                Reader.Close();
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return IsFound;
+        }
     }
 }

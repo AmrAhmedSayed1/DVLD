@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataBusinessLayer;
 
 namespace DVLD
 {
@@ -29,6 +30,23 @@ namespace DVLD
         {
             frmManageUsers frm = new frmManageUsers();
             frm.ShowDialog();
+        }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserDetails frm = new frmUserDetails(clsGlobalUser.User.UserID);
+            frm.ShowDialog();
+        }
+
+        private void tsmChangePassword_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword(clsGlobalUser.User.UserID);
+            frm.ShowDialog();
+        }
+
+        private void tsmSignOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

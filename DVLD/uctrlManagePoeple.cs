@@ -156,6 +156,16 @@ namespace DVLD
 
         }
 
+        private bool _CheckIsPersonConnectedWithData(int PersonID)
+        {
+            if(DBclsUser.IsValueExist("PersonID", PersonID.ToString()))
+            {
+                MessageBox.Show("This person cannot be deleted because there are data associated with them in the system.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+            return false;
+        }
+
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
             int PersonID;
@@ -167,6 +177,8 @@ namespace DVLD
             {
                 if (MessageBox.Show("Are you sure you want to delete this person?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
+                    if (_CheckIsPersonConnectedWithData(PersonID))
+                        return;
                     if (DBclsPerson.DeletePerson(PersonID))
                     {
                         MessageBox.Show("This person was deleted Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -37,6 +37,9 @@
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.tsmCurrentUserInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmSignOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +108,10 @@
             // 
             // accountSettingsToolStripMenuItem
             // 
+            this.accountSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmCurrentUserInfo,
+            this.tsmChangePassword,
+            this.tsmSignOut});
             this.accountSettingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("accountSettingsToolStripMenuItem.Image")));
             this.accountSettingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
@@ -123,6 +130,36 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "DVLD : Developed By AMR AHMED";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // tsmCurrentUserInfo
+            // 
+            this.tsmCurrentUserInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmCurrentUserInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmCurrentUserInfo.Image")));
+            this.tsmCurrentUserInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmCurrentUserInfo.Name = "tsmCurrentUserInfo";
+            this.tsmCurrentUserInfo.Size = new System.Drawing.Size(301, 54);
+            this.tsmCurrentUserInfo.Text = "Current User Info";
+            this.tsmCurrentUserInfo.Click += new System.EventHandler(this.currentUserInfoToolStripMenuItem_Click);
+            // 
+            // tsmSignOut
+            // 
+            this.tsmSignOut.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmSignOut.Image = ((System.Drawing.Image)(resources.GetObject("tsmSignOut.Image")));
+            this.tsmSignOut.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmSignOut.Name = "tsmSignOut";
+            this.tsmSignOut.Size = new System.Drawing.Size(301, 54);
+            this.tsmSignOut.Text = "Sign Out";
+            this.tsmSignOut.Click += new System.EventHandler(this.tsmSignOut_Click);
+            // 
+            // tsmChangePassword
+            // 
+            this.tsmChangePassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("tsmChangePassword.Image")));
+            this.tsmChangePassword.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmChangePassword.Name = "tsmChangePassword";
+            this.tsmChangePassword.Size = new System.Drawing.Size(301, 54);
+            this.tsmChangePassword.Text = "Change Password";
+            this.tsmChangePassword.Click += new System.EventHandler(this.tsmChangePassword_Click);
             // 
             // MainForm
             // 
@@ -156,6 +193,9 @@
         private System.Windows.Forms.ToolStripMenuItem driversToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmCurrentUserInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmChangePassword;
+        private System.Windows.Forms.ToolStripMenuItem tsmSignOut;
     }
 }
 

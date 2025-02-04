@@ -57,6 +57,25 @@ namespace DataBusinessLayer
             }
         }
 
+        public DBclsUser(string userName, string password)
+        {
+            int UserID = 0;
+            int PersonID = 0;
+            int IsActive = 0;
+
+
+            if (DAclsUser.GetUserByUserNameAndPassword(ref UserID, ref PersonID, userName, password, ref IsActive))
+            {
+                this.UserID = UserID;
+                this.PersonID = PersonID;
+                this.UserName = userName;
+                this.Password = password;
+                this.IsActive = IsActive;
+                Person = new DBclsPerson(PersonID);
+                _EnMode = _enMode.Update;
+            }
+        }
+
         public static DataTable GitAllUsers()
         {
             return DAclsUser.GitAllUsers();

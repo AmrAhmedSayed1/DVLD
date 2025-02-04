@@ -24,3 +24,4 @@ C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAdd_Edit_User.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlUserDetails.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmUserDetails.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmChangePassword.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmLoginForm.resources
