@@ -115,7 +115,7 @@ namespace DataBusinessLayer
 
         public static bool IsValueExist(string ColumnName, string Value)
         {
-            return DAclsPerson.IsValueExist(ColumnName, Value);
+            return DAclsPerson.IsValueExist("Poeple", ColumnName, Value);
         }
 
         public bool _AddNewPerson()
@@ -150,7 +150,7 @@ namespace DataBusinessLayer
 
         public static bool DeletePerson(int PersonID)
         {
-            return DAclsPerson.DeletePerson(PersonID);
+            return DAclsPerson.DeleteRecord("Poeple", "PersonID", PersonID.ToString());
         }
 
     }

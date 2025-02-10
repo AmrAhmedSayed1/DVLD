@@ -12,7 +12,7 @@ using System.Security.Policy;
 
 namespace DataAccessLayer
 {
-    public static class DAclsPerson
+    public class DAclsPerson : clsCRUD
     {
         public static DataTable GitAllPoeple()
         {
@@ -63,7 +63,6 @@ namespace DataAccessLayer
 
             return dt;
         }
-
 
         public static DataTable GitAllPoepleWithFilter(string ColumnName, string Value)
         {
@@ -124,45 +123,6 @@ namespace DataAccessLayer
             }
 
             return dt;
-        }
-
-        public static bool IsValueExist(string ColumnName, string Value)
-        {
-            bool isvalueexist = false;
-
-            DataTable dt = new DataTable();
-
-            SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
-
-            string QueryString = $@"SELECT 1 from Poeple where {ColumnName} = @Value ";
-
-            SqlCommand Command = new SqlCommand(QueryString, connection);
-
-            Command.Parameters.AddWithValue("Value", Value);
-            
-            try
-            {
-                connection.Open();
-
-                object Result = Command.ExecuteScalar();
-
-                if (Result != null)
-                {
-                    isvalueexist = true;
-                }
-
-                
-            }
-            catch (Exception ex)
-            {
-                isvalueexist= false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isvalueexist;
         }
 
         public static int AddNewPerson(string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName, string Email, string Phone, string Address, int CountryID, string ImagePath, DateTime DateOfBirth, String Gender)
@@ -377,39 +337,6 @@ namespace DataAccessLayer
             }
 
             return IsUpdated;
-        }
-
-        public static bool  DeletePerson(int PersonID)
-        {
-            bool IsDeleted = false;
-
-            SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString);
-
-            string QueryString = @"delete from Poeple where PersonID = @PersonID;";
-
-            SqlCommand Command = new SqlCommand(QueryString, Connection);
-
-            Command.Parameters.AddWithValue("PersonID", PersonID);
-
-            try
-            {
-                Connection.Open();
-
-                int NumOfAffectedRows = Command.ExecuteNonQuery();
-
-                IsDeleted = (NumOfAffectedRows > 0) ? true : false;
-            }
-            catch
-            {
-                IsDeleted = false;
-            }
-            finally
-            {
-                Connection.Close();
-            }
-
-            return IsDeleted;
-
         }
     }
 }

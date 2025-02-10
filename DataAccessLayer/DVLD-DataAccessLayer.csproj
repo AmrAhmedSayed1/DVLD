@@ -41,9 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsCRUD.cs" />
+    <Compile Include="DAclsApplications.cs" />
+    <Compile Include="DAclsApplicationsTypes.cs" />
     <Compile Include="DAclsCountry.cs" />
+    <Compile Include="DAclsLicensesClasses.cs" />
+    <Compile Include="DAclsNewLDLApps.cs" />
     <Compile Include="DAclsPerson.cs" />
     <Compile Include="DAclsSettings.cs" />
+    <Compile Include="DAclsTestsTypes.cs" />
     <Compile Include="DAclsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

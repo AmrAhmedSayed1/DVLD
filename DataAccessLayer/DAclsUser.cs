@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
-    public static class DAclsUser
+    public class DAclsUser : DAclsPerson
     {
 
         public static DataTable GitAllUsers()
@@ -43,7 +43,6 @@ namespace DataAccessLayer
 
             return dt;
         }
-
 
         public static DataTable GitAllUsersWithFilter(string ColumnName, string Value)
         {
@@ -88,45 +87,6 @@ namespace DataAccessLayer
             }
 
             return dt;
-        }
-
-        public static bool IsUserExist(int UserID)
-        {
-            bool isuserexist = false;
-
-            DataTable dt = new DataTable();
-
-            SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
-
-            string QueryString = $@"SELECT 1 from Users where UserID = @UserID ";
-
-            SqlCommand Command = new SqlCommand(QueryString, connection);
-
-            Command.Parameters.AddWithValue("UserID", UserID);
-
-            try
-            {
-                connection.Open();
-
-                object Result = Command.ExecuteScalar();
-
-                if (Result != null)
-                {
-                    isuserexist = true;
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                isuserexist = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isuserexist;
         }
 
         public static int AddNewUser(int PersonID, string UserName, string Password, int IsActive)
@@ -252,78 +212,6 @@ namespace DataAccessLayer
             }
 
             return IsUpdated;
-        }
-
-        public static bool DeleteUser(int UserID)
-        {
-            bool IsDeleted = false;
-
-            SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString);
-
-            string QueryString = @"delete from Users where UserID = @UserID;";
-
-            SqlCommand Command = new SqlCommand(QueryString, Connection);
-
-            Command.Parameters.AddWithValue("UserID", UserID);
-
-            try
-            {
-                Connection.Open();
-
-                int NumOfAffectedRows = Command.ExecuteNonQuery();
-
-                IsDeleted = (NumOfAffectedRows > 0) ? true : false;
-            }
-            catch
-            {
-                IsDeleted = false;
-            }
-            finally
-            {
-                Connection.Close();
-            }
-
-            return IsDeleted;
-
-        }
-
-        public static bool IsValueExist(string ColumnName, string Value)
-        {
-            bool isvalueexist = false;
-
-            DataTable dt = new DataTable();
-
-            SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
-
-            string QueryString = $@"SELECT 1 from Users where {ColumnName} = @Value ";
-
-            SqlCommand Command = new SqlCommand(QueryString, connection);
-
-            Command.Parameters.AddWithValue("Value", Value);
-
-            try
-            {
-                connection.Open();
-
-                object Result = Command.ExecuteScalar();
-
-                if (Result != null)
-                {
-                    isvalueexist = true;
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                isvalueexist = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isvalueexist;
         }
 
         public static bool GetUserByUserNameAndPassword(ref int UserID, ref int PersonID, string UserName, string Password, ref int IsActive)

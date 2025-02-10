@@ -48,5 +48,23 @@ namespace DVLD
         {
             this.Close();
         }
+
+        private void applicationsTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageTestsTypes frm = new frmManageTestsTypes();
+            frm.ShowDialog();
+        }
+
+        private void tsmManageAppTypes_Click(object sender, EventArgs e)
+        {
+            frmManageApplicationsTypes frm = new frmManageApplicationsTypes();
+            frm.ShowDialog();
+        }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddNewLDLApp frm = new frmAddNewLDLApp();
+            frm.ShowDialog();
+        }
     }
 }

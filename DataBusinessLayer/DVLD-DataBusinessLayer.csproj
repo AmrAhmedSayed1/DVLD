@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBclsApplication.cs" />
+    <Compile Include="DBclsApplicationType.cs" />
     <Compile Include="DBclsCountry.cs" />
+    <Compile Include="DBclsLicensesClasses.cs" />
+    <Compile Include="DBclsNewLDLApp.cs" />
     <Compile Include="DBclsPerson.cs" />
+    <Compile Include="DBclsTestType.cs" />
     <Compile Include="DBclsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

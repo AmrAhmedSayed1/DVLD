@@ -25,3 +25,10 @@ C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlUserDetails.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmUserDetails.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmChangePassword.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmLoginForm.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageApplicationsTypes.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageApplicationsTypes.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmEditApplicationType.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmEditTestType.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageTestsTypes.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageTestsTypes.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAddNewLDLApp.resources
