@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace DVLD
 {
     internal static class Program
@@ -14,6 +13,8 @@ namespace DVLD
         [STAThread]
         static void Main()
         {
+            Console.WriteLine("Welcome to our DVLD App :-)");
+            Console.ReadLine();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLoginForm());

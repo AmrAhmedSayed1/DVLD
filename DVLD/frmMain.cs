@@ -66,5 +66,11 @@ namespace DVLD
             frmAddNewLDLApp frm = new frmAddNewLDLApp();
             frm.ShowDialog();
         }
+
+        private void localDrivingLicenseApplicatiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageLDLApps frm = new frmManageLDLApps();
+            frm.ShowDialog();
+        }
     }
 }

@@ -101,6 +101,12 @@
     <Compile Include="frmManageApplicationsTypes.Designer.cs">
       <DependentUpon>frmManageApplicationsTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageLDLApps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageLDLApps.Designer.cs">
+      <DependentUpon>frmManageLDLApps.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManagePoeple.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="uctrlManageLDLApps.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlManageLDLApps.Designer.cs">
+      <DependentUpon>uctrlManageLDLApps.cs</DependentUpon>
+    </Compile>
     <Compile Include="uctrlManageApplicationsTypes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -196,6 +208,9 @@
     <EmbeddedResource Include="frmManageApplicationsTypes.resx">
       <DependentUpon>frmManageApplicationsTypes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmManageLDLApps.resx">
+      <DependentUpon>frmManageLDLApps.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmManagePoeple.resx">
       <DependentUpon>frmManagePoeple.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +235,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="uctrlManageLDLApps.resx">
+      <DependentUpon>uctrlManageLDLApps.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="uctrlManageApplicationsTypes.resx">
       <DependentUpon>uctrlManageApplicationsTypes.cs</DependentUpon>
     </EmbeddedResource>

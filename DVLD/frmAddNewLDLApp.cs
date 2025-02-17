@@ -145,6 +145,8 @@ namespace DVLD
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("Welcome");
+            Console.Read();
             _Save();
         }
     }

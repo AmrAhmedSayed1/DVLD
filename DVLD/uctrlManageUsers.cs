@@ -41,13 +41,12 @@ namespace DVLD
         public uctrlManageUsers()
         {
             InitializeComponent();
-
-            dgvUsers.DataSource = DBclsUser.GitAllUsers();
         }
 
         public void uctrlManageUsers_Load(object sender, EventArgs e)
         {
             cbFilterBy.SelectedIndex = 0;
+            dgvUsers.DataSource = DBclsUser.GitAllUsers();
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)

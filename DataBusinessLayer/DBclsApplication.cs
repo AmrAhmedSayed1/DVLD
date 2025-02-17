@@ -37,19 +37,19 @@ namespace DataBusinessLayer
             _EnMode = _enmode.AddNew;
         }
 
-        public DBclsApplication(int AppID)
+        public DBclsApplication(int appid)
         {
-            int applicationID = 0;
             int personID = 0;
             int byUserID = 0;
             int applicationTypeID = 0;
             int applicationStatusID = 0;
             DateTime applicationDate = DateTime.Now;
+            int passedtests = 0;
 
-            if (DAclsApplications.GetApplicationByID(applicationID, ref personID, ref byUserID,
-                ref applicationTypeID, ref applicationStatusID, ref applicationDate, PassedTests))
+            if (DAclsApplications.GetApplicationByID(appid, ref personID, ref byUserID,
+                ref applicationTypeID, ref applicationStatusID, ref applicationDate, passedtests))
             {
-                AppID = applicationID;
+                AppID = appid;
                 PersonID = personID;
                 ByUserID = byUserID;
                 AppTypeID = applicationTypeID;
@@ -67,6 +67,11 @@ namespace DataBusinessLayer
         public static DataTable GetAllApps()
         {
             return DAclsApplications.GitAllApplications();
+        }
+
+        public static DataTable GetAllAppsWithFilter(string ColumnName, string Value)
+        {
+            return DAclsApplications.GetAllApplicationsWithFilter(ColumnName, Value);
         }
 
         private bool _AddNewApp()
@@ -99,6 +104,11 @@ namespace DataBusinessLayer
                 default:
                     return _UpdateApp();
             }
+        }
+
+        public static bool IsValueExist(string Value)
+        {
+            return DAclsApplications.IsValueExist("Applications", "ApplicationID", Value);
         }
 
     }

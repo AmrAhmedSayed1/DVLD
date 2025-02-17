@@ -128,7 +128,8 @@ namespace DataAccessLayer
                 ByUserID,
                 ApplicationTypeID,
                 ApplicationStatusID,
-                ApplicationDate
+                ApplicationDate,
+                PassedTests
             FROM 
                 Applications
             WHERE 
@@ -149,7 +150,7 @@ namespace DataAccessLayer
                         ApplicationTypeID = (int)Reader["ApplicationTypeID"];
                         ApplicationStatusID = (int)Reader["ApplicationStatusID"];
                         ApplicationDate = (DateTime)Reader["ApplicationDate"];
-                        PassedTest = (int)Reader["PassedTest"];
+                        PassedTest = (int)Reader["PassedTests"];
 
                         IsFound = true;
                     }
@@ -222,15 +223,16 @@ namespace DataAccessLayer
 
             using (SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString))
             {
-                string QueryString = $@"select Applications.ApplicationID, LicensesClasses.ClassName, Poeple.NationalNo,
-                                       (Poeple.FirstName + ' ' + Poeple.SecondName + ' ' + Poeple.ThirdName + ' ' + ' ' + Poeple.LastName) as [Full Name],
-                                       Applications.ApplicationDate as [Application Date], Applications.PassedTests as [Passed Test],
-                                       Applications_Appointments_Status.statusName from Applications join Poeple on Applications.PersonID =Poeple.PersonID
-                                       join NewLicensesAppsClasses on Applications.ApplicationID = NewLicensesAppsClasses.ApplicationID
-                                       join LicensesClasses on NewLicensesAppsClasses.classID = LicensesClasses.ClassID join
-                                       Applications_Appointments_Status on Applications.ApplicationStatusID = Applications_Appointments_Status.StatusID
-                                       WHERE 
-                                       {ColumnName} LIKE @Value";
+                string QueryString = $@"select Applications.ApplicationID as [L.D.LApp ID], LicensesClasses.ClassName as [Class Name], Poeple.NationalNo as [National No],
+                                        (Poeple.FirstName + ' ' + Poeple.SecondName + ' ' + Poeple.ThirdName + ' ' + ' ' + Poeple.LastName) as [Full Name],
+                                        Applications.ApplicationDate as [Application Date], Applications.PassedTests as [Passed Test],
+                                        Applications_Appointments_Status.statusName as [Status] from Applications join Poeple on Applications.PersonID =Poeple.PersonID
+                                        join NewLDLApps on Applications.ApplicationID = NewLDLApps.ApplicationID
+                                        join LicensesClasses on NewLDLApps.classID = LicensesClasses.ClassID join
+                                        Applications_Appointments_Status on Applications.ApplicationStatusID = Applications_Appointments_Status.StatusID
+                                        where Applications.ApplicationTypeID = (select ApplicationsTypes.ApplicationTypeID from ApplicationsTypes where ApplicationsTypes.ApplicationTypeName = 'New Local Driving License Service')
+                                        and 
+                                        {ColumnName} LIKE @Value";
 
                 SqlCommand Command = new SqlCommand(QueryString, connection);
 
@@ -263,16 +265,17 @@ namespace DataAccessLayer
         public static DataTable GitAllApplications()
         {
             DataTable dt = new DataTable();
-
+            
             SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
             
-            string QueryString = @"select Applications.ApplicationID, LicensesClasses.ClassName, Poeple.NationalNo,
+            string QueryString = @"select Applications.ApplicationID as [L.D.LApp ID], LicensesClasses.ClassName as [Class Name], Poeple.NationalNo as [National No],
                                    (Poeple.FirstName + ' ' + Poeple.SecondName + ' ' + Poeple.ThirdName + ' ' + ' ' + Poeple.LastName) as [Full Name],
                                    Applications.ApplicationDate as [Application Date], Applications.PassedTests as [Passed Test],
-                                   Applications_Appointments_Status.statusName from Applications join Poeple on Applications.PersonID =Poeple.PersonID
-                                   join NewLicensesAppsClasses on Applications.ApplicationID = NewLicensesAppsClasses.ApplicationID
-                                   join LicensesClasses on NewLicensesAppsClasses.classID = LicensesClasses.ClassID join
-                                   Applications_Appointments_Status on Applications.ApplicationStatusID = Applications_Appointments_Status.StatusID;";
+                                   Applications_Appointments_Status.statusName as [Status] from Applications join Poeple on Applications.PersonID =Poeple.PersonID
+                                   join NewLDLApps on Applications.ApplicationID = NewLDLApps.ApplicationID
+                                   join LicensesClasses on NewLDLApps.classID = LicensesClasses.ClassID join
+                                   Applications_Appointments_Status on Applications.ApplicationStatusID = Applications_Appointments_Status.StatusID
+                                   where Applications.ApplicationTypeID = (select ApplicationsTypes.ApplicationTypeID from ApplicationsTypes where ApplicationsTypes.ApplicationTypeName = 'New Local Driving License Service')";
 
             SqlCommand Command = new SqlCommand(QueryString, connection);
 

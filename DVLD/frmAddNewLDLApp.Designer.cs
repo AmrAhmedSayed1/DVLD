@@ -268,7 +268,7 @@
             this.tabLoginInfo.Padding = new System.Windows.Forms.Padding(3);
             this.tabLoginInfo.Size = new System.Drawing.Size(1239, 715);
             this.tabLoginInfo.TabIndex = 1;
-            this.tabLoginInfo.Text = "Login Info";
+            this.tabLoginInfo.Text = "New L.D.L Info";
             // 
             // cbLicenseClass
             // 

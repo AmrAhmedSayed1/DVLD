@@ -32,3 +32,5 @@ C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmEditTestType.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageTestsTypes.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageTestsTypes.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAddNewLDLApp.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageLDLApps.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageLDLApps.resources
