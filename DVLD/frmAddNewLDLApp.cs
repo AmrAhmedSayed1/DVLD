@@ -114,19 +114,17 @@ namespace DVLD
                         App.AppDate = DateTime.Now;
                         App.ByUserID = clsGlobalUser.User.UserID;
                         App.PersonID = PersonID;
-                        App.PassedTests = 0;
 
                         if (App.Save())
                         {
                             MessageBox.Show($"The application was added successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             lblDLApplicationID.Text = App.AppID.ToString();
 
-                            DBclsNewLDLApp NewLDLAppobj = new DBclsNewLDLApp();
+                            DBclsNewLDLApp NewLDLApp = new DBclsNewLDLApp();
 
-                            NewLDLAppobj.AppID = App.AppID;
-                            NewLDLAppobj.ClassID = DBclsLicensesClasses.GetLicenseClassIDByClassName(cbLicenseClass.SelectedItem.ToString());
-
-                            NewLDLAppobj.Save();
+                            NewLDLApp.AppID = App.AppID;
+                            NewLDLApp.ClassID = DBclsLicensesClasses.GetLicenseClassIDByClassName(cbLicenseClass.SelectedItem.ToString());
+                            NewLDLApp.Save();
 
                             btnSave.Enabled = false;
                             return true;
@@ -145,8 +143,6 @@ namespace DVLD
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Welcome");
-            Console.Read();
             _Save();
         }
     }

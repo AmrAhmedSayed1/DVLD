@@ -57,7 +57,7 @@ namespace DataAccessLayer
             return AppID;
         }
 
-        public static int AddNewApplication(int PersonID, int ByUserID, int ApplicationTypeID, int ApplicationStatusID, DateTime ApplicationDate, int PassedTests)
+        public static int AddNewApplication(int PersonID, int ByUserID, int ApplicationTypeID, int ApplicationStatusID, DateTime ApplicationDate)
         {
             int AppID = 0;
 
@@ -68,15 +68,13 @@ namespace DataAccessLayer
                                       ,[ByUserID]
                                       ,[ApplicationTypeID]
                                       ,[ApplicationStatusID]
-                                      ,[ApplicationDate]
-                                      ,[PassedTests])
+                                      ,[ApplicationDate])
                                   VALUES
                                       (@PersonID,
                                        @ByUserID,
                                        @ApplicationTypeID,
                                        @ApplicationStatusID,
-                                       @ApplicationDate,
-                                       @PassedTests);
+                                       @ApplicationDate);
                               
                                   SELECT SCOPE_IDENTITY();";
             
@@ -87,7 +85,6 @@ namespace DataAccessLayer
             Command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
             Command.Parameters.AddWithValue("@ApplicationStatusID", ApplicationStatusID);
             Command.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
-            Command.Parameters.AddWithValue("@PassedTests", PassedTests);
 
             try
             {
@@ -115,7 +112,7 @@ namespace DataAccessLayer
         }
 
         public static bool GetApplicationByID(int ApplicationID, ref int PersonID, ref int ByUserID,
-        ref int ApplicationTypeID, ref int ApplicationStatusID, ref DateTime ApplicationDate, int PassedTest)
+        ref int ApplicationTypeID, ref int ApplicationStatusID, ref DateTime ApplicationDate)
         {
             bool IsFound = false;
 
@@ -128,8 +125,7 @@ namespace DataAccessLayer
                 ByUserID,
                 ApplicationTypeID,
                 ApplicationStatusID,
-                ApplicationDate,
-                PassedTests
+                ApplicationDate
             FROM 
                 Applications
             WHERE 
@@ -150,7 +146,6 @@ namespace DataAccessLayer
                         ApplicationTypeID = (int)Reader["ApplicationTypeID"];
                         ApplicationStatusID = (int)Reader["ApplicationStatusID"];
                         ApplicationDate = (DateTime)Reader["ApplicationDate"];
-                        PassedTest = (int)Reader["PassedTests"];
 
                         IsFound = true;
                     }
@@ -217,93 +212,7 @@ namespace DataAccessLayer
 
             return IsUpdated;
         }
-        public static DataTable GetAllApplicationsWithFilter(string ColumnName, string Value)
-        {
-            DataTable dt = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString))
-            {
-                string QueryString = $@"select Applications.ApplicationID as [L.D.LApp ID], LicensesClasses.ClassName as [Class Name], Poeple.NationalNo as [National No],
-                                        (Poeple.FirstName + ' ' + Poeple.SecondName + ' ' + Poeple.ThirdName + ' ' + ' ' + Poeple.LastName) as [Full Name],
-                                        Applications.ApplicationDate as [Application Date], Applications.PassedTests as [Passed Test],
-                                        Applications_Appointments_Status.statusName as [Status] from Applications join Poeple on Applications.PersonID =Poeple.PersonID
-                                        join NewLDLApps on Applications.ApplicationID = NewLDLApps.ApplicationID
-                                        join LicensesClasses on NewLDLApps.classID = LicensesClasses.ClassID join
-                                        Applications_Appointments_Status on Applications.ApplicationStatusID = Applications_Appointments_Status.StatusID
-                                        where Applications.ApplicationTypeID = (select ApplicationsTypes.ApplicationTypeID from ApplicationsTypes where ApplicationsTypes.ApplicationTypeName = 'New Local Driving License Service')
-                                        and 
-                                        {ColumnName} LIKE @Value";
-
-                SqlCommand Command = new SqlCommand(QueryString, connection);
-
-                Command.Parameters.AddWithValue("Value", "%" + Value + "%");
-
-                try
-                {
-                    connection.Open();
-                    SqlDataReader Reader = Command.ExecuteReader();
-
-                    if (Reader.HasRows)
-                    {
-                        dt.Load(Reader);
-                    }
-
-                    Reader.Close();
-                }
-                catch
-                {
-                    dt = new DataTable();
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-
-            return dt;
-        }
-        public static DataTable GitAllApplications()
-        {
-            DataTable dt = new DataTable();
-            
-            SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
-            
-            string QueryString = @"select Applications.ApplicationID as [L.D.LApp ID], LicensesClasses.ClassName as [Class Name], Poeple.NationalNo as [National No],
-                                   (Poeple.FirstName + ' ' + Poeple.SecondName + ' ' + Poeple.ThirdName + ' ' + ' ' + Poeple.LastName) as [Full Name],
-                                   Applications.ApplicationDate as [Application Date], Applications.PassedTests as [Passed Test],
-                                   Applications_Appointments_Status.statusName as [Status] from Applications join Poeple on Applications.PersonID =Poeple.PersonID
-                                   join NewLDLApps on Applications.ApplicationID = NewLDLApps.ApplicationID
-                                   join LicensesClasses on NewLDLApps.classID = LicensesClasses.ClassID join
-                                   Applications_Appointments_Status on Applications.ApplicationStatusID = Applications_Appointments_Status.StatusID
-                                   where Applications.ApplicationTypeID = (select ApplicationsTypes.ApplicationTypeID from ApplicationsTypes where ApplicationsTypes.ApplicationTypeName = 'New Local Driving License Service')";
-
-            SqlCommand Command = new SqlCommand(QueryString, connection);
-
-            try
-            {
-                connection.Open();
-
-                SqlDataReader Reader = Command.ExecuteReader();
-
-                if (Reader != null)
-                {
-                    dt.Load(Reader);
-                }
-
-                Reader.Close();
-            }
-            catch
-            {
-                dt = new DataTable();
-            }
-            finally
-            {
-                connection.Close();
-            }
-            
-
-            return dt;
-        }
+        
 
     }
 }

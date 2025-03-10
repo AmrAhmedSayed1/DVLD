@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using DataAccessLayer;
 
@@ -15,13 +17,15 @@ namespace DataBusinessLayer
 
         public int ClassID { get; set; }
 
+        public int PassedTests { get; set; }
+
         private enum _enmode { AddNew, Update}
 
         private _enmode _EnMode;
 
         public DBclsNewLDLApp()
         {
-            
+            PassedTests = 0;
             NewLDLAppID = 0;
             AppID = 0;
             ClassID = 0;
@@ -32,10 +36,27 @@ namespace DataBusinessLayer
         {
             int appid = 0;
             int classid = 0;
-            if (DAclsNewLDLApps.GetNewLDLAppByID(newldlappid, ref appid, ref classid))
+            int passedTests = 0;
+            if (DAclsNewLDLApps.GetNewLDLAppByID(newldlappid, ref appid, ref classid, ref passedTests))
             {
+                PassedTests = passedTests;
                 NewLDLAppID = newldlappid;
                 AppID = appid;
+                ClassID = classid;
+                _EnMode = _enmode.Update;
+            }
+        }
+
+        public DBclsNewLDLApp(int OriginAppID, bool ByOriginAppID = true)
+        {
+            int newldlappid = 0;
+            int classid = 0;
+            int passedTests = 0;
+            if (DAclsNewLDLApps.GetNewLDLAppByOriginAppID(OriginAppID, ref newldlappid, ref classid, ref passedTests))
+            {
+                PassedTests = passedTests;
+                NewLDLAppID = newldlappid;
+                AppID = Convert.ToInt32(OriginAppID);
                 ClassID = classid;
                 _EnMode = _enmode.Update;
             }
@@ -68,6 +89,16 @@ namespace DataBusinessLayer
                 default:
                     return _UpdateNewLDLApp();
             }
+        }
+
+        public static DataTable GetAllNewLDLApps()
+        {
+            return DAclsNewLDLApps.GetAllNewLDLApps();
+        }
+
+        public static DataTable GetAllNewLDLAppsWithFilter(string ColumnName, string Value)
+        {
+            return DAclsNewLDLApps.GetAllNewLDLAppsWithFilter(ColumnName, Value);
         }
 
     }

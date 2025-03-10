@@ -13,7 +13,6 @@ namespace DVLD
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("Welcome to our DVLD App :-)");
             Console.ReadLine();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

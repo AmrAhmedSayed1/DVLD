@@ -18,7 +18,6 @@ namespace DataBusinessLayer
         public int ByUserID { get; set; }
         public int AppTypeID {  get; set; }
         public int AppStatusID { get; set; }
-        public int PassedTests { get; set; }
         public DateTime AppDate { get; set; }
 
         private enum _enmode { AddNew, Update}
@@ -32,7 +31,6 @@ namespace DataBusinessLayer
             ByUserID = 0;
             AppTypeID = 0;
             AppStatusID = 0;
-            PassedTests = 0;
             AppDate = new DateTime();
             _EnMode = _enmode.AddNew;
         }
@@ -44,10 +42,9 @@ namespace DataBusinessLayer
             int applicationTypeID = 0;
             int applicationStatusID = 0;
             DateTime applicationDate = DateTime.Now;
-            int passedtests = 0;
 
             if (DAclsApplications.GetApplicationByID(appid, ref personID, ref byUserID,
-                ref applicationTypeID, ref applicationStatusID, ref applicationDate, passedtests))
+                ref applicationTypeID, ref applicationStatusID, ref applicationDate))
             {
                 AppID = appid;
                 PersonID = personID;
@@ -64,19 +61,9 @@ namespace DataBusinessLayer
             return DAclsApplications.IsPersonHasNewApplicationFromThisClass(PersonID, ClassID); ;
         }
 
-        public static DataTable GetAllApps()
-        {
-            return DAclsApplications.GitAllApplications();
-        }
-
-        public static DataTable GetAllAppsWithFilter(string ColumnName, string Value)
-        {
-            return DAclsApplications.GetAllApplicationsWithFilter(ColumnName, Value);
-        }
-
         private bool _AddNewApp()
         {
-            int TempID = DAclsApplications.AddNewApplication(PersonID, ByUserID, AppTypeID, AppStatusID, AppDate, PassedTests);
+            int TempID = DAclsApplications.AddNewApplication(PersonID, ByUserID, AppTypeID, AppStatusID, AppDate);
             if (TempID > 0)
             {
                 AppID = TempID;

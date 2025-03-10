@@ -77,7 +77,7 @@ namespace DataAccessLayer
 
                 Reader.Close();
             }
-            catch (Exception ex)
+            catch
             {
                 dt = new DataTable();
             }

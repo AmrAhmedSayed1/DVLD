@@ -1,6 +1,6 @@
 ﻿namespace DVLD
 {
-    partial class uctrlManageLDLApps
+    partial class uctrlManageNewLDLApps
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctrlManageLDLApps));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctrlManageNewLDLApps));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -41,7 +41,10 @@
             this.btnAddNewLDLApp = new System.Windows.Forms.Button();
             this.tsmIssueDLFT = new System.Windows.Forms.ToolStripMenuItem();
             this.lblNumOfRecords = new System.Windows.Forms.Label();
-            this.tsmSechduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCancelApp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDeleteApp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEditApp = new System.Windows.Forms.ToolStripMenuItem();
@@ -160,14 +163,42 @@
             this.lblNumOfRecords.TabIndex = 14;
             this.lblNumOfRecords.Text = "??";
             // 
-            // tsmSechduleTests
+            // tsmScheduleTests
             // 
-            this.tsmSechduleTests.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsmSechduleTests.Image = ((System.Drawing.Image)(resources.GetObject("tsmSechduleTests.Image")));
-            this.tsmSechduleTests.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmSechduleTests.Name = "tsmSechduleTests";
-            this.tsmSechduleTests.Size = new System.Drawing.Size(356, 54);
-            this.tsmSechduleTests.Text = "Sechdule Tests";
+            this.tsmScheduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmScheduleVisionTest,
+            this.tsmScheduleWrittenTest,
+            this.tsmScheduleStreetTest});
+            this.tsmScheduleTests.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmScheduleTests.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleTests.Image")));
+            this.tsmScheduleTests.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmScheduleTests.Name = "tsmScheduleTests";
+            this.tsmScheduleTests.Size = new System.Drawing.Size(356, 54);
+            this.tsmScheduleTests.Text = "Schedule Tests";
+            // 
+            // tsmScheduleVisionTest
+            // 
+            this.tsmScheduleVisionTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleVisionTest.Image")));
+            this.tsmScheduleVisionTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmScheduleVisionTest.Name = "tsmScheduleVisionTest";
+            this.tsmScheduleVisionTest.Size = new System.Drawing.Size(287, 54);
+            this.tsmScheduleVisionTest.Text = "Schedule Vision Test";
+            // 
+            // tsmScheduleWrittenTest
+            // 
+            this.tsmScheduleWrittenTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleWrittenTest.Image")));
+            this.tsmScheduleWrittenTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmScheduleWrittenTest.Name = "tsmScheduleWrittenTest";
+            this.tsmScheduleWrittenTest.Size = new System.Drawing.Size(287, 54);
+            this.tsmScheduleWrittenTest.Text = "Schedule Written Test";
+            // 
+            // tsmScheduleStreetTest
+            // 
+            this.tsmScheduleStreetTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmScheduleStreetTest.Image")));
+            this.tsmScheduleStreetTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmScheduleStreetTest.Name = "tsmScheduleStreetTest";
+            this.tsmScheduleStreetTest.Size = new System.Drawing.Size(287, 54);
+            this.tsmScheduleStreetTest.Text = "Schedule Street Test";
             // 
             // tsmCancelApp
             // 
@@ -222,7 +253,7 @@
             this.toolStripSeparator3,
             this.tsmCancelApp,
             this.toolStripSeparator2,
-            this.tsmSechduleTests,
+            this.tsmScheduleTests,
             this.toolStripSeparator4,
             this.tsmIssueDLFT,
             this.toolStripSeparator5,
@@ -230,7 +261,8 @@
             this.toolStripSeparator6,
             this.tsmShowPersonLHis});
             this.cmsManagePerson.Name = "contextMenuStrip1";
-            this.cmsManagePerson.Size = new System.Drawing.Size(357, 472);
+            this.cmsManagePerson.Size = new System.Drawing.Size(357, 500);
+            this.cmsManagePerson.MouseEnter += new System.EventHandler(this.cmsManagePerson_MouseEnter);
             // 
             // toolStripSeparator3
             // 
@@ -317,7 +349,7 @@
             this.dgvLDLApps.Size = new System.Drawing.Size(1297, 295);
             this.dgvLDLApps.TabIndex = 8;
             // 
-            // uctrlManageLDLApps
+            // uctrlManageNewLDLApps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -330,7 +362,7 @@
             this.Controls.Add(this.btnAddNewLDLApp);
             this.Controls.Add(this.lblNumOfRecords);
             this.Controls.Add(this.dgvLDLApps);
-            this.Name = "uctrlManageLDLApps";
+            this.Name = "uctrlManageNewLDLApps";
             this.Size = new System.Drawing.Size(1307, 454);
             this.Load += new System.EventHandler(this.uctrlManageLDLApps_Load);
             this.cmsManagePerson.ResumeLayout(false);
@@ -350,7 +382,7 @@
         private System.Windows.Forms.Button btnAddNewLDLApp;
         private System.Windows.Forms.ToolStripMenuItem tsmIssueDLFT;
         private System.Windows.Forms.Label lblNumOfRecords;
-        private System.Windows.Forms.ToolStripMenuItem tsmSechduleTests;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleTests;
         private System.Windows.Forms.ToolStripMenuItem tsmCancelApp;
         private System.Windows.Forms.ToolStripMenuItem tsmDeleteApp;
         private System.Windows.Forms.ToolStripMenuItem tsmEditApp;
@@ -365,5 +397,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmShowLicense;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem tsmShowPersonLHis;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleVisionTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleWrittenTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleStreetTest;
     }
 }

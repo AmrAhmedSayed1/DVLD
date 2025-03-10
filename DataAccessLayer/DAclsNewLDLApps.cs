@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -17,12 +18,12 @@ namespace DataAccessLayer
 
             SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString);
 
-            string QueryString = @"insert into NewLDLApps Values (@AppID, @ClassID)
+            string QueryString = @"insert into NewLDLApps Values (@ApplicationID, @ClassID, 0)
                                     select scope_identity();";
 
             SqlCommand Command = new SqlCommand(QueryString, Connection);
 
-            Command.Parameters.AddWithValue("AppID", AppID);
+            Command.Parameters.AddWithValue("ApplicationID", AppID);
             Command.Parameters.AddWithValue("ClassID", ClassID);
             
 
@@ -51,7 +52,7 @@ namespace DataAccessLayer
             return NewLDLAppsID;
         }
 
-        public static bool GetNewLDLAppByID(int NewLDLAppID, ref int AppID, ref int ClassID)
+        public static bool GetNewLDLAppByID(int NewLDLAppID, ref int AppID, ref int ClassID, ref int PassedTests)
         {
 
 
@@ -76,7 +77,51 @@ namespace DataAccessLayer
                 {
                     AppID = (int)Reader["ApplicationID"];
                     ClassID = (int)Reader["ClassID"];
-                    
+                    PassedTests = (int)Reader["PassedTests"];
+
+                    IsFound = true;
+                }
+                Reader.Close();
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return IsFound;
+        }
+
+        public static bool GetNewLDLAppByOriginAppID(int OriginAppID, ref int NewLDLAppID, ref int ClassID, ref int PassedTests)
+        {
+
+
+            bool IsFound = false;
+
+            SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString);
+
+            string QueryString = @"select * from NewLDLApps
+                                   where ApplicationID = @OriginAppID";
+
+            SqlCommand Command = new SqlCommand(QueryString, Connection);
+
+            Command.Parameters.AddWithValue("OriginAppID", OriginAppID);
+
+            try
+            {
+                Connection.Open();
+
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    NewLDLAppID = (int)Reader["NewLDLAppID"];
+                    ClassID = (int)Reader["ClassID"];
+                    PassedTests = (int)Reader["PassedTests"];
+
                     IsFound = true;
                 }
                 Reader.Close();
@@ -101,7 +146,7 @@ namespace DataAccessLayer
             SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString);
 
             string QueryString = @"UPDATE [dbo].[NewLDLApps]
-                                  SET [AppID] = @AppID
+                                  SET [ApplicationID] = @AppID
                                      ,[ClassID] = @ClassID
                                      WHERE NewLDLAppID = @NewLDLAppID";
 
@@ -109,7 +154,7 @@ namespace DataAccessLayer
 
             Command.Parameters.AddWithValue("NewLDLAppID", NewLDLAppID);
             Command.Parameters.AddWithValue("ClassID", ClassID);
-            Command.Parameters.AddWithValue("AppID", AppID);
+            Command.Parameters.AddWithValue("ApplicationID", AppID);
 
 
             try
@@ -130,6 +175,94 @@ namespace DataAccessLayer
             }
 
             return IsUpdated;
+        }
+
+        public static DataTable GetAllNewLDLAppsWithFilter(string ColumnName, string Value)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString))
+            {
+                string QueryString = $@"select Applications.ApplicationID as [L.D.LApp ID], LicensesClasses.ClassName as [Class Name], Poeple.NationalNo as [National No],
+                                        (Poeple.FirstName + ' ' + Poeple.SecondName + ' ' + Poeple.ThirdName + ' ' + ' ' + Poeple.LastName) as [Full Name],
+                                        Applications.ApplicationDate as [Application Date], NewLDLApps.PassedTests as [Passed Test],
+                                        Applications_Appointments_Status.statusName as [Status] from Applications join Poeple on Applications.PersonID =Poeple.PersonID
+                                        join NewLDLApps on Applications.ApplicationID = NewLDLApps.ApplicationID
+                                        join LicensesClasses on NewLDLApps.classID = LicensesClasses.ClassID join
+                                        Applications_Appointments_Status on Applications.ApplicationStatusID = Applications_Appointments_Status.StatusID
+                                        where Applications.ApplicationTypeID = (select ApplicationsTypes.ApplicationTypeID from ApplicationsTypes where ApplicationsTypes.ApplicationTypeName = 'New Local Driving License Service')
+                                        and 
+                                        {ColumnName} LIKE @Value";
+
+                SqlCommand Command = new SqlCommand(QueryString, connection);
+
+                Command.Parameters.AddWithValue("Value", "%" + Value + "%");
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader Reader = Command.ExecuteReader();
+
+                    if (Reader.HasRows)
+                    {
+                        dt.Load(Reader);
+                    }
+
+                    Reader.Close();
+                }
+                catch
+                {
+                    dt = new DataTable();
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+            return dt;
+        }
+        public static DataTable GetAllNewLDLApps()
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
+
+            string QueryString = @"select Applications.ApplicationID as [L.D.LApp ID], LicensesClasses.ClassName as [Class Name], Poeple.NationalNo as [National No],
+                                   (Poeple.FirstName + ' ' + Poeple.SecondName + ' ' + Poeple.ThirdName + ' ' + ' ' + Poeple.LastName) as [Full Name],
+                                   Applications.ApplicationDate as [Application Date], NewLDLApps.PassedTests as [Passed Test],
+                                   Applications_Appointments_Status.statusName as [Status] from Applications join Poeple on Applications.PersonID =Poeple.PersonID
+                                   join NewLDLApps on Applications.ApplicationID = NewLDLApps.ApplicationID
+                                   join LicensesClasses on NewLDLApps.classID = LicensesClasses.ClassID join
+                                   Applications_Appointments_Status on Applications.ApplicationStatusID = Applications_Appointments_Status.StatusID
+                                   where Applications.ApplicationTypeID = (select ApplicationsTypes.ApplicationTypeID from ApplicationsTypes where ApplicationsTypes.ApplicationTypeName = 'New Local Driving License Service')";
+
+            SqlCommand Command = new SqlCommand(QueryString, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if (Reader != null)
+                {
+                    dt.Load(Reader);
+                }
+
+                Reader.Close();
+            }
+            catch
+            {
+                dt = new DataTable();
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return dt;
         }
 
     }

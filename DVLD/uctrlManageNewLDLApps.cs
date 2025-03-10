@@ -11,18 +11,18 @@ using DataBusinessLayer;
 
 namespace DVLD
 {
-    public partial class uctrlManageLDLApps : UserControl
+    public partial class uctrlManageNewLDLApps : UserControl
     {
         private string _FilterBy = "";
         private string _Filtertxt = "";
-        public uctrlManageLDLApps()
+        public uctrlManageNewLDLApps()
         {
             InitializeComponent();
         }
 
         public void LoadAllAppsToDGV()
         {
-            dgvLDLApps.DataSource = DBclsApplication.GetAllApps();
+            dgvLDLApps.DataSource = DBclsNewLDLApp.GetAllNewLDLApps();
 
             if (dgvLDLApps.Rows.Count > 0)
             {
@@ -31,11 +31,22 @@ namespace DVLD
             }
 
             lblNumOfRecords.Text = dgvLDLApps.Rows.Count.ToString();
+
+        }
+
+        private void _HandllingScheduleTests_EnabledOrNo(int PassedTests)
+        {
+            tsmIssueDLFT.Enabled = PassedTests == 3;
+            tsmScheduleTests.Enabled = PassedTests != 3;
+            tsmScheduleVisionTest.Enabled = PassedTests == 0;
+            tsmScheduleWrittenTest.Enabled = PassedTests == 1;
+            tsmScheduleStreetTest.Enabled = PassedTests == 2;
+            
         }
 
         private void _LoadAllAppsWithFilterToDGV()
         {
-            dgvLDLApps.DataSource = DBclsApplication.GetAllAppsWithFilter(_FilterBy, _Filtertxt);
+            dgvLDLApps.DataSource = DBclsNewLDLApp.GetAllNewLDLAppsWithFilter(_FilterBy, _Filtertxt);
 
             if (dgvLDLApps.Rows.Count > 0)
             {
@@ -154,12 +165,10 @@ namespace DVLD
 
         public void RefreshDGVAfterAction()
         {
-            if (txtFilter.Visible == true)
-                txtFilter.Text = "";
-            else if (cbStatus.Visible == true)
-                cbStatus.SelectedItem = "Alle";
-            else
-                LoadAllAppsToDGV();
+            LoadAllAppsToDGV();
+            cbFilterBy.SelectedIndex = 0;
+            txtFilter.Visible = false;
+            cbStatus.Visible = false;
         }
 
         private void _ShowMessageError()
@@ -178,15 +187,46 @@ namespace DVLD
             {
                 DBclsApplication App = new DBclsApplication(NewLDLAppID);
 
-                App.AppStatusID = 3;  //  Status ID {1 = New|  2 = Complate| 3 = Canceld|
-
-                if(App.Save())
+                if (App.AppStatusID == 3) //  Status ID {1 = New|  2 = Complate| 3 = Canceld|
                 {
-                    MessageBox.Show("This Application was Canceld Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RefreshDGVAfterAction();
+                    MessageBox.Show("This application already canceld", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-                else
-                    MessageBox.Show("This Application was not Canceld Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if(MessageBox.Show("Are you sure you want to cancel this Application ? ", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    App.AppStatusID = 3; //  Canceld
+
+                    if (App.Save())
+                    {
+                        MessageBox.Show("This Application was Canceld Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RefreshDGVAfterAction();
+                    }
+                    else
+                        MessageBox.Show("This Application was not Canceld Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+            else
+            {
+                _ShowMessageError();
+                return;
+            }
+        }
+
+        private void cmsManagePerson_MouseEnter(object sender, EventArgs e)
+        {
+            int AppID;
+            if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
+                return;
+
+            if (DBclsApplication.IsValueExist(AppID.ToString()))
+            {
+                DBclsApplication App = new DBclsApplication(AppID);
+
+                DBclsNewLDLApp NewLDLApp = new DBclsNewLDLApp(App.AppID, true);
+
+                _HandllingScheduleTests_EnabledOrNo(NewLDLApp.PassedTests);
             }
             else
             {

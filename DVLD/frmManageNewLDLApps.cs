@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DVLD
 {
-    public partial class frmManageLDLApps : Form
+    public partial class frmManageNewLDLApps : Form
     {
-        public frmManageLDLApps()
+        public frmManageNewLDLApps()
         {
             InitializeComponent();
         }
