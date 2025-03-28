@@ -14,7 +14,7 @@ namespace DataAccessLayer
 {
     public class DAclsPerson : clsCRUD
     {
-        public static DataTable GitAllPoeple()
+        public static DataTable GetAllPoeple()
         {
             DataTable dt = new DataTable();
 
@@ -64,7 +64,7 @@ namespace DataAccessLayer
             return dt;
         }
 
-        public static DataTable GitAllPoepleWithFilter(string ColumnName, string Value)
+        public static DataTable GetAllPoepleWithFilter(string ColumnName, string Value)
         {
             DataTable dt = new DataTable();
 
@@ -206,7 +206,7 @@ namespace DataAccessLayer
             return PersonID;
         }
 
-        public static bool GitPersonByID(int  PersonID, ref  string NationalNo, ref string FirstName,
+        public static bool GetPersonByID(int  PersonID, ref  string NationalNo, ref string FirstName,
             ref string SecondName, ref string ThirdName, ref string LastName, ref string Email,
             ref string Phone, ref string Address, ref int CountryID, ref string ImagePath,
             ref DateTime DateOfBirth, ref String Gender)

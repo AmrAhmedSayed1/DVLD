@@ -34,3 +34,12 @@ C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageTestsTypes.resourc
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAddNewLDLApp.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageNewLDLApps.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageNewLDLApps.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlNewLDLAppInfo.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlAppInfo.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageTestsAppointments.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmTakeTest.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAddEditTestAppointment.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmIssueLDL.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmLicenseInfo.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlLicenseInfo.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmLicensesHistory.resources

@@ -30,7 +30,7 @@ namespace DataBusinessLayer
             PersonID = 0;
             ByUserID = 0;
             AppTypeID = 0;
-            AppStatusID = 0;
+            AppStatusID = 1;
             AppDate = new DateTime();
             _EnMode = _enmode.AddNew;
         }

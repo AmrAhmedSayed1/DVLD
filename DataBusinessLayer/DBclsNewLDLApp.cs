@@ -18,7 +18,9 @@ namespace DataBusinessLayer
         public int ClassID { get; set; }
 
         public int PassedTests { get; set; }
-
+        public int VisionTrial {  get; set; }
+        public int WrittenTrial { get; set; }
+        public int StreetTrial { get; set; }
         private enum _enmode { AddNew, Update}
 
         private _enmode _EnMode;
@@ -37,12 +39,18 @@ namespace DataBusinessLayer
             int appid = 0;
             int classid = 0;
             int passedTests = 0;
-            if (DAclsNewLDLApps.GetNewLDLAppByID(newldlappid, ref appid, ref classid, ref passedTests))
+            int visionTrial = 0;
+            int writtenTrial = 0;
+            int streetTrial = 0;
+            if (DAclsNewLDLApps.GetNewLDLAppByID(newldlappid, ref appid, ref classid, ref passedTests, ref visionTrial, ref writtenTrial, ref streetTrial))
             {
                 PassedTests = passedTests;
                 NewLDLAppID = newldlappid;
                 AppID = appid;
                 ClassID = classid;
+                VisionTrial = visionTrial;
+                WrittenTrial = writtenTrial;
+                StreetTrial = streetTrial;
                 _EnMode = _enmode.Update;
             }
         }
@@ -52,13 +60,20 @@ namespace DataBusinessLayer
             int newldlappid = 0;
             int classid = 0;
             int passedTests = 0;
-            if (DAclsNewLDLApps.GetNewLDLAppByOriginAppID(OriginAppID, ref newldlappid, ref classid, ref passedTests))
+            int visionTrial = 0;
+            int writtenTrial = 0;
+            int streetTrial = 0;
+            if (DAclsNewLDLApps.GetNewLDLAppByOriginAppID(OriginAppID, ref newldlappid, ref classid, ref passedTests, ref visionTrial, ref writtenTrial, ref streetTrial))
             {
                 PassedTests = passedTests;
                 NewLDLAppID = newldlappid;
                 AppID = Convert.ToInt32(OriginAppID);
                 ClassID = classid;
+                VisionTrial = visionTrial;
+                WrittenTrial = writtenTrial;
+                StreetTrial = streetTrial;
                 _EnMode = _enmode.Update;
+
             }
         }
 
@@ -75,7 +90,7 @@ namespace DataBusinessLayer
 
         private bool _UpdateNewLDLApp()
         {
-            return DAclsNewLDLApps.UpdateNewLDLApp(NewLDLAppID, AppID, ClassID);
+            return DAclsNewLDLApps.UpdateNewLDLApp(NewLDLAppID, AppID, ClassID, PassedTests, VisionTrial, WrittenTrial, StreetTrial);
         }
 
         public bool Save()

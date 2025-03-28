@@ -52,7 +52,7 @@ namespace DVLD
                 _User = new DBclsUser(UserID);
                 PersonID = _User.PersonID;
                 uctrlPersonalDetails1.PersonID = _User.PersonID;
-                uctrlPersonalDetails1.uctrlPersonalDetails_Load(sender, e);
+                uctrlPersonalDetails1.LoadDataToForm();
                 lblUserID.Text = UserID.ToString();
                 gbFilter.Enabled = false;
             }
@@ -202,7 +202,7 @@ namespace DVLD
 
                 
                 uctrlPersonalDetails1.PersonID = PersonID;
-                uctrlPersonalDetails1.uctrlPersonalDetails_Load(sender, e);
+                uctrlPersonalDetails1.LoadDataToForm();
             }
         }
 
@@ -215,7 +215,7 @@ namespace DVLD
         {
             PersonID = personID;
             uctrlPersonalDetails1.PersonID = PersonID;
-            uctrlPersonalDetails1.uctrlPersonalDetails_Load(sender, e);
+            uctrlPersonalDetails1.LoadDataToForm();
         }
 
         private void btnAddNewUser_Click(object sender, EventArgs e)

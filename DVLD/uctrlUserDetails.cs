@@ -29,7 +29,7 @@ namespace DVLD
         private void _LoadDateToPersonalDetails(object sender, EventArgs e, int PersonID)
         {
             uctrlPersonalDetails1.PersonID = PersonID;
-            uctrlPersonalDetails1.uctrlPersonalDetails_Load(sender, e);
+            uctrlPersonalDetails1.LoadDataToForm();
         }
 
         private void _LoadDateToLoginInfo(DBclsUser User)

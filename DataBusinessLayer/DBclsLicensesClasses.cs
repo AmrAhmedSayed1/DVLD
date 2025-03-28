@@ -17,5 +17,16 @@ namespace DataBusinessLayer
         {
             return Convert.ToInt32(DAclsLicensesClasses.GetValueFromTable("ClassID", "LicensesClasses", "ClassName", className));
         }
+
+        public static string GetLicenseClassNameByClassID(int ClassID)
+        {
+            return DAclsLicensesClasses.GetValueFromTable("ClassName", "LicensesClasses", "ClassID", ClassID.ToString());
+        }
+
+        public static int GetExpirationDate(int ClassID)
+        {
+            return Convert.ToInt32(clsCRUD.GetValueFromTable("Validity", "LicensesClasses", "ClassID", ClassID.ToString()));
+        }
+
     }
 }

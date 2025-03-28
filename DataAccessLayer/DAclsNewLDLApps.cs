@@ -18,7 +18,7 @@ namespace DataAccessLayer
 
             SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString);
 
-            string QueryString = @"insert into NewLDLApps Values (@ApplicationID, @ClassID, 0)
+            string QueryString = @"insert into NewLDLApps Values (@ApplicationID, @ClassID, 0, 0, 0, 0)
                                     select scope_identity();";
 
             SqlCommand Command = new SqlCommand(QueryString, Connection);
@@ -52,7 +52,7 @@ namespace DataAccessLayer
             return NewLDLAppsID;
         }
 
-        public static bool GetNewLDLAppByID(int NewLDLAppID, ref int AppID, ref int ClassID, ref int PassedTests)
+        public static bool GetNewLDLAppByID(int NewLDLAppID, ref int AppID, ref int ClassID, ref int PassedTests, ref int VisionTrial, ref int WrittenTrial, ref int StreetTrial)
         {
 
 
@@ -78,6 +78,9 @@ namespace DataAccessLayer
                     AppID = (int)Reader["ApplicationID"];
                     ClassID = (int)Reader["ClassID"];
                     PassedTests = (int)Reader["PassedTests"];
+                    VisionTrial = (int)Reader["VisionTrial"];
+                    WrittenTrial = (int)Reader["WrittenTrial"];
+                    StreetTrial = (int)Reader["StreetTrial"];
 
                     IsFound = true;
                 }
@@ -95,7 +98,7 @@ namespace DataAccessLayer
             return IsFound;
         }
 
-        public static bool GetNewLDLAppByOriginAppID(int OriginAppID, ref int NewLDLAppID, ref int ClassID, ref int PassedTests)
+        public static bool GetNewLDLAppByOriginAppID(int OriginAppID, ref int NewLDLAppID, ref int ClassID, ref int PassedTests, ref int VisionTrial, ref int WrittenTrial, ref int StreetTrial)
         {
 
 
@@ -121,6 +124,9 @@ namespace DataAccessLayer
                     NewLDLAppID = (int)Reader["NewLDLAppID"];
                     ClassID = (int)Reader["ClassID"];
                     PassedTests = (int)Reader["PassedTests"];
+                    VisionTrial = (int)Reader["VisionTrial"];
+                    WrittenTrial = (int)Reader["WrittenTrial"];
+                    StreetTrial = (int)Reader["StreetTrial"];
 
                     IsFound = true;
                 }
@@ -138,7 +144,7 @@ namespace DataAccessLayer
             return IsFound;
         }
 
-        public static bool UpdateNewLDLApp(int NewLDLAppID, int AppID, int ClassID)
+        public static bool UpdateNewLDLApp(int NewLDLAppID, int AppID, int ClassID, int PassedTest, int VisionTrial, int WrittenTrial, int StreetTrial)
         {
 
             bool IsUpdated = false;
@@ -148,14 +154,21 @@ namespace DataAccessLayer
             string QueryString = @"UPDATE [dbo].[NewLDLApps]
                                   SET [ApplicationID] = @AppID
                                      ,[ClassID] = @ClassID
+                                     ,[PassedTests] = @PassedTest
+                                     ,[VisionTrial] = @VisionTrial
+                                     ,[WrittenTrial] = @WrittenTrial
+                                     ,[StreetTrial] = @StreetTrial
                                      WHERE NewLDLAppID = @NewLDLAppID";
 
             SqlCommand Command = new SqlCommand(QueryString, Connection);
 
             Command.Parameters.AddWithValue("NewLDLAppID", NewLDLAppID);
             Command.Parameters.AddWithValue("ClassID", ClassID);
-            Command.Parameters.AddWithValue("ApplicationID", AppID);
-
+            Command.Parameters.AddWithValue("AppID", AppID);
+            Command.Parameters.AddWithValue("PassedTest", PassedTest);
+            Command.Parameters.AddWithValue("VisionTrial", VisionTrial);
+            Command.Parameters.AddWithValue("WrittenTrial", WrittenTrial);
+            Command.Parameters.AddWithValue("StreetTrial", StreetTrial);
 
             try
             {
@@ -264,6 +277,5 @@ namespace DataAccessLayer
 
             return dt;
         }
-
     }
 }

@@ -21,11 +21,11 @@ namespace DataAccessLayer
             SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString);
 
             string QueryString = @"SELECT NewLDLApps.ApplicationID
-                  FROM     NewLDLApps FULL OUTER JOIN
-                  Applications ON NewLDLApps.ApplicationID = Applications.ApplicationID FULL OUTER JOIN
-                  LicensesClasses ON NewLDLApps.ClassID = LicensesClasses.ClassID FULL OUTER JOIN
+                  FROM     NewLDLApps JOIN
+                  Applications ON NewLDLApps.ApplicationID = Applications.ApplicationID JOIN
+                  LicensesClasses ON NewLDLApps.ClassID = LicensesClasses.ClassID JOIN
                   Applications_Appointments_Status ON Applications.ApplicationStatusID = Applications_Appointments_Status.StatusID
-				  WHERE Applications.PersonID = @PersonID AND Applications_Appointments_Status.StatusID = 1 AND LicensesClasses.ClassID = @ClassID;";
+				  WHERE Applications.PersonID = @PersonID AND (Applications_Appointments_Status.StatusID = 1 or Applications_Appointments_Status.StatusID = 2) AND LicensesClasses.ClassID = @ClassID;";
 
             SqlCommand Command = new SqlCommand(QueryString, Connection);
 

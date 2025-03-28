@@ -45,10 +45,14 @@
     <Compile Include="DAclsApplications.cs" />
     <Compile Include="DAclsApplicationsTypes.cs" />
     <Compile Include="DAclsCountry.cs" />
+    <Compile Include="DAclsDriver.cs" />
+    <Compile Include="DAclsLicense.cs" />
     <Compile Include="DAclsLicensesClasses.cs" />
     <Compile Include="DAclsNewLDLApps.cs" />
     <Compile Include="DAclsPerson.cs" />
     <Compile Include="DAclsSettings.cs" />
+    <Compile Include="DAclsTest.cs" />
+    <Compile Include="DAclsTestAppointment.cs" />
     <Compile Include="DAclsTestsTypes.cs" />
     <Compile Include="DAclsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

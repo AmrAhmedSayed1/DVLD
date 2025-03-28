@@ -20,7 +20,7 @@ namespace DVLD
             InitializeComponent();
         }
 
-        private void _LoadDataToForm()
+        public void LoadDataToForm()
         {
             if(PersonID != 0)
             {
@@ -42,21 +42,11 @@ namespace DVLD
             }
         }
 
-        public void uctrlPersonalDetails_Load(object sender, EventArgs e)
-        {
-            _LoadDataToForm();
-        }
-
         private void lnklEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmAdd_Edit_Person frm = new frmAdd_Edit_Person(PersonID);
             frm.ShowDialog();
-            _LoadDataToForm();
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+            LoadDataToForm();
         }
     }
 }

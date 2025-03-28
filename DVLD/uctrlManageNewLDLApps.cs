@@ -34,16 +34,6 @@ namespace DVLD
 
         }
 
-        private void _HandllingScheduleTests_EnabledOrNo(int PassedTests)
-        {
-            tsmIssueDLFT.Enabled = PassedTests == 3;
-            tsmScheduleTests.Enabled = PassedTests != 3;
-            tsmScheduleVisionTest.Enabled = PassedTests == 0;
-            tsmScheduleWrittenTest.Enabled = PassedTests == 1;
-            tsmScheduleStreetTest.Enabled = PassedTests == 2;
-            
-        }
-
         private void _LoadAllAppsWithFilterToDGV()
         {
             dgvLDLApps.DataSource = DBclsNewLDLApp.GetAllNewLDLAppsWithFilter(_FilterBy, _Filtertxt);
@@ -216,23 +206,159 @@ namespace DVLD
 
         private void cmsManagePerson_MouseEnter(object sender, EventArgs e)
         {
+            _MakeTSMSenabledFalse();
+        }
+
+        private void _HandllingTSMS_Enable_New()
+        {
+            tsmShowLicense.Enabled = false;
+
+            tsmShowAppDetails.Enabled = true;
+            tsmEditApp.Enabled = true;
+            tsmDeleteApp.Enabled = true;
+            tsmCancelApp.Enabled = true;
+        }
+
+        private void _HandllingTSMS_Enable_Complated()
+        {
+            tsmEditApp.Enabled = false;
+            tsmDeleteApp.Enabled = false;
+            tsmCancelApp.Enabled = false;
+            tsmScheduleTests.Enabled = false;
+            tsmIssueDLFT.Enabled = false;
+
+            tsmShowAppDetails.Enabled = true;
+            tsmShowLicense.Enabled = true;
+        }
+
+        private void _HandllingTSMS_Enable_Cancel()
+        {
+            tsmEditApp.Enabled = false;
+            tsmDeleteApp.Enabled = false;
+            tsmCancelApp.Enabled = false;
+            tsmScheduleTests.Enabled = false;
+            tsmIssueDLFT.Enabled = false;
+            tsmShowLicense.Enabled = true;
+
+            tsmShowAppDetails.Enabled = true;
+        }
+
+        private void _ScheduleTest(frmManageTestsAppointments._enTestType TestType)
+        {
             int AppID;
             if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
                 return;
 
             if (DBclsApplication.IsValueExist(AppID.ToString()))
             {
-                DBclsApplication App = new DBclsApplication(AppID);
+                DBclsNewLDLApp NewLDLApp = new DBclsNewLDLApp(AppID, true);
 
-                DBclsNewLDLApp NewLDLApp = new DBclsNewLDLApp(App.AppID, true);
+                frmManageTestsAppointments frm = new frmManageTestsAppointments(NewLDLApp, TestType);
 
-                _HandllingScheduleTests_EnabledOrNo(NewLDLApp.PassedTests);
+                frm.ShowDialog();
             }
+
             else
             {
                 _ShowMessageError();
                 return;
             }
+        }
+
+        private void _HandillingScheduleTests()
+        {
+            int AppID;
+            if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
+                return;
+
+            DBclsNewLDLApp newLDLApp = new DBclsNewLDLApp(AppID, true);
+
+            tsmScheduleTests.Enabled = (newLDLApp.PassedTests != 3);
+            tsmScheduleVisionTest.Enabled = (newLDLApp.PassedTests == 0);
+            tsmScheduleWrittenTest.Enabled = (newLDLApp.PassedTests == 1);
+            tsmScheduleStreetTest.Enabled = (newLDLApp.PassedTests == 2);
+            tsmIssueDLFT.Enabled = (newLDLApp.PassedTests == 3 && DBclsLicense.IsValueExist("Licenses", "ApplicationID", AppID.ToString()) == false);
+        }
+
+        private void _MakeTSMSenabledFalse()
+        {
+            int AppID;
+            if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
+                return;
+            DBclsApplication App = new DBclsApplication(AppID);
+
+            
+
+            if (App.AppStatusID == 1)
+                _HandllingTSMS_Enable_New();
+            else if (App.AppStatusID == 2)
+                _HandllingTSMS_Enable_Complated();
+            else
+                _HandllingTSMS_Enable_Cancel();
+
+            _HandillingScheduleTests();
+        }
+
+        private void tsmScheduleVisionTest_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(frmManageTestsAppointments._enTestType.Vision);
+            
+            RefreshDGVAfterAction();
+        }
+
+        private void tsmScheduleWrittenTest_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(frmManageTestsAppointments._enTestType.Written);
+
+            RefreshDGVAfterAction();
+        }
+
+        private void tsmScheduleStreetTest_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(frmManageTestsAppointments._enTestType.Street);
+
+            RefreshDGVAfterAction();
+        }
+
+        private void tsmIssueDLFT_Click(object sender, EventArgs e)
+        {
+            int AppID;
+            if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
+                return;
+
+            frmIssueLDL frm = new frmIssueLDL(new DBclsNewLDLApp(AppID, true));
+
+            frm.ShowDialog();
+        }
+
+        private void tsmShowLicense_Click(object sender, EventArgs e)
+        {
+            int AppID;
+            if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
+                return;
+            frmLicenseInfo frm = new frmLicenseInfo(AppID);
+            frm.ShowDialog();
+        }
+
+        private void tsmShowAppDetails_Click(object sender, EventArgs e)
+        {
+            int AppID;
+            if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
+                return;
+
+            
+        }
+
+        private void tsmShowPersonLHis_Click(object sender, EventArgs e)
+        {
+            int AppID;
+            if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
+                return;
+
+            DBclsApplication App = new DBclsApplication(AppID);
+
+            frmLicensesHistory frm = new frmLicensesHistory(App.PersonID);
+            frm.ShowDialog();
         }
     }
 }

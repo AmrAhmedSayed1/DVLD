@@ -21,14 +21,19 @@ namespace DataBusinessLayer
             return DAclsApplicationsTypes.GetAllApplicationsTypes();
         }
 
-        public static float GetAppFees(string  AppTypeName)
+        public static float GetAppFees(int  AppTypeID)
         {
-            return Convert.ToSingle(DAclsApplicationsTypes.GetValueFromTable("Fees", "ApplicationsTypes", "ApplicationTypeName", AppTypeName));
+            return Convert.ToSingle(DAclsApplicationsTypes.GetValueFromTable("Fees", "ApplicationsTypes", "ApplicationTypeID", AppTypeID.ToString()));
         }
 
         public static int GetAppTypeID(string AppTypeName)
         {
             return Convert.ToInt32(DAclsApplicationsTypes.GetValueFromTable("ApplicationTypeID", "ApplicationsTypes", "ApplicationTypeName", AppTypeName));
+        }
+
+        public static string GetAppTypeName(int AppTypeID)
+        {
+            return DAclsApplicationsTypes.GetValueFromTable("ApplicationTypeName", "ApplicationsTypes", "ApplicationTypeID", AppTypeID.ToString());
         }
     }
 }

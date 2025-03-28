@@ -19,5 +19,10 @@ namespace DataBusinessLayer
         {
             return DAclsTestsTypes.GetAllTestsTypes();
         }
+
+        public static float GetTestFees(int TestTypeID)
+        {
+            return Convert.ToSingle(clsCRUD.GetValueFromTable("Fees", "TestsTypes", "TestTypeID", TestTypeID.ToString()));
+        }
     }
 }

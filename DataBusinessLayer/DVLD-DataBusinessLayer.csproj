@@ -44,9 +44,14 @@
     <Compile Include="DBclsApplication.cs" />
     <Compile Include="DBclsApplicationType.cs" />
     <Compile Include="DBclsCountry.cs" />
+    <Compile Include="DBclsDriver.cs" />
+    <Compile Include="DBclsIssueReason.cs" />
+    <Compile Include="DBclsLicense.cs" />
     <Compile Include="DBclsLicensesClasses.cs" />
     <Compile Include="DBclsNewLDLApp.cs" />
     <Compile Include="DBclsPerson.cs" />
+    <Compile Include="DBclsTest.cs" />
+    <Compile Include="DBclsTestAppointment.cs" />
     <Compile Include="DBclsTestType.cs" />
     <Compile Include="DBclsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -29,7 +29,7 @@ namespace DVLD
                 PersonID = Convert.ToInt32(dt.Rows[0][0]);
                                 
                 uctrlPersonalDetails1.PersonID = PersonID;
-                uctrlPersonalDetails1.uctrlPersonalDetails_Load(sender, e);
+                uctrlPersonalDetails1.LoadDataToForm();
             }
         }
 
@@ -37,7 +37,7 @@ namespace DVLD
         {
             PersonID = personID;
             uctrlPersonalDetails1.PersonID = PersonID;
-            uctrlPersonalDetails1.uctrlPersonalDetails_Load(sender, e);
+            uctrlPersonalDetails1.LoadDataToForm();
         }
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace DVLD
         {
             lblCreatedBy.Text = clsGlobalUser.User.UserName.ToString();
             _LoadClassesNamesTocb();
-            lblAppFees.Text = DBclsApplicationType.GetAppFees("New Local Driving License Service").ToString();
+            lblAppFees.Text = DBclsApplicationType.GetAppFees(1).ToString(); // 1 = References to New Local Driving License Service Type
             lblApplicationDate.Text = DateTime.Now.ToShortDateString();
         }
 

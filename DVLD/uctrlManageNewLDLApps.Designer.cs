@@ -152,6 +152,7 @@
             this.tsmIssueDLFT.Name = "tsmIssueDLFT";
             this.tsmIssueDLFT.Size = new System.Drawing.Size(356, 54);
             this.tsmIssueDLFT.Text = "Issue Driving License (First Time)";
+            this.tsmIssueDLFT.Click += new System.EventHandler(this.tsmIssueDLFT_Click);
             // 
             // lblNumOfRecords
             // 
@@ -183,6 +184,7 @@
             this.tsmScheduleVisionTest.Name = "tsmScheduleVisionTest";
             this.tsmScheduleVisionTest.Size = new System.Drawing.Size(287, 54);
             this.tsmScheduleVisionTest.Text = "Schedule Vision Test";
+            this.tsmScheduleVisionTest.Click += new System.EventHandler(this.tsmScheduleVisionTest_Click);
             // 
             // tsmScheduleWrittenTest
             // 
@@ -191,6 +193,7 @@
             this.tsmScheduleWrittenTest.Name = "tsmScheduleWrittenTest";
             this.tsmScheduleWrittenTest.Size = new System.Drawing.Size(287, 54);
             this.tsmScheduleWrittenTest.Text = "Schedule Written Test";
+            this.tsmScheduleWrittenTest.Click += new System.EventHandler(this.tsmScheduleWrittenTest_Click);
             // 
             // tsmScheduleStreetTest
             // 
@@ -199,6 +202,7 @@
             this.tsmScheduleStreetTest.Name = "tsmScheduleStreetTest";
             this.tsmScheduleStreetTest.Size = new System.Drawing.Size(287, 54);
             this.tsmScheduleStreetTest.Text = "Schedule Street Test";
+            this.tsmScheduleStreetTest.Click += new System.EventHandler(this.tsmScheduleStreetTest_Click);
             // 
             // tsmCancelApp
             // 
@@ -241,6 +245,7 @@
             this.tsmShowAppDetails.Name = "tsmShowAppDetails";
             this.tsmShowAppDetails.Size = new System.Drawing.Size(356, 54);
             this.tsmShowAppDetails.Text = "Show Applicatoin Details";
+            this.tsmShowAppDetails.Click += new System.EventHandler(this.tsmShowAppDetails_Click);
             // 
             // cmsManagePerson
             // 
@@ -292,6 +297,7 @@
             this.tsmShowLicense.Name = "tsmShowLicense";
             this.tsmShowLicense.Size = new System.Drawing.Size(356, 54);
             this.tsmShowLicense.Text = "Show License";
+            this.tsmShowLicense.Click += new System.EventHandler(this.tsmShowLicense_Click);
             // 
             // toolStripSeparator6
             // 
@@ -306,6 +312,7 @@
             this.tsmShowPersonLHis.Name = "tsmShowPersonLHis";
             this.tsmShowPersonLHis.Size = new System.Drawing.Size(356, 54);
             this.tsmShowPersonLHis.Text = "Show Person License History";
+            this.tsmShowPersonLHis.Click += new System.EventHandler(this.tsmShowPersonLHis_Click);
             // 
             // dgvLDLApps
             // 

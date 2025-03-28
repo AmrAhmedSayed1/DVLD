@@ -24,7 +24,7 @@ namespace DVLD
         private void frmPersonalDetails_Load(object sender, EventArgs e)
         {
             uctrlPersonalDetails1.PersonID = PersonID;
-            uctrlPersonalDetails1.uctrlPersonalDetails_Load(sender, e);
+            uctrlPersonalDetails1.LoadDataToForm();
         }
     }
 }

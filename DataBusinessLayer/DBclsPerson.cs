@@ -77,7 +77,7 @@ namespace DataBusinessLayer
             DateTime dateOfBirth = DateTime.Now;
             string gender = "";
 
-            if (DAclsPerson.GitPersonByID(personID, ref nationalNo, ref firstName,
+            if (DAclsPerson.GetPersonByID(personID, ref nationalNo, ref firstName,
                 ref secondName, ref thirdName, ref lastName, ref email, ref phone,
                 ref address, ref CountryID, ref imagePath, ref dateOfBirth, ref gender))
             {
@@ -100,12 +100,12 @@ namespace DataBusinessLayer
 
         public static DataTable GitAllPoeple()
         {
-            return DAclsPerson.GitAllPoeple();
+            return DAclsPerson.GetAllPoeple();
         }
 
         public static DataTable GitAllPoepleWithFilter(string ColumnName, string Value)
         {
-            return DAclsPerson.GitAllPoepleWithFilter(ColumnName, Value);
+            return DAclsPerson.GetAllPoepleWithFilter(ColumnName, Value);
         }
 
         private bool _UpdatedPerson()
@@ -151,6 +151,11 @@ namespace DataBusinessLayer
         public static bool DeletePerson(int PersonID)
         {
             return DAclsPerson.DeleteRecord("Poeple", "PersonID", PersonID.ToString());
+        }
+
+        public string FullName()
+        {
+            return FirstName + " " + SecondName + " " + ThirdName + " " + LastName;
         }
 
     }

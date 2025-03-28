@@ -100,7 +100,10 @@ namespace DataAccessLayer
 
                 object Result = Command.ExecuteScalar();
 
-                Res = Result.ToString();
+                if (Result != null)
+                {
+                    Res = Result.ToString();
+                }
             }
             catch
             {
