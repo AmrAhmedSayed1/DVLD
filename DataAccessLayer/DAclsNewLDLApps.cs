@@ -277,5 +277,39 @@ namespace DataAccessLayer
 
             return dt;
         }
+
+        public static bool DeleteNewLDLAPP(int NewLDLAppID)
+        {
+            bool IsDeleted = false;
+
+            using (SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString))
+            {
+                string QueryString = @"delete from NewLDLApps where NewLDLAppID = @NewLDLAppID;";
+
+                SqlCommand Command = new SqlCommand(QueryString, Connection);
+
+                Command.Parameters.AddWithValue("@NewLDLAppID", NewLDLAppID);
+
+
+                try
+                {
+                    Connection.Open();
+
+                    int NumOfAffectedRows = Command.ExecuteNonQuery();
+
+                    IsDeleted = (NumOfAffectedRows > 0);
+                }
+                catch
+                {
+                    IsDeleted = false;
+                }
+                finally
+                {
+                    Connection.Close();
+                }
+            }
+
+            return IsDeleted;
+        }
     }
 }

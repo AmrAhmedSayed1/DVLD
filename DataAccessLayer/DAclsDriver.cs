@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -86,6 +87,79 @@ namespace DataAccessLayer
             }
 
             return IsFound;
+        }
+
+        public static DataTable GetAllDriversWithFilter(string ColumnName, string Value)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
+
+            string QueryString = $@"SELECT * from DriversView where [{ColumnName}] like @Value";
+
+            SqlCommand Command = new SqlCommand(QueryString, connection);
+
+            Command.Parameters.AddWithValue("Value", "%" + Value + "%");
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if (Reader.HasRows)
+                {
+                    dt.Load(Reader);
+                }
+
+                Reader.Close();
+            }
+            catch (Exception ex)
+            {
+                dt = new DataTable();
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+        }
+
+        public static DataTable GetAllDrivers()
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(DAclsSettings.ConnectionString);
+
+            string QueryString = $@"SELECT * from DriversView;";
+
+            SqlCommand Command = new SqlCommand(QueryString, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if (Reader.HasRows)
+                {
+                    dt.Load(Reader);
+                }
+
+                Reader.Close();
+            }
+            catch (Exception ex)
+            {
+                dt = new DataTable();
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
         }
 
     }

@@ -29,17 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLicensesHistory));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tb = new System.Windows.Forms.TabControl();
             this.tpLocal = new System.Windows.Forms.TabPage();
-            this.uctrlPersonalDetails1 = new DVLD.uctrlPersonalDetails();
-            this.tbInternational = new System.Windows.Forms.TabPage();
             this.dgvLDLS = new System.Windows.Forms.DataGridView();
+            this.tbInternational = new System.Windows.Forms.TabPage();
+            this.dgvI_Licenses = new System.Windows.Forms.DataGridView();
+            this.uctrlPersonalDetails1 = new DVLD.uctrlPersonalDetails();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tb.SuspendLayout();
             this.tpLocal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLDLS)).BeginInit();
+            this.tbInternational.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvI_Licenses)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -85,25 +91,6 @@
             this.tpLocal.TabIndex = 0;
             this.tpLocal.Text = "Local";
             // 
-            // uctrlPersonalDetails1
-            // 
-            this.uctrlPersonalDetails1.BackColor = System.Drawing.Color.White;
-            this.uctrlPersonalDetails1.Location = new System.Drawing.Point(297, 70);
-            this.uctrlPersonalDetails1.Name = "uctrlPersonalDetails1";
-            this.uctrlPersonalDetails1.Size = new System.Drawing.Size(1199, 503);
-            this.uctrlPersonalDetails1.TabIndex = 0;
-            // 
-            // tbInternational
-            // 
-            this.tbInternational.BackColor = System.Drawing.Color.White;
-            this.tbInternational.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbInternational.Location = new System.Drawing.Point(4, 25);
-            this.tbInternational.Name = "tbInternational";
-            this.tbInternational.Padding = new System.Windows.Forms.Padding(3);
-            this.tbInternational.Size = new System.Drawing.Size(1476, 173);
-            this.tbInternational.TabIndex = 1;
-            this.tbInternational.Text = "International";
-            // 
             // dgvLDLS
             // 
             this.dgvLDLS.AllowUserToAddRows = false;
@@ -120,6 +107,67 @@
             this.dgvLDLS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLDLS.Size = new System.Drawing.Size(1464, 156);
             this.dgvLDLS.TabIndex = 2;
+            // 
+            // tbInternational
+            // 
+            this.tbInternational.BackColor = System.Drawing.Color.White;
+            this.tbInternational.Controls.Add(this.dgvI_Licenses);
+            this.tbInternational.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbInternational.Location = new System.Drawing.Point(4, 25);
+            this.tbInternational.Name = "tbInternational";
+            this.tbInternational.Padding = new System.Windows.Forms.Padding(3);
+            this.tbInternational.Size = new System.Drawing.Size(1476, 173);
+            this.tbInternational.TabIndex = 1;
+            this.tbInternational.Text = "International";
+            // 
+            // dgvI_Licenses
+            // 
+            this.dgvI_Licenses.AllowUserToAddRows = false;
+            this.dgvI_Licenses.AllowUserToDeleteRows = false;
+            this.dgvI_Licenses.AllowUserToOrderColumns = true;
+            this.dgvI_Licenses.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvI_Licenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvI_Licenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvI_Licenses.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvI_Licenses.Location = new System.Drawing.Point(6, 8);
+            this.dgvI_Licenses.MultiSelect = false;
+            this.dgvI_Licenses.Name = "dgvI_Licenses";
+            this.dgvI_Licenses.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvI_Licenses.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvI_Licenses.RowHeadersWidth = 51;
+            this.dgvI_Licenses.RowTemplate.Height = 24;
+            this.dgvI_Licenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvI_Licenses.Size = new System.Drawing.Size(1464, 156);
+            this.dgvI_Licenses.TabIndex = 3;
+            // 
+            // uctrlPersonalDetails1
+            // 
+            this.uctrlPersonalDetails1.BackColor = System.Drawing.Color.White;
+            this.uctrlPersonalDetails1.Location = new System.Drawing.Point(297, 70);
+            this.uctrlPersonalDetails1.Name = "uctrlPersonalDetails1";
+            this.uctrlPersonalDetails1.Size = new System.Drawing.Size(1199, 503);
+            this.uctrlPersonalDetails1.TabIndex = 0;
             // 
             // frmLicensesHistory
             // 
@@ -139,6 +187,8 @@
             this.tb.ResumeLayout(false);
             this.tpLocal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLDLS)).EndInit();
+            this.tbInternational.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvI_Licenses)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +203,6 @@
         private System.Windows.Forms.TabPage tpLocal;
         private System.Windows.Forms.TabPage tbInternational;
         private System.Windows.Forms.DataGridView dgvLDLS;
+        private System.Windows.Forms.DataGridView dgvI_Licenses;
     }
 }

@@ -43,7 +43,7 @@ namespace DVLD
             License.ClassID = _NewLDLApp.ClassID;
             License.ApplicationID = App.AppID;
             License.IssueDate = DateTime.Now;
-            License.ExpirationDate = DateTime.Now.AddYears(DBclsLicensesClasses.GetExpirationDate(_NewLDLApp.ClassID));
+            License.ExpirationDate = DateTime.Now.AddYears(DBclsLicensesClasses.GetValidityDate(_NewLDLApp.ClassID));
             License.IssueReasonID = 1; // 1 = New
             License.IsActive = true;
             License.IsDetained = false;

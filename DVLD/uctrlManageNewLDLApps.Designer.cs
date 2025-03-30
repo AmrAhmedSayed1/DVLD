@@ -222,6 +222,7 @@
             this.tsmDeleteApp.Name = "tsmDeleteApp";
             this.tsmDeleteApp.Size = new System.Drawing.Size(356, 54);
             this.tsmDeleteApp.Text = "Delete Application";
+            this.tsmDeleteApp.Click += new System.EventHandler(this.tsmDeleteApp_Click);
             // 
             // tsmEditApp
             // 
@@ -231,6 +232,7 @@
             this.tsmEditApp.Name = "tsmEditApp";
             this.tsmEditApp.Size = new System.Drawing.Size(356, 54);
             this.tsmEditApp.Text = "Edit Application";
+            this.tsmEditApp.Click += new System.EventHandler(this.tsmEditApp_Click);
             // 
             // toolStripSeparator1
             // 

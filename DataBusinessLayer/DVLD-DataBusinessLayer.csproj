@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +48,7 @@
     <Compile Include="DBclsCountry.cs" />
     <Compile Include="DBclsDriver.cs" />
     <Compile Include="DBclsIssueReason.cs" />
+    <Compile Include="DBclsI_License.cs" />
     <Compile Include="DBclsLicense.cs" />
     <Compile Include="DBclsLicensesClasses.cs" />
     <Compile Include="DBclsNewLDLApp.cs" />
@@ -61,6 +64,12 @@
       <Project>{05154415-de0b-420e-a4e5-2432ee455163}</Project>
       <Name>DVLD-DataAccessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="frmManageDrivers.cd">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="frmManageDrivers.Designer.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

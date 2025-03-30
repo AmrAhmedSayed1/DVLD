@@ -98,5 +98,10 @@ namespace DataBusinessLayer
             return DAclsApplications.IsValueExist("Applications", "ApplicationID", Value);
         }
 
+        public static bool DeleteAppliaction(int AppID)
+        {
+            return DAclsApplications.DeleteApplication(AppID);
+        }
+
     }
 }

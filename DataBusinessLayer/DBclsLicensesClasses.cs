@@ -23,7 +23,7 @@ namespace DataBusinessLayer
             return DAclsLicensesClasses.GetValueFromTable("ClassName", "LicensesClasses", "ClassID", ClassID.ToString());
         }
 
-        public static int GetExpirationDate(int ClassID)
+        public static int GetValidityDate(int ClassID)
         {
             return Convert.ToInt32(clsCRUD.GetValueFromTable("Validity", "LicensesClasses", "ClassID", ClassID.ToString()));
         }

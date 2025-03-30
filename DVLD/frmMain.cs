@@ -72,5 +72,23 @@ namespace DVLD
             frmManageNewLDLApps frm = new frmManageNewLDLApps();
             frm.ShowDialog();
         }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageDrivers frm = new frmManageDrivers();
+            frm.ShowDialog();
+        }
+
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmIssueIDL frm = new frmIssueIDL();
+            frm.ShowDialog();
+        }
+
+        private void internationalLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageILicensesApps frm = new frmManageILicensesApps();
+            frm.ShowDialog();
+        }
     }
 }

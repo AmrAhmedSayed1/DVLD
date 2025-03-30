@@ -116,5 +116,10 @@ namespace DataBusinessLayer
             return DAclsNewLDLApps.GetAllNewLDLAppsWithFilter(ColumnName, Value);
         }
 
+        public static bool DeleteNewLDLApp(int NewLDLAppID)
+        {
+            return DAclsNewLDLApps.DeleteNewLDLAPP(NewLDLAppID);
+        }
+
     }
 }

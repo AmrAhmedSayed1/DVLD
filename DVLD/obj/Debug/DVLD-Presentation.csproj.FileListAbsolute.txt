@@ -43,3 +43,11 @@ C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmIssueLDL.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmLicenseInfo.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlLicenseInfo.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmLicensesHistory.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageDrivers.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageDrivers.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAppInfo.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmIssueIDL.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlIntLicenseInfo.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmI_LicenseInfo.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageILicensesApps.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageIntApps.resources

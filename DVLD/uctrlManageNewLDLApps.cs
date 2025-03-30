@@ -238,7 +238,7 @@ namespace DVLD
             tsmCancelApp.Enabled = false;
             tsmScheduleTests.Enabled = false;
             tsmIssueDLFT.Enabled = false;
-            tsmShowLicense.Enabled = true;
+            tsmShowLicense.Enabled = false;
 
             tsmShowAppDetails.Enabled = true;
         }
@@ -287,7 +287,7 @@ namespace DVLD
                 return;
             DBclsApplication App = new DBclsApplication(AppID);
 
-            
+            _HandillingScheduleTests();
 
             if (App.AppStatusID == 1)
                 _HandllingTSMS_Enable_New();
@@ -296,7 +296,7 @@ namespace DVLD
             else
                 _HandllingTSMS_Enable_Cancel();
 
-            _HandillingScheduleTests();
+            
         }
 
         private void tsmScheduleVisionTest_Click(object sender, EventArgs e)
@@ -346,7 +346,8 @@ namespace DVLD
             if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
                 return;
 
-            
+            frmAppInfo frm = new frmAppInfo(new DBclsApplication(AppID));
+            frm.ShowDialog();
         }
 
         private void tsmShowPersonLHis_Click(object sender, EventArgs e)
@@ -359,6 +360,55 @@ namespace DVLD
 
             frmLicensesHistory frm = new frmLicensesHistory(App.PersonID);
             frm.ShowDialog();
+        }
+
+        private bool _DeleteNewLDLApp(int AppID)
+        {
+            DBclsNewLDLApp newLDLApp = new DBclsNewLDLApp(AppID, true);
+
+            if (MessageBox.Show("Are you sure you want to delete this Application?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                if (DBclsNewLDLApp.DeleteNewLDLApp(newLDLApp.NewLDLAppID))
+                {
+                    if (DBclsApplication.DeleteAppliaction(AppID))
+                    {
+                        MessageBox.Show("The application has been deleted successfully?", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                }
+                
+            }
+            MessageBox.Show("This Application has not been deleted because it is linked to other data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            return false;
+        }
+
+        private void tsmDeleteApp_Click(object sender, EventArgs e)
+        {
+            int AppID;
+            if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
+                return;
+
+            _DeleteNewLDLApp(AppID);
+            RefreshDGVAfterAction();
+        }
+
+        private void tsmEditApp_Click(object sender, EventArgs e)
+        {
+            int AppID;
+            if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
+                return;
+
+            DBclsNewLDLApp newLDLApp = new DBclsNewLDLApp(AppID, true);
+
+            if (newLDLApp.PassedTests == 0)
+            {
+                frmAddNewLDLApp frm = new frmAddNewLDLApp(newLDLApp, frmAddNewLDLApp._enAddOrEdit.Edit);
+                frm.ShowDialog();
+                RefreshDGVAfterAction();
+            }
+            else
+                MessageBox.Show("This operation is not allowed because the number of passed tests is greater than 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

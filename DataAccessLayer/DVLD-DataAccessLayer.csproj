@@ -46,6 +46,7 @@
     <Compile Include="DAclsApplicationsTypes.cs" />
     <Compile Include="DAclsCountry.cs" />
     <Compile Include="DAclsDriver.cs" />
+    <Compile Include="DAclsI_License.cs" />
     <Compile Include="DAclsLicense.cs" />
     <Compile Include="DAclsLicensesClasses.cs" />
     <Compile Include="DAclsNewLDLApps.cs" />

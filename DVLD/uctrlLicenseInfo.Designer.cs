@@ -30,30 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctrlLicenseInfo));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblGender = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.lllll = new System.Windows.Forms.Label();
-            this.lblLicenseID = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.lll = new System.Windows.Forms.Label();
-            this.lblNationalNo = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.llll = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.ll = new System.Windows.Forms.Label();
-            this.lblClass = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.l = new System.Windows.Forms.Label();
-            this.lblNote = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.kmlyf = new System.Windows.Forms.Label();
-            this.lblIssueDate = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.lllllll = new System.Windows.Forms.Label();
-            this.lblIssueReason = new System.Windows.Forms.Label();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.lllk = new System.Windows.Forms.Label();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.lblIsDetained = new System.Windows.Forms.Label();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -69,22 +46,45 @@
             this.lblIsActive = new System.Windows.Forms.Label();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.lkh = new System.Windows.Forms.Label();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
+            this.lblNote = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.kmlyf = new System.Windows.Forms.Label();
+            this.lblIssueDate = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.lllllll = new System.Windows.Forms.Label();
+            this.lblIssueReason = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.lllk = new System.Windows.Forms.Label();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.lllll = new System.Windows.Forms.Label();
+            this.lblLicenseID = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.lll = new System.Windows.Forms.Label();
+            this.lblNationalNo = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.llll = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.ll = new System.Windows.Forms.Label();
+            this.lblClass = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.l = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -138,237 +138,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "License Info";
             // 
-            // lblGender
+            // pbPersonImage
             // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(225, 270);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(34, 25);
-            this.lblGender.TabIndex = 14;
-            this.lblGender.Text = "??";
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(177, 270);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(42, 29);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 13;
-            this.pictureBox5.TabStop = false;
-            // 
-            // lllll
-            // 
-            this.lllll.AutoSize = true;
-            this.lllll.Location = new System.Drawing.Point(15, 270);
-            this.lllll.Name = "lllll";
-            this.lllll.Size = new System.Drawing.Size(94, 29);
-            this.lllll.TabIndex = 12;
-            this.lllll.Text = "Gender";
-            // 
-            // lblLicenseID
-            // 
-            this.lblLicenseID.AutoSize = true;
-            this.lblLicenseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLicenseID.Location = new System.Drawing.Point(225, 158);
-            this.lblLicenseID.Name = "lblLicenseID";
-            this.lblLicenseID.Size = new System.Drawing.Size(34, 25);
-            this.lblLicenseID.TabIndex = 11;
-            this.lblLicenseID.Text = "??";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(177, 158);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(42, 29);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 10;
-            this.pictureBox4.TabStop = false;
-            // 
-            // lll
-            // 
-            this.lll.AutoSize = true;
-            this.lll.Location = new System.Drawing.Point(15, 158);
-            this.lll.Name = "lll";
-            this.lll.Size = new System.Drawing.Size(126, 29);
-            this.lll.TabIndex = 9;
-            this.lll.Text = "License ID";
-            // 
-            // lblNationalNo
-            // 
-            this.lblNationalNo.AutoSize = true;
-            this.lblNationalNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNationalNo.Location = new System.Drawing.Point(225, 214);
-            this.lblNationalNo.Name = "lblNationalNo";
-            this.lblNationalNo.Size = new System.Drawing.Size(34, 25);
-            this.lblNationalNo.TabIndex = 8;
-            this.lblNationalNo.Text = "??";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(177, 214);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(42, 29);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 7;
-            this.pictureBox3.TabStop = false;
-            // 
-            // llll
-            // 
-            this.llll.AutoSize = true;
-            this.llll.Location = new System.Drawing.Point(15, 214);
-            this.llll.Name = "llll";
-            this.llll.Size = new System.Drawing.Size(140, 29);
-            this.llll.TabIndex = 6;
-            this.llll.Text = "National No";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(225, 102);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(34, 25);
-            this.lblName.TabIndex = 5;
-            this.lblName.Text = "??";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(177, 102);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(42, 29);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            // 
-            // ll
-            // 
-            this.ll.AutoSize = true;
-            this.ll.Location = new System.Drawing.Point(15, 102);
-            this.ll.Name = "ll";
-            this.ll.Size = new System.Drawing.Size(78, 29);
-            this.ll.TabIndex = 3;
-            this.ll.Text = "Name";
-            // 
-            // lblClass
-            // 
-            this.lblClass.AutoSize = true;
-            this.lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClass.Location = new System.Drawing.Point(225, 46);
-            this.lblClass.Name = "lblClass";
-            this.lblClass.Size = new System.Drawing.Size(34, 25);
-            this.lblClass.TabIndex = 2;
-            this.lblClass.Text = "??";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(177, 46);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(42, 29);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // l
-            // 
-            this.l.AutoSize = true;
-            this.l.Location = new System.Drawing.Point(15, 46);
-            this.l.Name = "l";
-            this.l.Size = new System.Drawing.Size(73, 29);
-            this.l.TabIndex = 0;
-            this.l.Text = "Class";
-            // 
-            // lblNote
-            // 
-            this.lblNote.AutoSize = true;
-            this.lblNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNote.Location = new System.Drawing.Point(223, 450);
-            this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(34, 25);
-            this.lblNote.TabIndex = 30;
-            this.lblNote.Text = "??";
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(175, 450);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(42, 29);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 29;
-            this.pictureBox8.TabStop = false;
-            // 
-            // kmlyf
-            // 
-            this.kmlyf.AutoSize = true;
-            this.kmlyf.Location = new System.Drawing.Point(13, 450);
-            this.kmlyf.Name = "kmlyf";
-            this.kmlyf.Size = new System.Drawing.Size(65, 29);
-            this.kmlyf.TabIndex = 28;
-            this.kmlyf.Text = "Note";
-            // 
-            // lblIssueDate
-            // 
-            this.lblIssueDate.AutoSize = true;
-            this.lblIssueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIssueDate.Location = new System.Drawing.Point(223, 338);
-            this.lblIssueDate.Name = "lblIssueDate";
-            this.lblIssueDate.Size = new System.Drawing.Size(34, 25);
-            this.lblIssueDate.TabIndex = 27;
-            this.lblIssueDate.Text = "??";
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(175, 338);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(42, 29);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 26;
-            this.pictureBox9.TabStop = false;
-            // 
-            // lllllll
-            // 
-            this.lllllll.AutoSize = true;
-            this.lllllll.Location = new System.Drawing.Point(13, 338);
-            this.lllllll.Name = "lllllll";
-            this.lllllll.Size = new System.Drawing.Size(126, 29);
-            this.lllllll.TabIndex = 25;
-            this.lllllll.Text = "Issue Date";
-            // 
-            // lblIssueReason
-            // 
-            this.lblIssueReason.AutoSize = true;
-            this.lblIssueReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIssueReason.Location = new System.Drawing.Point(223, 394);
-            this.lblIssueReason.Name = "lblIssueReason";
-            this.lblIssueReason.Size = new System.Drawing.Size(34, 25);
-            this.lblIssueReason.TabIndex = 24;
-            this.lblIssueReason.Text = "??";
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(175, 394);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(42, 29);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 23;
-            this.pictureBox10.TabStop = false;
-            // 
-            // lllk
-            // 
-            this.lllk.AutoSize = true;
-            this.lllk.Location = new System.Drawing.Point(13, 394);
-            this.lllk.Name = "lllk";
-            this.lllk.Size = new System.Drawing.Size(159, 29);
-            this.lllk.TabIndex = 22;
-            this.lllk.Text = "Issue Reason";
+            this.pbPersonImage.Location = new System.Drawing.Point(768, 102);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(256, 265);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPersonImage.TabIndex = 46;
+            this.pbPersonImage.TabStop = false;
             // 
             // lblIsDetained
             // 
@@ -515,14 +292,237 @@
             this.lkh.TabIndex = 31;
             this.lkh.Text = "Is Active";
             // 
-            // pbPersonImage
+            // lblNote
             // 
-            this.pbPersonImage.Location = new System.Drawing.Point(768, 102);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(256, 265);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPersonImage.TabIndex = 46;
-            this.pbPersonImage.TabStop = false;
+            this.lblNote.AutoSize = true;
+            this.lblNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNote.Location = new System.Drawing.Point(223, 450);
+            this.lblNote.Name = "lblNote";
+            this.lblNote.Size = new System.Drawing.Size(34, 25);
+            this.lblNote.TabIndex = 30;
+            this.lblNote.Text = "??";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(175, 450);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(42, 29);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 29;
+            this.pictureBox8.TabStop = false;
+            // 
+            // kmlyf
+            // 
+            this.kmlyf.AutoSize = true;
+            this.kmlyf.Location = new System.Drawing.Point(13, 450);
+            this.kmlyf.Name = "kmlyf";
+            this.kmlyf.Size = new System.Drawing.Size(65, 29);
+            this.kmlyf.TabIndex = 28;
+            this.kmlyf.Text = "Note";
+            // 
+            // lblIssueDate
+            // 
+            this.lblIssueDate.AutoSize = true;
+            this.lblIssueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIssueDate.Location = new System.Drawing.Point(223, 338);
+            this.lblIssueDate.Name = "lblIssueDate";
+            this.lblIssueDate.Size = new System.Drawing.Size(34, 25);
+            this.lblIssueDate.TabIndex = 27;
+            this.lblIssueDate.Text = "??";
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(175, 338);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(42, 29);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 26;
+            this.pictureBox9.TabStop = false;
+            // 
+            // lllllll
+            // 
+            this.lllllll.AutoSize = true;
+            this.lllllll.Location = new System.Drawing.Point(13, 338);
+            this.lllllll.Name = "lllllll";
+            this.lllllll.Size = new System.Drawing.Size(126, 29);
+            this.lllllll.TabIndex = 25;
+            this.lllllll.Text = "Issue Date";
+            // 
+            // lblIssueReason
+            // 
+            this.lblIssueReason.AutoSize = true;
+            this.lblIssueReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIssueReason.Location = new System.Drawing.Point(223, 394);
+            this.lblIssueReason.Name = "lblIssueReason";
+            this.lblIssueReason.Size = new System.Drawing.Size(34, 25);
+            this.lblIssueReason.TabIndex = 24;
+            this.lblIssueReason.Text = "??";
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(175, 394);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(42, 29);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 23;
+            this.pictureBox10.TabStop = false;
+            // 
+            // lllk
+            // 
+            this.lllk.AutoSize = true;
+            this.lllk.Location = new System.Drawing.Point(13, 394);
+            this.lllk.Name = "lllk";
+            this.lllk.Size = new System.Drawing.Size(159, 29);
+            this.lllk.TabIndex = 22;
+            this.lllk.Text = "Issue Reason";
+            // 
+            // lblGender
+            // 
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGender.Location = new System.Drawing.Point(225, 270);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(34, 25);
+            this.lblGender.TabIndex = 14;
+            this.lblGender.Text = "??";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(177, 270);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(42, 29);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 13;
+            this.pictureBox5.TabStop = false;
+            // 
+            // lllll
+            // 
+            this.lllll.AutoSize = true;
+            this.lllll.Location = new System.Drawing.Point(15, 270);
+            this.lllll.Name = "lllll";
+            this.lllll.Size = new System.Drawing.Size(94, 29);
+            this.lllll.TabIndex = 12;
+            this.lllll.Text = "Gender";
+            // 
+            // lblLicenseID
+            // 
+            this.lblLicenseID.AutoSize = true;
+            this.lblLicenseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLicenseID.Location = new System.Drawing.Point(225, 158);
+            this.lblLicenseID.Name = "lblLicenseID";
+            this.lblLicenseID.Size = new System.Drawing.Size(34, 25);
+            this.lblLicenseID.TabIndex = 11;
+            this.lblLicenseID.Text = "??";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(177, 158);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(42, 29);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 10;
+            this.pictureBox4.TabStop = false;
+            // 
+            // lll
+            // 
+            this.lll.AutoSize = true;
+            this.lll.Location = new System.Drawing.Point(15, 158);
+            this.lll.Name = "lll";
+            this.lll.Size = new System.Drawing.Size(126, 29);
+            this.lll.TabIndex = 9;
+            this.lll.Text = "License ID";
+            // 
+            // lblNationalNo
+            // 
+            this.lblNationalNo.AutoSize = true;
+            this.lblNationalNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNationalNo.Location = new System.Drawing.Point(225, 214);
+            this.lblNationalNo.Name = "lblNationalNo";
+            this.lblNationalNo.Size = new System.Drawing.Size(34, 25);
+            this.lblNationalNo.TabIndex = 8;
+            this.lblNationalNo.Text = "??";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(177, 214);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(42, 29);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
+            // 
+            // llll
+            // 
+            this.llll.AutoSize = true;
+            this.llll.Location = new System.Drawing.Point(15, 214);
+            this.llll.Name = "llll";
+            this.llll.Size = new System.Drawing.Size(140, 29);
+            this.llll.TabIndex = 6;
+            this.llll.Text = "National No";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(225, 102);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(34, 25);
+            this.lblName.TabIndex = 5;
+            this.lblName.Text = "??";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(177, 102);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(42, 29);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
+            // ll
+            // 
+            this.ll.AutoSize = true;
+            this.ll.Location = new System.Drawing.Point(15, 102);
+            this.ll.Name = "ll";
+            this.ll.Size = new System.Drawing.Size(78, 29);
+            this.ll.TabIndex = 3;
+            this.ll.Text = "Name";
+            // 
+            // lblClass
+            // 
+            this.lblClass.AutoSize = true;
+            this.lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClass.Location = new System.Drawing.Point(225, 46);
+            this.lblClass.Name = "lblClass";
+            this.lblClass.Size = new System.Drawing.Size(34, 25);
+            this.lblClass.TabIndex = 2;
+            this.lblClass.Text = "??";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(177, 46);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 29);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // l
+            // 
+            this.l.AutoSize = true;
+            this.l.Location = new System.Drawing.Point(15, 46);
+            this.l.Name = "l";
+            this.l.Size = new System.Drawing.Size(73, 29);
+            this.l.TabIndex = 0;
+            this.l.Text = "Class";
             // 
             // uctrlLicenseInfo
             // 
@@ -534,20 +534,20 @@
             this.Size = new System.Drawing.Size(1030, 512);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

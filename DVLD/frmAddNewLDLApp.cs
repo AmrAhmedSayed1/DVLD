@@ -15,9 +15,18 @@ namespace DVLD
     public partial class frmAddNewLDLApp : Form
     {
         private int PersonID = 0;
-        public frmAddNewLDLApp()
+
+        public enum _enAddOrEdit { Add, Edit}
+
+        public _enAddOrEdit _AddOrEdit;
+
+        private DBclsNewLDLApp _NewLDLApp = new DBclsNewLDLApp();
+
+        public frmAddNewLDLApp(DBclsNewLDLApp newLDLApp = null, _enAddOrEdit addEdit = _enAddOrEdit.Add)
         {
             InitializeComponent();
+            _AddOrEdit = addEdit;
+            _NewLDLApp = newLDLApp;
         }
 
         private void btnSearchPerson_Click(object sender, EventArgs e)
@@ -63,12 +72,44 @@ namespace DVLD
             cbLicenseClass.SelectedItem = "Class 3 - Ordinary driving license";
         }
 
+        private void _LoadDataToForm_Edit()
+        {
+            gbFilter.Enabled = false;
+
+            _LoadClassesNamesTocb();
+
+            DBclsApplication App = new DBclsApplication(_NewLDLApp.AppID);
+
+            uctrlPersonalDetails1.PersonID = App.PersonID;
+            uctrlPersonalDetails1.LoadDataToForm();
+
+            lblDLApplicationID.Text = App.AppID.ToString();
+            lblApplicationDate.Text = App.AppDate.ToShortDateString();
+            lblAppFees.Text = DBclsApplicationType.GetAppFees(App.AppTypeID).ToString();
+            lblCreatedBy.Text = App.ByUserID.ToString();
+            lblMode.Text = "Edit Local Driving License Application";
+        }
+
         private void frmAddNewLDLApp_Load(object sender, EventArgs e)
         {
-            lblCreatedBy.Text = clsGlobalUser.User.UserName.ToString();
-            _LoadClassesNamesTocb();
-            lblAppFees.Text = DBclsApplicationType.GetAppFees(1).ToString(); // 1 = References to New Local Driving License Service Type
-            lblApplicationDate.Text = DateTime.Now.ToShortDateString();
+            switch(_AddOrEdit)
+            {
+                case _enAddOrEdit.Add:
+                    {
+                        lblCreatedBy.Text = clsGlobalUser.User.UserName.ToString();
+                        _LoadClassesNamesTocb();
+                        lblAppFees.Text = DBclsApplicationType.GetAppFees(1).ToString(); // 1 = References to New Local Driving License Service Type
+                        lblApplicationDate.Text = DateTime.Now.ToShortDateString();
+                        break;
+                    }
+                case _enAddOrEdit.Edit:
+                    {
+                        _LoadDataToForm_Edit();
+                        break;
+                    }
+            }
+
+            
         }
 
         private bool _IsModeAddNew()
@@ -126,7 +167,9 @@ namespace DVLD
                             NewLDLApp.ClassID = DBclsLicensesClasses.GetLicenseClassIDByClassName(cbLicenseClass.SelectedItem.ToString());
                             NewLDLApp.Save();
 
-                            btnSave.Enabled = false;
+                            gbFilter.Enabled = false;
+
+                            _AddOrEdit = _enAddOrEdit.Edit;
                             return true;
                         }
                         else
@@ -141,9 +184,26 @@ namespace DVLD
             return false;       
         }
 
+        private bool _Save_EditMode()
+        {
+            _NewLDLApp.ClassID = DBclsLicensesClasses.GetLicenseClassIDByClassName(cbLicenseClass.SelectedItem.ToString());
+
+            if(_NewLDLApp.Save())
+            {
+                MessageBox.Show("The application was updated successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            else
+                MessageBox.Show($"The application was not added successfully", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _Save();
+            if (_AddOrEdit == _enAddOrEdit.Add)
+                _Save();
+            else
+                _Save_EditMode();
         }
     }
 }

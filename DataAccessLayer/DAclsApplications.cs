@@ -213,6 +213,39 @@ namespace DataAccessLayer
             return IsUpdated;
         }
         
+        
+        public static bool DeleteApplication(int AppID)
+        {
+            bool IsDeleted = false;
 
+            using (SqlConnection Connection = new SqlConnection(DAclsSettings.ConnectionString))
+            {
+                string QueryString = @"delete from Applications where ApplicationID = @AppID;";
+
+                SqlCommand Command = new SqlCommand(QueryString, Connection);
+
+                Command.Parameters.AddWithValue("@AppID", AppID);
+                
+
+                try
+                {
+                    Connection.Open();
+
+                    int NumOfAffectedRows = Command.ExecuteNonQuery();
+
+                    IsDeleted = (NumOfAffectedRows > 0);
+                }
+                catch
+                {
+                    IsDeleted = false;
+                }
+                finally
+                {
+                    Connection.Close();
+                }
+            }
+
+            return IsDeleted;
+        }
     }
 }

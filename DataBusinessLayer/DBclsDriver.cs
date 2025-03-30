@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,16 @@ namespace DataBusinessLayer
                 return true;
             }
             return false;
+        }
+
+        public static DataTable GetAllDrivers()
+        {
+            return DAclsDriver.GetAllDrivers();
+        }
+
+        public static DataTable GetAllDriversWithFilter(string ColumnName, string Value)
+        {
+            return DAclsDriver.GetAllDriversWithFilter(ColumnName, Value);
         }
 
     }

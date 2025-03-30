@@ -65,6 +65,12 @@
     <Compile Include="frmAdd_Edit_User.Designer.cs">
       <DependentUpon>frmAdd_Edit_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAppInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAppInfo.Designer.cs">
+      <DependentUpon>frmAppInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,11 +89,23 @@
     <Compile Include="frmEditTestType.Designer.cs">
       <DependentUpon>frmEditTestType.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmIssueIDL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIssueIDL.Designer.cs">
+      <DependentUpon>frmIssueIDL.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmIssueLDL.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmIssueLDL.Designer.cs">
       <DependentUpon>frmIssueLDL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmI_LicenseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmI_LicenseInfo.Designer.cs">
+      <DependentUpon>frmI_LicenseInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLicenseInfo.cs">
       <SubType>Form</SubType>
@@ -124,6 +142,18 @@
     </Compile>
     <Compile Include="frmManageApplicationsTypes.Designer.cs">
       <DependentUpon>frmManageApplicationsTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageDrivers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageDrivers.Designer.cs">
+      <DependentUpon>frmManageDrivers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageILicensesApps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageILicensesApps.Designer.cs">
+      <DependentUpon>frmManageILicensesApps.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManageNewLDLApps.cs">
       <SubType>Form</SubType>
@@ -181,11 +211,29 @@
     <Compile Include="uctrlAppInfo.Designer.cs">
       <DependentUpon>uctrlAppInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="uctrlIntLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlIntLicenseInfo.Designer.cs">
+      <DependentUpon>uctrlIntLicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="uctrlLicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="uctrlLicenseInfo.Designer.cs">
       <DependentUpon>uctrlLicenseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uctrlManageDrivers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlManageDrivers.Designer.cs">
+      <DependentUpon>uctrlManageDrivers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uctrlManageIntApps.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlManageIntApps.Designer.cs">
+      <DependentUpon>uctrlManageIntApps.cs</DependentUpon>
     </Compile>
     <Compile Include="uctrlManageNewLDLApps.cs">
       <SubType>UserControl</SubType>
@@ -244,6 +292,9 @@
     <EmbeddedResource Include="frmAdd_Edit_User.resx">
       <DependentUpon>frmAdd_Edit_User.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAppInfo.resx">
+      <DependentUpon>frmAppInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -253,8 +304,14 @@
     <EmbeddedResource Include="frmEditTestType.resx">
       <DependentUpon>frmEditTestType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmIssueIDL.resx">
+      <DependentUpon>frmIssueIDL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIssueLDL.resx">
       <DependentUpon>frmIssueLDL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmI_LicenseInfo.resx">
+      <DependentUpon>frmI_LicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLicenseInfo.resx">
       <DependentUpon>frmLicenseInfo.cs</DependentUpon>
@@ -273,6 +330,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageApplicationsTypes.resx">
       <DependentUpon>frmManageApplicationsTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageDrivers.resx">
+      <DependentUpon>frmManageDrivers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageILicensesApps.resx">
+      <DependentUpon>frmManageILicensesApps.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageNewLDLApps.resx">
       <DependentUpon>frmManageNewLDLApps.cs</DependentUpon>
@@ -310,8 +373,17 @@
     <EmbeddedResource Include="uctrlAppInfo.resx">
       <DependentUpon>uctrlAppInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="uctrlIntLicenseInfo.resx">
+      <DependentUpon>uctrlIntLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="uctrlLicenseInfo.resx">
       <DependentUpon>uctrlLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uctrlManageDrivers.resx">
+      <DependentUpon>uctrlManageDrivers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uctrlManageIntApps.resx">
+      <DependentUpon>uctrlManageIntApps.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="uctrlManageNewLDLApps.resx">
       <DependentUpon>uctrlManageNewLDLApps.cs</DependentUpon>
