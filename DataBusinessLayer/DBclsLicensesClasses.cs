@@ -28,5 +28,9 @@ namespace DataBusinessLayer
             return Convert.ToInt32(clsCRUD.GetValueFromTable("Validity", "LicensesClasses", "ClassID", ClassID.ToString()));
         }
 
+        public static float GetClassFeesByID(int ClassID)
+        {
+            return Convert.ToSingle(clsCRUD.GetValueFromTable("Fees", "LicensesClasses", "ClassID", ClassID.ToString()));
+        }
     }
 }

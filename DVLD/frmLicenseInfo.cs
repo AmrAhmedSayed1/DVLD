@@ -13,16 +13,16 @@ namespace DVLD
 {
     public partial class frmLicenseInfo : Form
     {
-        private int AppID = 0;
-        public frmLicenseInfo(int appID)
+        private int _LicenseID = 0;
+        public frmLicenseInfo(int LicenseID)
         {
             InitializeComponent();
-            AppID = appID;
+            _LicenseID = LicenseID;
         }
 
         private void frmLicenseInfo_Load(object sender, EventArgs e)
         {
-            uctrlLicenseInfo1.License = new DBclsLicense(AppID, true);
+            uctrlLicenseInfo1.License = new DBclsLicense(_LicenseID);
             uctrlLicenseInfo1.LoadLicenseInfo();
         }
 

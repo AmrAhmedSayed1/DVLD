@@ -90,5 +90,11 @@ namespace DVLD
             frmManageILicensesApps frm = new frmManageILicensesApps();
             frm.ShowDialog();
         }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmRenewLicense frm = new frmRenewLicense();
+            frm.ShowDialog();
+        }
     }
 }

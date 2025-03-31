@@ -336,7 +336,9 @@ namespace DVLD
             int AppID;
             if ((AppID = _GetNewLDLAppIDFromDGV()) == 0)
                 return;
-            frmLicenseInfo frm = new frmLicenseInfo(AppID);
+
+            DBclsLicense license = new DBclsLicense(AppID, true);
+            frmLicenseInfo frm = new frmLicenseInfo(license.LicenseID);
             frm.ShowDialog();
         }
 
