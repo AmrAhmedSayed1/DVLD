@@ -52,3 +52,4 @@ C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmI_LicenseInfo.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageILicensesApps.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageIntApps.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmRenewLicense.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmReplacementForL_Or_D.resources

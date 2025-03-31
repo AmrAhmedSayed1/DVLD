@@ -86,7 +86,7 @@ namespace DataBusinessLayer
             return DAclsLicense.UpdateLicense(LicenseID, DriverID, ClassID, ApplicationID, IssueDate, ExpirationDate, IssueReasonID, IsActive, IsDetained, Note);
         }
 
-        public bool _AddNewLicense()
+        private bool _AddNewLicense()
         {
             int tempID = DAclsLicense.AddNewLicense(DriverID, ClassID, ApplicationID, IssueDate, ExpirationDate, IssueReasonID, IsActive, IsDetained, Note);
             if (tempID > 0)

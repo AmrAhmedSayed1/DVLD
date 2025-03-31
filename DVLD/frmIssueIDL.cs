@@ -149,12 +149,6 @@ namespace DVLD
 
         private void btnIssue_Click(object sender, EventArgs e)
         {
-            if(lbl_LicenseID.Text == "??")
-            {
-                MessageBox.Show("Please enter a license id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             _IssueILDL();
         }
 

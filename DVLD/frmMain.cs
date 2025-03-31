@@ -96,5 +96,11 @@ namespace DVLD
             frmRenewLicense frm = new frmRenewLicense();
             frm.ShowDialog();
         }
+
+        private void tsmReplaceForLostOrDamaged_Click(object sender, EventArgs e)
+        {
+            frmReplacementForL_Or_D frm = new frmReplacementForL_Or_D();
+            frm.ShowDialog();
+        }
     }
 }
