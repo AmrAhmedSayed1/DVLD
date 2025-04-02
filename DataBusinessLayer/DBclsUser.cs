@@ -135,6 +135,9 @@ namespace DataBusinessLayer
             return DAclsUser.IsValueExist("Users", ColumnName, Value);
         }
 
-
+        public static string GetUserNameByUserID(int UserID)
+        {
+            return clsCRUD.GetValueFromTable("UserName", "Users", "UserID", UserID.ToString());
+        }
     }
 }

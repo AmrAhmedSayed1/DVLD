@@ -131,29 +131,29 @@ namespace DVLD
             Person.Phone = txtPhone.Text;
         }
 
-        private bool _CheckDateDoesnotExist()
+        private bool _CheckUniqueDateDoesnotExist()
         {
             if (DBclsPerson.IsValueExist("NationalNo", txtNationalNo.Text))
             {
-                MessageBox.Show("This NationalNo already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This National No is already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (DBclsPerson.IsValueExist("Phone", txtPhone.Text))
             {
-                MessageBox.Show("This Phone already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This Phone is already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
 
             if (DBclsPerson.IsValueExist("Email", txtEmail.Text))
             {
-                MessageBox.Show("This Email already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This Email is already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             if (DBclsPerson.IsValueExist("ImagePath", pbPersonImage.ImageLocation))
             {
-                MessageBox.Show("This Image already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This Image is already exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -195,6 +195,12 @@ namespace DVLD
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (_EnMode == _enMode.AddNew)
+            {
+                if (!_CheckUniqueDateDoesnotExist())
+                    return;
+            }
+
             if (!_CheckAllFieldFull())
                 return;
 

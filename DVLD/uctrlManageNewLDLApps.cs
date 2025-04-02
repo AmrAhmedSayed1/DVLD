@@ -137,7 +137,7 @@ namespace DVLD
 
         private void btnAddNewLDLApp_Click(object sender, EventArgs e)
         {
-            frmAddNewLDLApp frm = new frmAddNewLDLApp();
+            frmAdd_EditNewLDLApp frm = new frmAdd_EditNewLDLApp();
             frm.ShowDialog();
             RefreshDGVAfterAction();
         }
@@ -405,7 +405,7 @@ namespace DVLD
 
             if (newLDLApp.PassedTests == 0)
             {
-                frmAddNewLDLApp frm = new frmAddNewLDLApp(newLDLApp, frmAddNewLDLApp._enAddOrEdit.Edit);
+                frmAdd_EditNewLDLApp frm = new frmAdd_EditNewLDLApp(newLDLApp, frmAdd_EditNewLDLApp._enAddOrEdit.Edit);
                 frm.ShowDialog();
                 RefreshDGVAfterAction();
             }

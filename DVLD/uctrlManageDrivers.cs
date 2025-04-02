@@ -67,5 +67,51 @@ namespace DVLD
         {
             _LoadDriversWithFilter(cbFilterBy.SelectedItem.ToString(), txtFilter.Text);
         }
+
+        private int _GetPersonID()
+        {
+            int PersonID = (Convert.ToInt32(dgvDrivers.SelectedRows[0].Cells[1].Value));
+
+            if (DBclsLicense.IsValueExist("Poeple", "PersonID", PersonID.ToString()))
+                return PersonID;
+            else
+            {
+                MessageBox.Show("The Driver wich you selected was deleted before you selected it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        private void tsmShowPersonDetails_Click(object sender, EventArgs e)
+        {
+            int PersonID = 0;
+
+            if ((PersonID = _GetPersonID()) == 0)
+                return;
+
+            frmPersonalDetails frm = new frmPersonalDetails(PersonID);
+            frm.ShowDialog();
+        }
+
+        private void tsmShowLicenseHistory_Click(object sender, EventArgs e)
+        {
+            int PersonID = 0;
+
+            if ((PersonID = _GetPersonID()) == 0)
+                return;
+
+            frmLicensesHistory frm = new frmLicensesHistory(PersonID);
+            frm.ShowDialog();
+        }
+
+        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cbFilterBy.SelectedItem.ToString() == "Driver ID" || cbFilterBy.SelectedItem.ToString() == "Person ID")
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+        }
     }
 }

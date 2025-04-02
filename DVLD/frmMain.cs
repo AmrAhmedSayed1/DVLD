@@ -63,7 +63,7 @@ namespace DVLD
 
         private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddNewLDLApp frm = new frmAddNewLDLApp();
+            frmAdd_EditNewLDLApp frm = new frmAdd_EditNewLDLApp();
             frm.ShowDialog();
         }
 
@@ -100,6 +100,36 @@ namespace DVLD
         private void tsmReplaceForLostOrDamaged_Click(object sender, EventArgs e)
         {
             frmReplacementForL_Or_D frm = new frmReplacementForL_Or_D();
+            frm.ShowDialog();
+        }
+
+        private void tsmReleaseDetained_Click(object sender, EventArgs e)
+        {
+            frmReleaseDL frm = new frmReleaseDL();
+            frm.ShowDialog();
+        }
+
+        private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageDetainedLicenses frm = new frmManageDetainedLicenses();
+            frm.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense frm = new frmDetainLicense();
+            frm.ShowDialog();
+        }
+
+        private void releaseDetainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDL frm = new frmReleaseDL();
+            frm.ShowDialog();
+        }
+
+        private void tsmRetakeTest_Click(object sender, EventArgs e)
+        {
+            frmManageNewLDLApps frm = new frmManageNewLDLApps();
             frm.ShowDialog();
         }
     }

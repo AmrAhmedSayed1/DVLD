@@ -84,6 +84,7 @@
             this.txtFilter.TabIndex = 20;
             this.txtFilter.Visible = false;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
             // 
             // label1
             // 
@@ -188,7 +189,7 @@
             this.tsmShowLicenseInfo,
             this.tsmShowPersonLHis});
             this.cmsManageIntLicenseApps.Name = "contextMenuStrip1";
-            this.cmsManageIntLicenseApps.Size = new System.Drawing.Size(327, 194);
+            this.cmsManageIntLicenseApps.Size = new System.Drawing.Size(327, 166);
             // 
             // tsmShowPersonDetails
             // 

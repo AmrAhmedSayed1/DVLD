@@ -46,6 +46,7 @@
     <Compile Include="DBclsApplication.cs" />
     <Compile Include="DBclsApplicationType.cs" />
     <Compile Include="DBclsCountry.cs" />
+    <Compile Include="DBclsDetainedLicense.cs" />
     <Compile Include="DBclsDriver.cs" />
     <Compile Include="DBclsIssueReason.cs" />
     <Compile Include="DBclsI_License.cs" />

@@ -38,8 +38,6 @@ namespace DVLD
             {
                 dgvI_Licenses.Columns[0].Width = 200;
                 dgvI_Licenses.Columns[1].Width = 200;
-                dgvI_Licenses.Columns[2].Width = 200;
-                dgvI_Licenses.Columns[3].Width = 200;
                 dgvI_Licenses.Columns[3].Width = 200;
             }
         }
@@ -51,6 +49,61 @@ namespace DVLD
 
             _LoadLDLS();
             _LoadI_LDLS();
+        }
+
+        private int _GetLicenseID()
+        {
+            int LicenseID = (Convert.ToInt32(dgvLDLS.SelectedRows[0].Cells[0].Value));
+
+            if (DBclsLicense.IsValueExist("Licenses", "LicenseID", LicenseID.ToString()))
+                return LicenseID;
+
+            else
+            {
+                MessageBox.Show("The License wich you selected was deleted before you selected it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        private int _GetILicenseID()
+        {
+            int ILicenseID = (Convert.ToInt32(dgvI_Licenses.SelectedRows[0].Cells[0].Value));
+
+            if (DBclsLicense.IsValueExist("I_Licenses", "I_LicenseID", ILicenseID.ToString()))
+                return ILicenseID;
+
+            else
+            {
+                MessageBox.Show("The License wich you selected was deleted before you selected it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        private void tsmShowLicenseDetails_Click(object sender, EventArgs e)
+        {
+            int LicenseID = 0;
+
+            if ((LicenseID = _GetLicenseID()) == 0)
+                return;
+
+            frmLicenseInfo frm = new frmLicenseInfo(LicenseID);
+            frm.ShowDialog();
+        }
+
+        private void tsmShowILicenseDetails_Click(object sender, EventArgs e)
+        {
+            int ILicenseID = 0;
+
+            if ((ILicenseID = _GetILicenseID()) == 0)
+                return;
+
+            frmI_LicenseInfo frm = new frmI_LicenseInfo(new DBclsI_License(ILicenseID));
+            frm.ShowDialog();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

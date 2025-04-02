@@ -1,6 +1,6 @@
 ﻿namespace DVLD
 {
-    partial class frmAddNewLDLApp
+    partial class frmAdd_EditNewLDLApp
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddNewLDLApp));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdd_EditNewLDLApp));
             this.epConfirmPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.epUserName = new System.Windows.Forms.ErrorProvider(this.components);
             this.epPassword = new System.Windows.Forms.ErrorProvider(this.components);

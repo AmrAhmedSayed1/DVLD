@@ -162,5 +162,13 @@ namespace DVLD
             frmLicensesHistory frm = new frmLicensesHistory(dr.PersonID);
             frm.ShowDialog();
         }
+
+        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

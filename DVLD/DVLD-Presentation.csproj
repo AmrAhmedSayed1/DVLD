@@ -47,11 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsGlobalUser.cs" />
-    <Compile Include="frmAddNewLDLApp.cs">
+    <Compile Include="frmAdd_EditNewLDLApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddNewLDLApp.Designer.cs">
-      <DependentUpon>frmAddNewLDLApp.cs</DependentUpon>
+    <Compile Include="frmAdd_EditNewLDLApp.Designer.cs">
+      <DependentUpon>frmAdd_EditNewLDLApp.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddEditTestAppointment.cs">
       <SubType>Form</SubType>
@@ -76,6 +76,12 @@
     </Compile>
     <Compile Include="frmChangePassword.Designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetainLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetainLicense.Designer.cs">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEditApplicationType.cs">
       <SubType>Form</SubType>
@@ -143,6 +149,12 @@
     <Compile Include="frmManageApplicationsTypes.Designer.cs">
       <DependentUpon>frmManageApplicationsTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageDetainedLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageDetainedLicenses.Designer.cs">
+      <DependentUpon>frmManageDetainedLicenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageDrivers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +196,12 @@
     </Compile>
     <Compile Include="frmPersonalDetails.Designer.cs">
       <DependentUpon>frmPersonalDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReleaseDL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReleaseDL.Designer.cs">
+      <DependentUpon>frmReleaseDL.cs</DependentUpon>
     </Compile>
     <Compile Include="frmRenewLicense.cs">
       <SubType>Form</SubType>
@@ -295,8 +313,8 @@
     <Compile Include="uctrlUserDetails.Designer.cs">
       <DependentUpon>uctrlUserDetails.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmAddNewLDLApp.resx">
-      <DependentUpon>frmAddNewLDLApp.cs</DependentUpon>
+    <EmbeddedResource Include="frmAdd_EditNewLDLApp.resx">
+      <DependentUpon>frmAdd_EditNewLDLApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddEditTestAppointment.resx">
       <DependentUpon>frmAddEditTestAppointment.cs</DependentUpon>
@@ -309,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetainLicense.resx">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditApplicationType.resx">
       <DependentUpon>frmEditApplicationType.cs</DependentUpon>
@@ -343,6 +364,9 @@
     <EmbeddedResource Include="frmManageApplicationsTypes.resx">
       <DependentUpon>frmManageApplicationsTypes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmManageDetainedLicenses.resx">
+      <DependentUpon>frmManageDetainedLicenses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmManageDrivers.resx">
       <DependentUpon>frmManageDrivers.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPersonalDetails.resx">
       <DependentUpon>frmPersonalDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReleaseDL.resx">
+      <DependentUpon>frmReleaseDL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRenewLicense.resx">
       <DependentUpon>frmRenewLicense.cs</DependentUpon>

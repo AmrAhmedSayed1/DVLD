@@ -56,6 +56,9 @@
             this.tsmChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSignOut = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.manageDetainedLicensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detainLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.releaseDetainLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -178,6 +181,7 @@
             this.tsmReleaseDetained.Name = "tsmReleaseDetained";
             this.tsmReleaseDetained.Size = new System.Drawing.Size(511, 38);
             this.tsmReleaseDetained.Text = "Release Detained Driving License";
+            this.tsmReleaseDetained.Click += new System.EventHandler(this.tsmReleaseDetained_Click);
             // 
             // tsmRetakeTest
             // 
@@ -186,6 +190,7 @@
             this.tsmRetakeTest.Name = "tsmRetakeTest";
             this.tsmRetakeTest.Size = new System.Drawing.Size(511, 38);
             this.tsmRetakeTest.Text = "Retake Test";
+            this.tsmRetakeTest.Click += new System.EventHandler(this.tsmRetakeTest_Click);
             // 
             // tsmManageApplciations
             // 
@@ -224,6 +229,10 @@
             // 
             // tsmDetainLicenses
             // 
+            this.tsmDetainLicenses.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manageDetainedLicensesToolStripMenuItem,
+            this.detainLicenseToolStripMenuItem,
+            this.releaseDetainLicenseToolStripMenuItem});
             this.tsmDetainLicenses.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmDetainLicenses.Image = ((System.Drawing.Image)(resources.GetObject("tsmDetainLicenses.Image")));
             this.tsmDetainLicenses.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -333,6 +342,33 @@
             this.label1.Text = "DVLD : Developed By AMR AHMED";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
+            // manageDetainedLicensesToolStripMenuItem
+            // 
+            this.manageDetainedLicensesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("manageDetainedLicensesToolStripMenuItem.Image")));
+            this.manageDetainedLicensesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.manageDetainedLicensesToolStripMenuItem.Name = "manageDetainedLicensesToolStripMenuItem";
+            this.manageDetainedLicensesToolStripMenuItem.Size = new System.Drawing.Size(378, 54);
+            this.manageDetainedLicensesToolStripMenuItem.Text = "Manage Detained Licenses";
+            this.manageDetainedLicensesToolStripMenuItem.Click += new System.EventHandler(this.manageDetainedLicensesToolStripMenuItem_Click);
+            // 
+            // detainLicenseToolStripMenuItem
+            // 
+            this.detainLicenseToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("detainLicenseToolStripMenuItem.Image")));
+            this.detainLicenseToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.detainLicenseToolStripMenuItem.Name = "detainLicenseToolStripMenuItem";
+            this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(378, 54);
+            this.detainLicenseToolStripMenuItem.Text = "Detain License";
+            this.detainLicenseToolStripMenuItem.Click += new System.EventHandler(this.detainLicenseToolStripMenuItem_Click);
+            // 
+            // releaseDetainLicenseToolStripMenuItem
+            // 
+            this.releaseDetainLicenseToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("releaseDetainLicenseToolStripMenuItem.Image")));
+            this.releaseDetainLicenseToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.releaseDetainLicenseToolStripMenuItem.Name = "releaseDetainLicenseToolStripMenuItem";
+            this.releaseDetainLicenseToolStripMenuItem.Size = new System.Drawing.Size(378, 54);
+            this.releaseDetainLicenseToolStripMenuItem.Text = "Release Detain License";
+            this.releaseDetainLicenseToolStripMenuItem.Click += new System.EventHandler(this.releaseDetainLicenseToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -384,6 +420,9 @@
         private System.Windows.Forms.ToolStripMenuItem localLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem internationalLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem internationalLicenseApplicationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageDetainedLicensesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detainLicenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem releaseDetainLicenseToolStripMenuItem;
     }
 }
 

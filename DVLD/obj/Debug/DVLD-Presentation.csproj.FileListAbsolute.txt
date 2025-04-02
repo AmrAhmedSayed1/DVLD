@@ -31,7 +31,6 @@ C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmEditApplicationType.resour
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmEditTestType.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageTestsTypes.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageTestsTypes.resources
-C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAddNewLDLApp.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageNewLDLApps.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageNewLDLApps.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlNewLDLAppInfo.resources
@@ -53,3 +52,7 @@ C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageILicensesApps.resour
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.uctrlManageIntApps.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmRenewLicense.resources
 C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmReplacementForL_Or_D.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmDetainLicense.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmReleaseDL.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmManageDetainedLicenses.resources
+C:\Users\Amr\source\repos\DVLD\DVLD\obj\Debug\DVLD.frmAdd_EditNewLDLApp.resources

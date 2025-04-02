@@ -28,24 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLicensesHistory));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tb = new System.Windows.Forms.TabControl();
             this.tpLocal = new System.Windows.Forms.TabPage();
             this.dgvLDLS = new System.Windows.Forms.DataGridView();
+            this.cmsManageLDL = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmShowLicenseDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.tbInternational = new System.Windows.Forms.TabPage();
             this.dgvI_Licenses = new System.Windows.Forms.DataGridView();
+            this.cmsManageIDL = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmShowILicenseDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnClose = new System.Windows.Forms.Button();
             this.uctrlPersonalDetails1 = new DVLD.uctrlPersonalDetails();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tb.SuspendLayout();
             this.tpLocal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLDLS)).BeginInit();
+            this.cmsManageLDL.SuspendLayout();
             this.tbInternational.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvI_Licenses)).BeginInit();
+            this.cmsManageIDL.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -98,6 +103,7 @@
             this.dgvLDLS.AllowUserToOrderColumns = true;
             this.dgvLDLS.BackgroundColor = System.Drawing.Color.White;
             this.dgvLDLS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLDLS.ContextMenuStrip = this.cmsManageLDL;
             this.dgvLDLS.Location = new System.Drawing.Point(6, 8);
             this.dgvLDLS.MultiSelect = false;
             this.dgvLDLS.Name = "dgvLDLS";
@@ -107,6 +113,24 @@
             this.dgvLDLS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLDLS.Size = new System.Drawing.Size(1464, 156);
             this.dgvLDLS.TabIndex = 2;
+            // 
+            // cmsManageLDL
+            // 
+            this.cmsManageLDL.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsManageLDL.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmShowLicenseDetails});
+            this.cmsManageLDL.Name = "cmsManageLDL";
+            this.cmsManageLDL.Size = new System.Drawing.Size(328, 58);
+            // 
+            // tsmShowLicenseDetails
+            // 
+            this.tsmShowLicenseDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmShowLicenseDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowLicenseDetails.Image")));
+            this.tsmShowLicenseDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmShowLicenseDetails.Name = "tsmShowLicenseDetails";
+            this.tsmShowLicenseDetails.Size = new System.Drawing.Size(327, 54);
+            this.tsmShowLicenseDetails.Text = "Show License Details";
+            this.tsmShowLicenseDetails.Click += new System.EventHandler(this.tsmShowLicenseDetails_Click);
             // 
             // tbInternational
             // 
@@ -126,40 +150,48 @@
             this.dgvI_Licenses.AllowUserToDeleteRows = false;
             this.dgvI_Licenses.AllowUserToOrderColumns = true;
             this.dgvI_Licenses.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvI_Licenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvI_Licenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvI_Licenses.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvI_Licenses.ContextMenuStrip = this.cmsManageIDL;
             this.dgvI_Licenses.Location = new System.Drawing.Point(6, 8);
             this.dgvI_Licenses.MultiSelect = false;
             this.dgvI_Licenses.Name = "dgvI_Licenses";
             this.dgvI_Licenses.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvI_Licenses.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvI_Licenses.RowHeadersWidth = 51;
             this.dgvI_Licenses.RowTemplate.Height = 24;
             this.dgvI_Licenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvI_Licenses.Size = new System.Drawing.Size(1464, 156);
             this.dgvI_Licenses.TabIndex = 3;
+            // 
+            // cmsManageIDL
+            // 
+            this.cmsManageIDL.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsManageIDL.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmShowILicenseDetails});
+            this.cmsManageIDL.Name = "cmsManageIDL";
+            this.cmsManageIDL.Size = new System.Drawing.Size(291, 58);
+            // 
+            // tsmShowILicenseDetails
+            // 
+            this.tsmShowILicenseDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmShowILicenseDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmShowILicenseDetails.Image")));
+            this.tsmShowILicenseDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmShowILicenseDetails.Name = "tsmShowILicenseDetails";
+            this.tsmShowILicenseDetails.Size = new System.Drawing.Size(290, 54);
+            this.tsmShowILicenseDetails.Text = "Show LicenseInfo";
+            this.tsmShowILicenseDetails.Click += new System.EventHandler(this.tsmShowILicenseDetails_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(1317, 787);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(179, 48);
+            this.btnClose.TabIndex = 54;
+            this.btnClose.Text = "Close";
+            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // uctrlPersonalDetails1
             // 
@@ -175,6 +207,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1508, 833);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tb);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -187,8 +220,10 @@
             this.tb.ResumeLayout(false);
             this.tpLocal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLDLS)).EndInit();
+            this.cmsManageLDL.ResumeLayout(false);
             this.tbInternational.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvI_Licenses)).EndInit();
+            this.cmsManageIDL.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,5 +239,10 @@
         private System.Windows.Forms.TabPage tbInternational;
         private System.Windows.Forms.DataGridView dgvLDLS;
         private System.Windows.Forms.DataGridView dgvI_Licenses;
+        private System.Windows.Forms.ContextMenuStrip cmsManageLDL;
+        private System.Windows.Forms.ToolStripMenuItem tsmShowLicenseDetails;
+        private System.Windows.Forms.ContextMenuStrip cmsManageIDL;
+        private System.Windows.Forms.ToolStripMenuItem tsmShowILicenseDetails;
+        private System.Windows.Forms.Button btnClose;
     }
 }

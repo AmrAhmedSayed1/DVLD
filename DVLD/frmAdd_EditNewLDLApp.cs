@@ -12,7 +12,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD
 {
-    public partial class frmAddNewLDLApp : Form
+    public partial class frmAdd_EditNewLDLApp : Form
     {
         private int PersonID = 0;
 
@@ -22,7 +22,7 @@ namespace DVLD
 
         private DBclsNewLDLApp _NewLDLApp = new DBclsNewLDLApp();
 
-        public frmAddNewLDLApp(DBclsNewLDLApp newLDLApp = null, _enAddOrEdit addEdit = _enAddOrEdit.Add)
+        public frmAdd_EditNewLDLApp(DBclsNewLDLApp newLDLApp = null, _enAddOrEdit addEdit = _enAddOrEdit.Add)
         {
             InitializeComponent();
             _AddOrEdit = addEdit;
@@ -130,7 +130,7 @@ namespace DVLD
             return true;
         }
 
-        private bool _CheckDoesnotPersonHasNewSameClassApp()
+        private bool _CheckDoesnotPersonHaveNewSameClassApp()
         {
             int AppID = 0;
             if ((AppID = DBclsApplication.IsPersonHasNewApplicationFromThisClass(PersonID, DBclsLicensesClasses.GetLicenseClassIDByClassName(cbLicenseClass.SelectedItem.ToString()))) > 1)
@@ -147,7 +147,7 @@ namespace DVLD
             {
                 if(_CheckIsTherePerson())
                 {
-                    if(_CheckDoesnotPersonHasNewSameClassApp())
+                    if(_CheckDoesnotPersonHaveNewSameClassApp())
                     {
                         DBclsApplication App = new DBclsApplication();
                         App.AppStatusID = 1;
@@ -203,7 +203,14 @@ namespace DVLD
             if (_AddOrEdit == _enAddOrEdit.Add)
                 _Save();
             else
+            {
+                if(DBclsLicensesClasses.GetLicenseClassNameByClassID(_NewLDLApp.ClassID) != cbLicenseClass.SelectedItem.ToString())
+                {
+                    if (!_CheckDoesnotPersonHaveNewSameClassApp())
+                        return;
+                }
                 _Save_EditMode();
+            }
         }
     }
 }
