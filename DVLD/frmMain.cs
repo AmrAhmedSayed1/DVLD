@@ -13,9 +13,11 @@ namespace DVLD
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private frmLoginForm frmLoginForm = new frmLoginForm();
+        public MainForm(object s)
         {
             InitializeComponent();
+            frmLoginForm = (frmLoginForm)s;
         }
 
         private void poepleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -131,6 +133,11 @@ namespace DVLD
         {
             frmManageNewLDLApps frm = new frmManageNewLDLApps();
             frm.ShowDialog();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmLoginForm.frmLoginForm_Load(sender, e);
         }
     }
 }

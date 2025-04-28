@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataBusinessLayer;
+using Microsoft.Win32;
 
 namespace DVLD
 {
@@ -20,27 +22,64 @@ namespace DVLD
 
         private void _CheckChbRememberMe()
         {
-            if(chbRememberMe.Checked)
+            string KeyPath = @"HKEY_CURRENT_USER\SOFTWARE\DVLD";
+
+            string Value_Name_UserName = "User Name";
+            string Value_Name_Password = "Password";
+            string Value_Name_RememberMe = "Remember Me";
+
+            if (chbRememberMe.Checked)
             {
-                Properties.Settings.Default.UserName = txtUserName.Text;
-                Properties.Settings.Default.Password = txtPassword.Text;
-                Properties.Settings.Default.Save();
-                return;
+                string Value_UserName = txtUserName.Text;
+                string Value_Password = txtPassword.Text;
+                bool Value_RememberMy = true;
+
+                try
+                {
+                    Registry.SetValue(KeyPath, Value_Name_UserName, Value_UserName);
+                    Registry.SetValue(KeyPath, Value_Name_Password, Value_Password);
+                    Registry.SetValue(KeyPath, Value_Name_RememberMe, Value_RememberMy);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
             else
             {
-                if(Properties.Settings.Default.UserName == txtUserName.Text )
+
+                
+
+                string Value_UserName = "";
+                string Value_Password = "";
+                bool Value_RememberMy = false;
+
+                try
                 {
-                    Properties.Settings.Default.UserName = null;
-                    Properties.Settings.Default.Password = null;
-                    Properties.Settings.Default.Save();
+                    Registry.SetValue(KeyPath, Value_Name_UserName, Value_UserName);
+                    Registry.SetValue(KeyPath, Value_Name_Password, Value_Password);
+                    Registry.SetValue(KeyPath, Value_Name_RememberMe, Value_RememberMy);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private string _Crypt(string Text)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] HashedText = sha256.ComputeHash(Encoding.UTF8.GetBytes(Text));
+
+                return BitConverter.ToString(HashedText).Replace("-", "");
             }
         }
 
         private bool _CheckUserNameAndPassword()
         {
-            DBclsUser User = new DBclsUser(txtUserName.Text, txtPassword.Text);
+            DBclsUser User = new DBclsUser(txtUserName.Text, _Crypt(txtPassword.Text));
 
             if(User.UserID == 0 )
             {
@@ -66,18 +105,46 @@ namespace DVLD
             {
                 _CheckChbRememberMe();
 
-                MainForm frm = new MainForm();
+                MainForm frm = new MainForm(this);
                 frm.ShowDialog();
             }
         }
 
         private void _LoadUserNameAndPassword()
         {
-            txtUserName.Text = Properties.Settings.Default.UserName;
-            txtPassword.Text = Properties.Settings.Default.Password;
+            string KeyPath = @"HKEY_CURRENT_USER\SOFTWARE\DVLD";
+
+            string Value_Name_UserName = "User Name";
+            string Value_Name_Password = "Password";
+            string Value_Name_RememberMe = "Remember Me";
+            
+
+            try
+            {
+                string Value_UserName = Registry.GetValue(KeyPath, Value_Name_UserName, null)  as string;
+                string Value_Password = Registry.GetValue(KeyPath, Value_Name_Password, null)  as string;
+                bool Value_RememberMy = Convert.ToBoolean(Registry.GetValue(KeyPath, Value_Name_RememberMe, null));
+
+                if (Value_RememberMy)
+                {
+                    txtUserName.Text = Value_UserName;
+                    txtPassword.Text = Value_Password;
+                    chbRememberMe.Checked = true;
+                }
+                else
+                {
+                    txtUserName.Text = "";
+                    txtPassword.Text = "";
+                    chbRememberMe.Checked = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
-        private void frmLoginForm_Load(object sender, EventArgs e)
+        public void frmLoginForm_Load(object sender, EventArgs e)
         {
             _LoadUserNameAndPassword();
         }

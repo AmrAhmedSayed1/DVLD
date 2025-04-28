@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -77,6 +78,16 @@ namespace DVLD
             return !(DBclsUser.IsValueExist("UserName", txtUserName.Text));
         }
 
+        private string _Crypt(string Text)
+        {
+            using (SHA256  sha256 = SHA256.Create())
+            {
+                byte[] HashedText = sha256.ComputeHash(Encoding.UTF8.GetBytes(Text));
+
+                return BitConverter.ToString(HashedText).Replace("-", "");
+            }
+        }
+
         private bool _PutAllDateTo_User()
         {
             if (!_CheckAllDateIsRight())
@@ -84,7 +95,7 @@ namespace DVLD
 
             _User.PersonID = PersonID;
             _User.UserName = txtUserName.Text;
-            _User.Password = txtPassword.Text;
+            _User.Password = _Crypt(txtPassword.Text);
             _User.IsActive = (chbIsActive.Checked) ? 1 : 0;
             return true;
         }
