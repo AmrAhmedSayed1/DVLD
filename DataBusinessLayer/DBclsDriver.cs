@@ -8,15 +8,14 @@ using DataAccessLayer;
 
 namespace DataBusinessLayer
 {
-    public class DBclsDriver
+    public class DBclsDriver : DBclsPerson
     {
         public int DriverID { get; set; }
-        public int PersonID { get; set; }
 
-        public DBclsDriver()
+        public DBclsDriver(int personID, bool IsNew = true)
         {
             DriverID = 0;
-            PersonID = 0;
+            FillPersonByPersonID(personID);
         }
 
         public DBclsDriver(int driverID)
@@ -26,7 +25,8 @@ namespace DataBusinessLayer
             if(DAclsDriver.GetDriverByID(driverID, ref personID))
             {
                 DriverID = driverID;
-                PersonID = personID;
+                
+                FillPersonByPersonID(personID);
             }
         }
 
@@ -49,6 +49,11 @@ namespace DataBusinessLayer
         public static DataTable GetAllDriversWithFilter(string ColumnName, string Value)
         {
             return DAclsDriver.GetAllDriversWithFilter(ColumnName, Value);
+        }
+
+        public static bool IsValueExist(string ColumnName, string Value, bool Dirvers = true)
+        {
+            return DAclsPerson.IsValueExist("Drivers", ColumnName, Value);
         }
 
     }

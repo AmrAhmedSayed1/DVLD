@@ -129,7 +129,7 @@ namespace DVLD
 
             if(UserID == 0)
             {
-                if(_User.Save())
+                if(_User.SaveUser())
                 {
                     MessageBox.Show("User Was Added Succesfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UserID = _User.UserID;
@@ -142,7 +142,7 @@ namespace DVLD
             }
             else
             {
-                if(_User.Save())
+                if(_User.SaveUser())
                 {
                     MessageBox.Show("User Was Updated Succesfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -215,6 +215,9 @@ namespace DVLD
                 uctrlPersonalDetails1.PersonID = PersonID;
                 uctrlPersonalDetails1.LoadDataToForm();
             }
+            else
+                MessageBox.Show($"There is no person with NationalNo = {txtFilter.Text}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

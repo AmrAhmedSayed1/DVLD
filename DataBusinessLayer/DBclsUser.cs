@@ -10,11 +10,9 @@ using DataAccessLayer;
 
 namespace DataBusinessLayer
 {
-    public class DBclsUser
+    public class DBclsUser : DBclsPerson
     {
         public int UserID { get; set; }
-
-        public int PersonID { get; set; }
 
         public string UserName { get; set; }
 
@@ -22,19 +20,14 @@ namespace DataBusinessLayer
 
         public int IsActive { get; set; }
 
-        public DBclsPerson Person { get; set; }
-        
-        private enum _enMode { AddNew, Update }
-
-        private _enMode _EnMode;
-
         public DBclsUser()
         {
             PersonID = 0;
             UserName = "";
             Password = "";
             IsActive = 0;
-            _EnMode = _enMode.AddNew;
+
+            FillPersonWithEmptyData();
         }
 
         public DBclsUser(int UserID)
@@ -52,8 +45,8 @@ namespace DataBusinessLayer
                 this.UserName = UserName;
                 this.Password = Password;
                 this.IsActive = IsActive;
-                Person = new DBclsPerson(PersonID);
-                _EnMode = _enMode.Update;
+
+                FillPersonByPersonID(PersonID);
             }
         }
 
@@ -67,12 +60,13 @@ namespace DataBusinessLayer
             if (DAclsUser.GetUserByUserNameAndPassword(ref UserID, ref PersonID, userName, password, ref IsActive))
             {
                 this.UserID = UserID;
-                this.PersonID = PersonID;
+                
                 this.UserName = userName;
                 this.Password = password;
                 this.IsActive = IsActive;
-                Person = new DBclsPerson(PersonID);
                 _EnMode = _enMode.Update;
+
+                FillPersonByPersonID(PersonID);
             }
         }
 
@@ -102,7 +96,7 @@ namespace DataBusinessLayer
             if ((TempID = DAclsUser.AddNewUser(PersonID, UserName, Password, IsActive)) > 0)
             {
                 UserID = TempID;
-                _EnMode = _enMode.Update;
+                FillPersonByPersonID(PersonID);
                 return true;
             }
             else
@@ -111,7 +105,7 @@ namespace DataBusinessLayer
         }
 
 
-        public bool Save()
+        public bool SaveUser()
         {
             switch (_EnMode)
             {
@@ -129,15 +123,14 @@ namespace DataBusinessLayer
             return DAclsUser.DeleteRecord("Users", "UserID", UserID.ToString());
         }
 
-
-        public static bool IsValueExist(string ColumnName, string Value)
-        {
-            return DAclsUser.IsValueExist("Users", ColumnName, Value);
-        }
-
         public static string GetUserNameByUserID(int UserID)
         {
             return clsCRUD.GetValueFromTable("UserName", "Users", "UserID", UserID.ToString());
+        }
+
+        public static bool IsValueExist(string ColumnName, string Value, bool InUsers = true)
+        {
+            return DAclsPerson.IsValueExist("Users", ColumnName, Value);
         }
     }
 }

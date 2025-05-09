@@ -129,7 +129,7 @@ namespace DVLD
         {
             if(_PutAllDateToUser())
             {
-                if (User.Save())
+                if (User.SaveUser())
                 {
                     MessageBox.Show("Password was updated successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

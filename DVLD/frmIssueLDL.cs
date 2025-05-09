@@ -28,8 +28,7 @@ namespace DVLD
             int DriverID = 0;
             if((DriverID = DBclsLicense.GetDriverIDByPersonID(App.PersonID)) == 0)
             {
-                DBclsDriver Driver = new DBclsDriver();
-                Driver.PersonID = App.PersonID;
+                DBclsDriver Driver = new DBclsDriver(App.PersonID);
 
                 Driver.AddNew();
 
